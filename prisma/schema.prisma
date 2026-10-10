@@ -1,0 +1,22 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Event {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String
+  start_date   DateTime
+  end_date     DateTime
+  category     String
+  its_official Boolean
+
+  @@map("events")
+}
