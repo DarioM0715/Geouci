@@ -9,14 +9,142 @@ datasource db {
   provider = "postgresql"
 }
 
+model Role {
+  id                          Int         @id @default(autoincrement())
+  name                        String      @unique
+  
+  users                       User[] 
+
+  @@map("roles")
+}
+
+model User {
+  id                          Int         @id @default(autoincrement())
+  name                        String
+  email                       String      @unique
+  lapel                       String      @unique
+  password_hash               String      @map("password_hash")
+  status                      String      @default("active")
+  role_id                     Int         @map("role_id")
+
+  role                        Role        @relation(fields: [role_id], references: [id])
+  events                      Event[]
+  locations_request           Location_Request[]
+  comments                    Comment[]
+  reactions                   Reaction[]
+  complaints                  Complaint[]
+  locations                   Location[]
+
+  @@map("users")
+}
+
+model Category {
+  id                          Int          @id @default(autoincrement())
+  name                        String       @unique
+  description                 String?
+  
+  events                      Event[]
+  locations                   Location[]
+  locations_request           Location_Request[]
+
+  @@map("categories")
+}
+
 model Event {
-  id           Int      @id @default(autoincrement())
-  name         String
-  description  String
-  start_date   DateTime
-  end_date     DateTime
-  category     String
-  its_official Boolean
+  id                          Int         @id @default(autoincrement())
+  name                        String
+  description                 String?
+  userId                      Int         @map("user_id")
+  categoryId                  Int         @map("category_id")
+  locationId                  Int         @map("location_id")
+  start_date                  DateTime
+  end_date                    DateTime
+  its_official                Boolean
+  status                      String      @default("pending")
+
+  user                        User        @relation(fields: [userId], references: [id])
+  category                    Category    @relation(fields: [categoryId], references: [id])
+  location                    Location    @relation(fields: [locationId], references: [id])
+
+  commmets                    Comment[]
+  reactions                   Reaction[]
+  complaint                   Complaint[]
 
   @@map("events")
 }
+
+model Location {
+  id                          Int         @id @default(autoincrement())
+  name                        String
+  description                 String?
+  latitude                    Float
+  longitude                   Float
+  categoryId                  Int         @map("category_id")
+  userId                      Int         @map("user_id")
+
+  category                    Category    @relation(fields: [categoryId], references: [id])
+  user                        User        @relation(fields: [userId], references: [id])
+  events                      Event[]
+
+
+  @@map("locations")
+}
+
+model Location_Request {
+  int                         Int         @id @default(autoincrement())
+  name                        String
+  description                 String?
+  userId                      Int         @map("user_id")
+  categoryId                  Int         @map("category_id")
+  status                      String      @default("pending")
+  request_date                DateTime    @default(now()) @map("reques_date")
+
+  user                        User        @relation(fields: [userId], references: [id])
+  category                    Category    @relation(fields: [categoryId], references: [id])
+
+  @@map("locations_request")
+}
+
+model Comment {
+  id                          Int         @id @default(autoincrement())
+  content                     String
+  userId                      Int         @map("user_id")
+  eventId                     Int         @map("event_id")
+  created_at                  DateTime    @default(now())
+
+  user                        User        @relation(fields: [userId], references: [id])  
+  event                       Event       @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("comments")
+}
+
+model Reaction {
+  id                          Int         @id @default(autoincrement())
+  type                        String
+  userId                      Int         @map("user_id")
+  eventId                     Int         @map("event_id")
+  created_at                  DateTime    @default(now())
+
+  user                        User        @relation(fields: [userId], references: [id])  
+  event                       Event       @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("reactions")
+}
+
+model Complaint {
+  id                          Int         @id @default(autoincrement())
+  reason                      String
+  userId                      Int         @map("user_id")
+  eventId                     Int         @map("event_id")
+  created_at                  DateTime    @default(now())
+
+  user                        User        @relation(fields: [userId], references: [id])  
+  event                       Event       @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("complaints")
+}
+
+
