@@ -8,5 +8,13 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Role.js'
+export type * from './models/User.js'
+export type * from './models/Category.js'
 export type * from './models/Event.js'
+export type * from './models/Location.js'
+export type * from './models/Location_Request.js'
+export type * from './models/Comment.js'
+export type * from './models/Reaction.js'
+export type * from './models/Complaint.js'
 export type * from './commonInputTypes.js'
