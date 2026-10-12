@@ -29,7 +29,7 @@ model User {
 
   role                        Role        @relation(fields: [role_id], references: [id])
   events                      Event[]
-  locations_request           Location_Request[]
+  locations_requests          LocationRequest[]
   comments                    Comment[]
   reactions                   Reaction[]
   complaints                  Complaint[]
@@ -45,7 +45,7 @@ model Category {
   
   events                      Event[]
   locations                   Location[]
-  locations_request           Location_Request[]
+  locations_requests          LocationRequest[]
 
   @@map("categories")
 }
@@ -66,9 +66,9 @@ model Event {
   category                    Category    @relation(fields: [categoryId], references: [id])
   location                    Location    @relation(fields: [locationId], references: [id])
 
-  commmets                    Comment[]
+  comments                    Comment[]
   reactions                   Reaction[]
-  complaint                   Complaint[]
+  complaints                  Complaint[]
 
   @@map("events")
 }
@@ -90,14 +90,14 @@ model Location {
   @@map("locations")
 }
 
-model Location_Request {
-  int                         Int         @id @default(autoincrement())
+model LocationRequest {
+  id                          Int         @id @default(autoincrement())
   name                        String
   description                 String?
   userId                      Int         @map("user_id")
   categoryId                  Int         @map("category_id")
   status                      String      @default("pending")
-  request_date                DateTime    @default(now()) @map("reques_date")
+  request_date                DateTime    @default(now())
 
   user                        User        @relation(fields: [userId], references: [id])
   category                    Category    @relation(fields: [categoryId], references: [id])
