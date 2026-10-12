@@ -9,8 +9,6 @@ export class User {
   email: string;
   @ApiProperty({ description: 'The lapel of the user' })
   lapel: string;
-  @ApiProperty({ description: 'The password hash of the user' })
-  password_hash: string;
   @ApiProperty({ description: 'The status of the user' })
   status: string;
   @ApiProperty({ description: 'The role of the user' })

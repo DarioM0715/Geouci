@@ -17,10 +17,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   lapel: string;
 
-  @ApiProperty({ description: 'The password hash of the user' })
+  @ApiProperty({ description: 'The password of the user' })
   @IsString()
   @IsNotEmpty()
-  password_hash: string;
+  password: string;
 
   @ApiProperty({ required: false })
   @IsOptional()

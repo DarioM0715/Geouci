@@ -24,7 +24,7 @@ export class UpdateUserDto {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  password_hash?: string;
+  password?: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
