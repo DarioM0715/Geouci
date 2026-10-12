@@ -56,7 +56,7 @@ export const ModelName = {
   Category: 'Category',
   Event: 'Event',
   Location: 'Location',
-  Location_Request: 'Location_Request',
+  LocationRequest: 'LocationRequest',
   Comment: 'Comment',
   Reaction: 'Reaction',
   Complaint: 'Complaint'
@@ -137,8 +137,8 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
-export const Location_RequestScalarFieldEnum = {
-  int: 'int',
+export const LocationRequestScalarFieldEnum = {
+  id: 'id',
   name: 'name',
   description: 'description',
   userId: 'userId',
@@ -147,7 +147,7 @@ export const Location_RequestScalarFieldEnum = {
   request_date: 'request_date'
 } as const
 
-export type Location_RequestScalarFieldEnum = (typeof Location_RequestScalarFieldEnum)[keyof typeof Location_RequestScalarFieldEnum]
+export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldEnum)[keyof typeof LocationRequestScalarFieldEnum]
 
 
 export const CommentScalarFieldEnum = {

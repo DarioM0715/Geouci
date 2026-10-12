@@ -271,9 +271,9 @@ export type EventWhereInput = {
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
   location?: Prisma.XOR<Prisma.LocationScalarRelationFilter, Prisma.LocationWhereInput>
-  commmets?: Prisma.CommentListRelationFilter
+  comments?: Prisma.CommentListRelationFilter
   reactions?: Prisma.ReactionListRelationFilter
-  complaint?: Prisma.ComplaintListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }
 
 export type EventOrderByWithRelationInput = {
@@ -290,9 +290,9 @@ export type EventOrderByWithRelationInput = {
   user?: Prisma.UserOrderByWithRelationInput
   category?: Prisma.CategoryOrderByWithRelationInput
   location?: Prisma.LocationOrderByWithRelationInput
-  commmets?: Prisma.CommentOrderByRelationAggregateInput
+  comments?: Prisma.CommentOrderByRelationAggregateInput
   reactions?: Prisma.ReactionOrderByRelationAggregateInput
-  complaint?: Prisma.ComplaintOrderByRelationAggregateInput
+  complaints?: Prisma.ComplaintOrderByRelationAggregateInput
 }
 
 export type EventWhereUniqueInput = Prisma.AtLeast<{
@@ -312,9 +312,9 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
   location?: Prisma.XOR<Prisma.LocationScalarRelationFilter, Prisma.LocationWhereInput>
-  commmets?: Prisma.CommentListRelationFilter
+  comments?: Prisma.CommentListRelationFilter
   reactions?: Prisma.ReactionListRelationFilter
-  complaint?: Prisma.ComplaintListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }, "id">
 
 export type EventOrderByWithAggregationInput = {
@@ -361,9 +361,9 @@ export type EventCreateInput = {
   user: Prisma.UserCreateNestedOneWithoutEventsInput
   category: Prisma.CategoryCreateNestedOneWithoutEventsInput
   location: Prisma.LocationCreateNestedOneWithoutEventsInput
-  commmets?: Prisma.CommentCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateInput = {
@@ -377,9 +377,9 @@ export type EventUncheckedCreateInput = {
   end_date: Date | string
   its_official: boolean
   status?: string
-  commmets?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventUpdateInput = {
@@ -392,9 +392,9 @@ export type EventUpdateInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEventsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutEventsNestedInput
-  commmets?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateInput = {
@@ -408,9 +408,9 @@ export type EventUncheckedUpdateInput = {
   end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  commmets?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventCreateManyInput = {
@@ -650,18 +650,18 @@ export type EventUncheckedUpdateManyWithoutLocationNestedInput = {
   deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
 }
 
-export type EventCreateNestedOneWithoutCommmetsInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutCommmetsInput, Prisma.EventUncheckedCreateWithoutCommmetsInput>
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCommmetsInput
+export type EventCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutCommentsInput, Prisma.EventUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCommentsInput
   connect?: Prisma.EventWhereUniqueInput
 }
 
-export type EventUpdateOneRequiredWithoutCommmetsNestedInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutCommmetsInput, Prisma.EventUncheckedCreateWithoutCommmetsInput>
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCommmetsInput
-  upsert?: Prisma.EventUpsertWithoutCommmetsInput
+export type EventUpdateOneRequiredWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutCommentsInput, Prisma.EventUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutCommentsInput
+  upsert?: Prisma.EventUpsertWithoutCommentsInput
   connect?: Prisma.EventWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutCommmetsInput, Prisma.EventUpdateWithoutCommmetsInput>, Prisma.EventUncheckedUpdateWithoutCommmetsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutCommentsInput, Prisma.EventUpdateWithoutCommentsInput>, Prisma.EventUncheckedUpdateWithoutCommentsInput>
 }
 
 export type EventCreateNestedOneWithoutReactionsInput = {
@@ -678,18 +678,18 @@ export type EventUpdateOneRequiredWithoutReactionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutReactionsInput, Prisma.EventUpdateWithoutReactionsInput>, Prisma.EventUncheckedUpdateWithoutReactionsInput>
 }
 
-export type EventCreateNestedOneWithoutComplaintInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutComplaintInput, Prisma.EventUncheckedCreateWithoutComplaintInput>
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutComplaintInput
+export type EventCreateNestedOneWithoutComplaintsInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutComplaintsInput, Prisma.EventUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutComplaintsInput
   connect?: Prisma.EventWhereUniqueInput
 }
 
-export type EventUpdateOneRequiredWithoutComplaintNestedInput = {
-  create?: Prisma.XOR<Prisma.EventCreateWithoutComplaintInput, Prisma.EventUncheckedCreateWithoutComplaintInput>
-  connectOrCreate?: Prisma.EventCreateOrConnectWithoutComplaintInput
-  upsert?: Prisma.EventUpsertWithoutComplaintInput
+export type EventUpdateOneRequiredWithoutComplaintsNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutComplaintsInput, Prisma.EventUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutComplaintsInput
+  upsert?: Prisma.EventUpsertWithoutComplaintsInput
   connect?: Prisma.EventWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutComplaintInput, Prisma.EventUpdateWithoutComplaintInput>, Prisma.EventUncheckedUpdateWithoutComplaintInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EventUpdateToOneWithWhereWithoutComplaintsInput, Prisma.EventUpdateWithoutComplaintsInput>, Prisma.EventUncheckedUpdateWithoutComplaintsInput>
 }
 
 export type EventCreateWithoutUserInput = {
@@ -701,9 +701,9 @@ export type EventCreateWithoutUserInput = {
   status?: string
   category: Prisma.CategoryCreateNestedOneWithoutEventsInput
   location: Prisma.LocationCreateNestedOneWithoutEventsInput
-  commmets?: Prisma.CommentCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateWithoutUserInput = {
@@ -716,9 +716,9 @@ export type EventUncheckedCreateWithoutUserInput = {
   end_date: Date | string
   its_official: boolean
   status?: string
-  commmets?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventCreateOrConnectWithoutUserInput = {
@@ -772,9 +772,9 @@ export type EventCreateWithoutCategoryInput = {
   status?: string
   user: Prisma.UserCreateNestedOneWithoutEventsInput
   location: Prisma.LocationCreateNestedOneWithoutEventsInput
-  commmets?: Prisma.CommentCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateWithoutCategoryInput = {
@@ -787,9 +787,9 @@ export type EventUncheckedCreateWithoutCategoryInput = {
   end_date: Date | string
   its_official: boolean
   status?: string
-  commmets?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventCreateOrConnectWithoutCategoryInput = {
@@ -827,9 +827,9 @@ export type EventCreateWithoutLocationInput = {
   status?: string
   user: Prisma.UserCreateNestedOneWithoutEventsInput
   category: Prisma.CategoryCreateNestedOneWithoutEventsInput
-  commmets?: Prisma.CommentCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateWithoutLocationInput = {
@@ -842,9 +842,9 @@ export type EventUncheckedCreateWithoutLocationInput = {
   end_date: Date | string
   its_official: boolean
   status?: string
-  commmets?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventCreateOrConnectWithoutLocationInput = {
@@ -873,7 +873,7 @@ export type EventUpdateManyWithWhereWithoutLocationInput = {
   data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutLocationInput>
 }
 
-export type EventCreateWithoutCommmetsInput = {
+export type EventCreateWithoutCommentsInput = {
   name: string
   description?: string | null
   start_date: Date | string
@@ -884,10 +884,10 @@ export type EventCreateWithoutCommmetsInput = {
   category: Prisma.CategoryCreateNestedOneWithoutEventsInput
   location: Prisma.LocationCreateNestedOneWithoutEventsInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutEventInput
 }
 
-export type EventUncheckedCreateWithoutCommmetsInput = {
+export type EventUncheckedCreateWithoutCommentsInput = {
   id?: number
   name: string
   description?: string | null
@@ -899,26 +899,26 @@ export type EventUncheckedCreateWithoutCommmetsInput = {
   its_official: boolean
   status?: string
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
 }
 
-export type EventCreateOrConnectWithoutCommmetsInput = {
+export type EventCreateOrConnectWithoutCommentsInput = {
   where: Prisma.EventWhereUniqueInput
-  create: Prisma.XOR<Prisma.EventCreateWithoutCommmetsInput, Prisma.EventUncheckedCreateWithoutCommmetsInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutCommentsInput, Prisma.EventUncheckedCreateWithoutCommentsInput>
 }
 
-export type EventUpsertWithoutCommmetsInput = {
-  update: Prisma.XOR<Prisma.EventUpdateWithoutCommmetsInput, Prisma.EventUncheckedUpdateWithoutCommmetsInput>
-  create: Prisma.XOR<Prisma.EventCreateWithoutCommmetsInput, Prisma.EventUncheckedCreateWithoutCommmetsInput>
+export type EventUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<Prisma.EventUpdateWithoutCommentsInput, Prisma.EventUncheckedUpdateWithoutCommentsInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutCommentsInput, Prisma.EventUncheckedCreateWithoutCommentsInput>
   where?: Prisma.EventWhereInput
 }
 
-export type EventUpdateToOneWithWhereWithoutCommmetsInput = {
+export type EventUpdateToOneWithWhereWithoutCommentsInput = {
   where?: Prisma.EventWhereInput
-  data: Prisma.XOR<Prisma.EventUpdateWithoutCommmetsInput, Prisma.EventUncheckedUpdateWithoutCommmetsInput>
+  data: Prisma.XOR<Prisma.EventUpdateWithoutCommentsInput, Prisma.EventUncheckedUpdateWithoutCommentsInput>
 }
 
-export type EventUpdateWithoutCommmetsInput = {
+export type EventUpdateWithoutCommentsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -929,10 +929,10 @@ export type EventUpdateWithoutCommmetsInput = {
   category?: Prisma.CategoryUpdateOneRequiredWithoutEventsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutEventsNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
 }
 
-export type EventUncheckedUpdateWithoutCommmetsInput = {
+export type EventUncheckedUpdateWithoutCommentsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -944,7 +944,7 @@ export type EventUncheckedUpdateWithoutCommmetsInput = {
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventCreateWithoutReactionsInput = {
@@ -957,8 +957,8 @@ export type EventCreateWithoutReactionsInput = {
   user: Prisma.UserCreateNestedOneWithoutEventsInput
   category: Prisma.CategoryCreateNestedOneWithoutEventsInput
   location: Prisma.LocationCreateNestedOneWithoutEventsInput
-  commmets?: Prisma.CommentCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutEventInput
 }
 
 export type EventUncheckedCreateWithoutReactionsInput = {
@@ -972,8 +972,8 @@ export type EventUncheckedCreateWithoutReactionsInput = {
   end_date: Date | string
   its_official: boolean
   status?: string
-  commmets?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutEventInput
 }
 
 export type EventCreateOrConnectWithoutReactionsInput = {
@@ -1002,8 +1002,8 @@ export type EventUpdateWithoutReactionsInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEventsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutEventsNestedInput
-  commmets?: Prisma.CommentUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateWithoutReactionsInput = {
@@ -1017,11 +1017,11 @@ export type EventUncheckedUpdateWithoutReactionsInput = {
   end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  commmets?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
 }
 
-export type EventCreateWithoutComplaintInput = {
+export type EventCreateWithoutComplaintsInput = {
   name: string
   description?: string | null
   start_date: Date | string
@@ -1031,11 +1031,11 @@ export type EventCreateWithoutComplaintInput = {
   user: Prisma.UserCreateNestedOneWithoutEventsInput
   category: Prisma.CategoryCreateNestedOneWithoutEventsInput
   location: Prisma.LocationCreateNestedOneWithoutEventsInput
-  commmets?: Prisma.CommentCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutEventInput
 }
 
-export type EventUncheckedCreateWithoutComplaintInput = {
+export type EventUncheckedCreateWithoutComplaintsInput = {
   id?: number
   name: string
   description?: string | null
@@ -1046,27 +1046,27 @@ export type EventUncheckedCreateWithoutComplaintInput = {
   end_date: Date | string
   its_official: boolean
   status?: string
-  commmets?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutEventInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutEventInput
 }
 
-export type EventCreateOrConnectWithoutComplaintInput = {
+export type EventCreateOrConnectWithoutComplaintsInput = {
   where: Prisma.EventWhereUniqueInput
-  create: Prisma.XOR<Prisma.EventCreateWithoutComplaintInput, Prisma.EventUncheckedCreateWithoutComplaintInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutComplaintsInput, Prisma.EventUncheckedCreateWithoutComplaintsInput>
 }
 
-export type EventUpsertWithoutComplaintInput = {
-  update: Prisma.XOR<Prisma.EventUpdateWithoutComplaintInput, Prisma.EventUncheckedUpdateWithoutComplaintInput>
-  create: Prisma.XOR<Prisma.EventCreateWithoutComplaintInput, Prisma.EventUncheckedCreateWithoutComplaintInput>
+export type EventUpsertWithoutComplaintsInput = {
+  update: Prisma.XOR<Prisma.EventUpdateWithoutComplaintsInput, Prisma.EventUncheckedUpdateWithoutComplaintsInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutComplaintsInput, Prisma.EventUncheckedCreateWithoutComplaintsInput>
   where?: Prisma.EventWhereInput
 }
 
-export type EventUpdateToOneWithWhereWithoutComplaintInput = {
+export type EventUpdateToOneWithWhereWithoutComplaintsInput = {
   where?: Prisma.EventWhereInput
-  data: Prisma.XOR<Prisma.EventUpdateWithoutComplaintInput, Prisma.EventUncheckedUpdateWithoutComplaintInput>
+  data: Prisma.XOR<Prisma.EventUpdateWithoutComplaintsInput, Prisma.EventUncheckedUpdateWithoutComplaintsInput>
 }
 
-export type EventUpdateWithoutComplaintInput = {
+export type EventUpdateWithoutComplaintsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1076,11 +1076,11 @@ export type EventUpdateWithoutComplaintInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEventsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutEventsNestedInput
-  commmets?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutEventNestedInput
 }
 
-export type EventUncheckedUpdateWithoutComplaintInput = {
+export type EventUncheckedUpdateWithoutComplaintsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1091,7 +1091,7 @@ export type EventUncheckedUpdateWithoutComplaintInput = {
   end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  commmets?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutEventNestedInput
 }
 
@@ -1116,9 +1116,9 @@ export type EventUpdateWithoutUserInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutEventsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutEventsNestedInput
-  commmets?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateWithoutUserInput = {
@@ -1131,9 +1131,9 @@ export type EventUncheckedUpdateWithoutUserInput = {
   end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  commmets?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateManyWithoutUserInput = {
@@ -1169,9 +1169,9 @@ export type EventUpdateWithoutCategoryInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
   location?: Prisma.LocationUpdateOneRequiredWithoutEventsNestedInput
-  commmets?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateWithoutCategoryInput = {
@@ -1184,9 +1184,9 @@ export type EventUncheckedUpdateWithoutCategoryInput = {
   end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  commmets?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateManyWithoutCategoryInput = {
@@ -1222,9 +1222,9 @@ export type EventUpdateWithoutLocationInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutEventsNestedInput
-  commmets?: Prisma.CommentUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateWithoutLocationInput = {
@@ -1237,9 +1237,9 @@ export type EventUncheckedUpdateWithoutLocationInput = {
   end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  commmets?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutEventNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutEventNestedInput
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutEventNestedInput
 }
 
 export type EventUncheckedUpdateManyWithoutLocationInput = {
@@ -1260,15 +1260,15 @@ export type EventUncheckedUpdateManyWithoutLocationInput = {
  */
 
 export type EventCountOutputType = {
-  commmets: number
+  comments: number
   reactions: number
-  complaint: number
+  complaints: number
 }
 
 export type EventCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  commmets?: boolean | EventCountOutputTypeCountCommmetsArgs
+  comments?: boolean | EventCountOutputTypeCountCommentsArgs
   reactions?: boolean | EventCountOutputTypeCountReactionsArgs
-  complaint?: boolean | EventCountOutputTypeCountComplaintArgs
+  complaints?: boolean | EventCountOutputTypeCountComplaintsArgs
 }
 
 /**
@@ -1284,7 +1284,7 @@ export type EventCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
 /**
  * EventCountOutputType without action
  */
-export type EventCountOutputTypeCountCommmetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type EventCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CommentWhereInput
 }
 
@@ -1298,7 +1298,7 @@ export type EventCountOutputTypeCountReactionsArgs<ExtArgs extends runtime.Types
 /**
  * EventCountOutputType without action
  */
-export type EventCountOutputTypeCountComplaintArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type EventCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ComplaintWhereInput
 }
 
@@ -1317,9 +1317,9 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
-  commmets?: boolean | Prisma.Event$commmetsArgs<ExtArgs>
+  comments?: boolean | Prisma.Event$commentsArgs<ExtArgs>
   reactions?: boolean | Prisma.Event$reactionsArgs<ExtArgs>
-  complaint?: boolean | Prisma.Event$complaintArgs<ExtArgs>
+  complaints?: boolean | Prisma.Event$complaintsArgs<ExtArgs>
   _count?: boolean | Prisma.EventCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["event"]>
 
@@ -1373,9 +1373,9 @@ export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
   location?: boolean | Prisma.LocationDefaultArgs<ExtArgs>
-  commmets?: boolean | Prisma.Event$commmetsArgs<ExtArgs>
+  comments?: boolean | Prisma.Event$commentsArgs<ExtArgs>
   reactions?: boolean | Prisma.Event$reactionsArgs<ExtArgs>
-  complaint?: boolean | Prisma.Event$complaintArgs<ExtArgs>
+  complaints?: boolean | Prisma.Event$complaintsArgs<ExtArgs>
   _count?: boolean | Prisma.EventCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EventIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1395,9 +1395,9 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     user: Prisma.$UserPayload<ExtArgs>
     category: Prisma.$CategoryPayload<ExtArgs>
     location: Prisma.$LocationPayload<ExtArgs>
-    commmets: Prisma.$CommentPayload<ExtArgs>[]
+    comments: Prisma.$CommentPayload<ExtArgs>[]
     reactions: Prisma.$ReactionPayload<ExtArgs>[]
-    complaint: Prisma.$ComplaintPayload<ExtArgs>[]
+    complaints: Prisma.$ComplaintPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1807,9 +1807,9 @@ export interface Prisma__EventClient<T, Null = never, ExtArgs extends runtime.Ty
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   location<T extends Prisma.LocationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LocationDefaultArgs<ExtArgs>>): Prisma.Prisma__LocationClient<runtime.Types.Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  commmets<T extends Prisma.Event$commmetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$commmetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comments<T extends Prisma.Event$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reactions<T extends Prisma.Event$reactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  complaint<T extends Prisma.Event$complaintArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$complaintArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaints<T extends Prisma.Event$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Event$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2250,9 +2250,9 @@ export type EventDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Event.commmets
+ * Event.comments
  */
-export type Event$commmetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Event$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Comment
    */
@@ -2298,9 +2298,9 @@ export type Event$reactionsArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Event.complaint
+ * Event.complaints
  */
-export type Event$complaintArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Event$complaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Complaint
    */

@@ -280,7 +280,7 @@ export type ComplaintCreateInput = {
   reason: string
   created_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutComplaintsInput
-  event: Prisma.EventCreateNestedOneWithoutComplaintInput
+  event: Prisma.EventCreateNestedOneWithoutComplaintsInput
 }
 
 export type ComplaintUncheckedCreateInput = {
@@ -295,7 +295,7 @@ export type ComplaintUpdateInput = {
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutComplaintsNestedInput
-  event?: Prisma.EventUpdateOneRequiredWithoutComplaintNestedInput
+  event?: Prisma.EventUpdateOneRequiredWithoutComplaintsNestedInput
 }
 
 export type ComplaintUncheckedUpdateInput = {
@@ -465,7 +465,7 @@ export type ComplaintUncheckedUpdateManyWithoutEventNestedInput = {
 export type ComplaintCreateWithoutUserInput = {
   reason: string
   created_at?: Date | string
-  event: Prisma.EventCreateNestedOneWithoutComplaintInput
+  event: Prisma.EventCreateNestedOneWithoutComplaintsInput
 }
 
 export type ComplaintUncheckedCreateWithoutUserInput = {
@@ -561,7 +561,7 @@ export type ComplaintCreateManyUserInput = {
 export type ComplaintUpdateWithoutUserInput = {
   reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  event?: Prisma.EventUpdateOneRequiredWithoutComplaintNestedInput
+  event?: Prisma.EventUpdateOneRequiredWithoutComplaintsNestedInput
 }
 
 export type ComplaintUncheckedUpdateWithoutUserInput = {

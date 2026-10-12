@@ -280,7 +280,7 @@ export type CommentCreateInput = {
   content: string
   created_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCommentsInput
-  event: Prisma.EventCreateNestedOneWithoutCommmetsInput
+  event: Prisma.EventCreateNestedOneWithoutCommentsInput
 }
 
 export type CommentUncheckedCreateInput = {
@@ -295,7 +295,7 @@ export type CommentUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCommentsNestedInput
-  event?: Prisma.EventUpdateOneRequiredWithoutCommmetsNestedInput
+  event?: Prisma.EventUpdateOneRequiredWithoutCommentsNestedInput
 }
 
 export type CommentUncheckedUpdateInput = {
@@ -465,7 +465,7 @@ export type CommentUncheckedUpdateManyWithoutEventNestedInput = {
 export type CommentCreateWithoutUserInput = {
   content: string
   created_at?: Date | string
-  event: Prisma.EventCreateNestedOneWithoutCommmetsInput
+  event: Prisma.EventCreateNestedOneWithoutCommentsInput
 }
 
 export type CommentUncheckedCreateWithoutUserInput = {
@@ -561,7 +561,7 @@ export type CommentCreateManyUserInput = {
 export type CommentUpdateWithoutUserInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  event?: Prisma.EventUpdateOneRequiredWithoutCommmetsNestedInput
+  event?: Prisma.EventUpdateOneRequiredWithoutCommentsNestedInput
 }
 
 export type CommentUncheckedUpdateWithoutUserInput = {

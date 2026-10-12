@@ -5,9 +5,13 @@ import { EventsModule } from './events/events.module.js';
 import { LocationsModule } from './locations/locations.module.js';
 import { RolesModule } from './roles/roles.module.js';
 import { CategoriesModule } from './categories/categories.module.js';
+import { LocationsRequestModule } from './locations-request/locations-request.module.js';
+import { CommentsModule } from './comments/comments.module.js';
+import { ReactionsModule } from './reactions/reactions.module.js';
+import { ComplaintsModule } from './complaints/complaints.module.js';
 
 @Module({
-  imports: [UsersModule, PrismaModule, EventsModule, LocationsModule, RolesModule, CategoriesModule],
+  imports: [UsersModule, PrismaModule, EventsModule, LocationsModule, RolesModule, CategoriesModule, LocationsRequestModule, CommentsModule, ReactionsModule, ComplaintsModule],
   controllers: [],
   providers: [],
 })

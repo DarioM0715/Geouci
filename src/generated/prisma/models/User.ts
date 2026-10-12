@@ -238,7 +238,7 @@ export type UserWhereInput = {
   role_id?: Prisma.IntFilter<"User"> | number
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   events?: Prisma.EventListRelationFilter
-  locations_request?: Prisma.Location_RequestListRelationFilter
+  locations_requests?: Prisma.LocationRequestListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   reactions?: Prisma.ReactionListRelationFilter
   complaints?: Prisma.ComplaintListRelationFilter
@@ -255,7 +255,7 @@ export type UserOrderByWithRelationInput = {
   role_id?: Prisma.SortOrder
   role?: Prisma.RoleOrderByWithRelationInput
   events?: Prisma.EventOrderByRelationAggregateInput
-  locations_request?: Prisma.Location_RequestOrderByRelationAggregateInput
+  locations_requests?: Prisma.LocationRequestOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   reactions?: Prisma.ReactionOrderByRelationAggregateInput
   complaints?: Prisma.ComplaintOrderByRelationAggregateInput
@@ -275,7 +275,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   role_id?: Prisma.IntFilter<"User"> | number
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   events?: Prisma.EventListRelationFilter
-  locations_request?: Prisma.Location_RequestListRelationFilter
+  locations_requests?: Prisma.LocationRequestListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   reactions?: Prisma.ReactionListRelationFilter
   complaints?: Prisma.ComplaintListRelationFilter
@@ -318,7 +318,7 @@ export type UserCreateInput = {
   status?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
@@ -334,7 +334,7 @@ export type UserUncheckedCreateInput = {
   status?: string
   role_id: number
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
@@ -349,7 +349,7 @@ export type UserUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
@@ -365,7 +365,7 @@ export type UserUncheckedUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
@@ -525,18 +525,18 @@ export type UserUpdateOneRequiredWithoutLocationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocationsInput, Prisma.UserUpdateWithoutLocationsInput>, Prisma.UserUncheckedUpdateWithoutLocationsInput>
 }
 
-export type UserCreateNestedOneWithoutLocations_requestInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestInput, Prisma.UserUncheckedCreateWithoutLocations_requestInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocations_requestInput
+export type UserCreateNestedOneWithoutLocations_requestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocations_requestsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutLocations_requestNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestInput, Prisma.UserUncheckedCreateWithoutLocations_requestInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocations_requestInput
-  upsert?: Prisma.UserUpsertWithoutLocations_requestInput
+export type UserUpdateOneRequiredWithoutLocations_requestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocations_requestsInput
+  upsert?: Prisma.UserUpsertWithoutLocations_requestsInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocations_requestInput, Prisma.UserUpdateWithoutLocations_requestInput>, Prisma.UserUncheckedUpdateWithoutLocations_requestInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocations_requestsInput, Prisma.UserUpdateWithoutLocations_requestsInput>, Prisma.UserUncheckedUpdateWithoutLocations_requestsInput>
 }
 
 export type UserCreateNestedOneWithoutCommentsInput = {
@@ -588,7 +588,7 @@ export type UserCreateWithoutRoleInput = {
   password_hash: string
   status?: string
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
@@ -603,7 +603,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   password_hash: string
   status?: string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
@@ -656,7 +656,7 @@ export type UserCreateWithoutEventsInput = {
   password_hash: string
   status?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
@@ -671,7 +671,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   password_hash: string
   status?: string
   role_id: number
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
@@ -701,7 +701,7 @@ export type UserUpdateWithoutEventsInput = {
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
@@ -716,7 +716,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
@@ -731,7 +731,7 @@ export type UserCreateWithoutLocationsInput = {
   status?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
@@ -746,7 +746,7 @@ export type UserUncheckedCreateWithoutLocationsInput = {
   status?: string
   role_id: number
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
@@ -776,7 +776,7 @@ export type UserUpdateWithoutLocationsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
@@ -791,13 +791,13 @@ export type UserUncheckedUpdateWithoutLocationsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutLocations_requestInput = {
+export type UserCreateWithoutLocations_requestsInput = {
   name: string
   email: string
   lapel: string
@@ -811,7 +811,7 @@ export type UserCreateWithoutLocations_requestInput = {
   locations?: Prisma.LocationCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutLocations_requestInput = {
+export type UserUncheckedCreateWithoutLocations_requestsInput = {
   id?: number
   name: string
   email: string
@@ -826,23 +826,23 @@ export type UserUncheckedCreateWithoutLocations_requestInput = {
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutLocations_requestInput = {
+export type UserCreateOrConnectWithoutLocations_requestsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestInput, Prisma.UserUncheckedCreateWithoutLocations_requestInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
 }
 
-export type UserUpsertWithoutLocations_requestInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutLocations_requestInput, Prisma.UserUncheckedUpdateWithoutLocations_requestInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestInput, Prisma.UserUncheckedCreateWithoutLocations_requestInput>
+export type UserUpsertWithoutLocations_requestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLocations_requestsInput, Prisma.UserUncheckedUpdateWithoutLocations_requestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutLocations_requestInput = {
+export type UserUpdateToOneWithWhereWithoutLocations_requestsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutLocations_requestInput, Prisma.UserUncheckedUpdateWithoutLocations_requestInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLocations_requestsInput, Prisma.UserUncheckedUpdateWithoutLocations_requestsInput>
 }
 
-export type UserUpdateWithoutLocations_requestInput = {
+export type UserUpdateWithoutLocations_requestsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
@@ -856,7 +856,7 @@ export type UserUpdateWithoutLocations_requestInput = {
   locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutLocations_requestInput = {
+export type UserUncheckedUpdateWithoutLocations_requestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -879,7 +879,7 @@ export type UserCreateWithoutCommentsInput = {
   status?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
   locations?: Prisma.LocationCreateNestedManyWithoutUserInput
@@ -894,7 +894,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   status?: string
   role_id: number
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
@@ -924,7 +924,7 @@ export type UserUpdateWithoutCommentsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
@@ -939,7 +939,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
@@ -953,7 +953,7 @@ export type UserCreateWithoutReactionsInput = {
   status?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
   locations?: Prisma.LocationCreateNestedManyWithoutUserInput
@@ -968,7 +968,7 @@ export type UserUncheckedCreateWithoutReactionsInput = {
   status?: string
   role_id: number
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
@@ -998,7 +998,7 @@ export type UserUpdateWithoutReactionsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
@@ -1013,7 +1013,7 @@ export type UserUncheckedUpdateWithoutReactionsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
@@ -1027,7 +1027,7 @@ export type UserCreateWithoutComplaintsInput = {
   status?: string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   locations?: Prisma.LocationCreateNestedManyWithoutUserInput
@@ -1042,7 +1042,7 @@ export type UserUncheckedCreateWithoutComplaintsInput = {
   status?: string
   role_id: number
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutUserInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
@@ -1072,7 +1072,7 @@ export type UserUpdateWithoutComplaintsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
@@ -1087,7 +1087,7 @@ export type UserUncheckedUpdateWithoutComplaintsInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
@@ -1109,7 +1109,7 @@ export type UserUpdateWithoutRoleInput = {
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
@@ -1124,7 +1124,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutUserNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
@@ -1147,7 +1147,7 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 
 export type UserCountOutputType = {
   events: number
-  locations_request: number
+  locations_requests: number
   comments: number
   reactions: number
   complaints: number
@@ -1156,7 +1156,7 @@ export type UserCountOutputType = {
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   events?: boolean | UserCountOutputTypeCountEventsArgs
-  locations_request?: boolean | UserCountOutputTypeCountLocations_requestArgs
+  locations_requests?: boolean | UserCountOutputTypeCountLocations_requestsArgs
   comments?: boolean | UserCountOutputTypeCountCommentsArgs
   reactions?: boolean | UserCountOutputTypeCountReactionsArgs
   complaints?: boolean | UserCountOutputTypeCountComplaintsArgs
@@ -1183,8 +1183,8 @@ export type UserCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Ext
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountLocations_requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.Location_RequestWhereInput
+export type UserCountOutputTypeCountLocations_requestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LocationRequestWhereInput
 }
 
 /**
@@ -1226,7 +1226,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   role_id?: boolean
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
-  locations_request?: boolean | Prisma.User$locations_requestArgs<ExtArgs>
+  locations_requests?: boolean | Prisma.User$locations_requestsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   reactions?: boolean | Prisma.User$reactionsArgs<ExtArgs>
   complaints?: boolean | Prisma.User$complaintsArgs<ExtArgs>
@@ -1270,7 +1270,7 @@ export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
-  locations_request?: boolean | Prisma.User$locations_requestArgs<ExtArgs>
+  locations_requests?: boolean | Prisma.User$locations_requestsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   reactions?: boolean | Prisma.User$reactionsArgs<ExtArgs>
   complaints?: boolean | Prisma.User$complaintsArgs<ExtArgs>
@@ -1289,7 +1289,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     role: Prisma.$RolePayload<ExtArgs>
     events: Prisma.$EventPayload<ExtArgs>[]
-    locations_request: Prisma.$Location_RequestPayload<ExtArgs>[]
+    locations_requests: Prisma.$LocationRequestPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
     reactions: Prisma.$ReactionPayload<ExtArgs>[]
     complaints: Prisma.$ComplaintPayload<ExtArgs>[]
@@ -1699,7 +1699,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   role<T extends Prisma.RoleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RoleDefaultArgs<ExtArgs>>): Prisma.Prisma__RoleClient<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  locations_request<T extends Prisma.User$locations_requestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$locations_requestArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Location_RequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  locations_requests<T extends Prisma.User$locations_requestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$locations_requestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reactions<T extends Prisma.User$reactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   complaints<T extends Prisma.User$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2165,27 +2165,27 @@ export type User$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 /**
- * User.locations_request
+ * User.locations_requests
  */
-export type User$locations_requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$locations_requestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Location_Request
+   * Select specific fields to fetch from the LocationRequest
    */
-  select?: Prisma.Location_RequestSelect<ExtArgs> | null
+  select?: Prisma.LocationRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Location_Request
+   * Omit specific fields from the LocationRequest
    */
-  omit?: Prisma.Location_RequestOmit<ExtArgs> | null
+  omit?: Prisma.LocationRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.Location_RequestInclude<ExtArgs> | null
-  where?: Prisma.Location_RequestWhereInput
-  orderBy?: Prisma.Location_RequestOrderByWithRelationInput | Prisma.Location_RequestOrderByWithRelationInput[]
-  cursor?: Prisma.Location_RequestWhereUniqueInput
+  include?: Prisma.LocationRequestInclude<ExtArgs> | null
+  where?: Prisma.LocationRequestWhereInput
+  orderBy?: Prisma.LocationRequestOrderByWithRelationInput | Prisma.LocationRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LocationRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.Location_RequestScalarFieldEnum | Prisma.Location_RequestScalarFieldEnum[]
+  distinct?: Prisma.LocationRequestScalarFieldEnum | Prisma.LocationRequestScalarFieldEnum[]
 }
 
 /**

@@ -402,7 +402,7 @@ export const ModelName = {
   Category: 'Category',
   Event: 'Event',
   Location: 'Location',
-  Location_Request: 'Location_Request',
+  LocationRequest: 'LocationRequest',
   Comment: 'Comment',
   Reaction: 'Reaction',
   Complaint: 'Complaint'
@@ -421,7 +421,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "user" | "category" | "event" | "location" | "location_Request" | "comment" | "reaction" | "complaint"
+    modelProps: "role" | "user" | "category" | "event" | "location" | "locationRequest" | "comment" | "reaction" | "complaint"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -795,77 +795,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Location_Request: {
-      payload: Prisma.$Location_RequestPayload<ExtArgs>
-      fields: Prisma.Location_RequestFieldRefs
+    LocationRequest: {
+      payload: Prisma.$LocationRequestPayload<ExtArgs>
+      fields: Prisma.LocationRequestFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.Location_RequestFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload> | null
+          args: Prisma.LocationRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.Location_RequestFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>
+          args: Prisma.LocationRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
         }
         findFirst: {
-          args: Prisma.Location_RequestFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload> | null
+          args: Prisma.LocationRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.Location_RequestFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>
+          args: Prisma.LocationRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
         }
         findMany: {
-          args: Prisma.Location_RequestFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>[]
+          args: Prisma.LocationRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>[]
         }
         create: {
-          args: Prisma.Location_RequestCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>
+          args: Prisma.LocationRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
         }
         createMany: {
-          args: Prisma.Location_RequestCreateManyArgs<ExtArgs>
+          args: Prisma.LocationRequestCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.Location_RequestCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>[]
+          args: Prisma.LocationRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>[]
         }
         delete: {
-          args: Prisma.Location_RequestDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>
+          args: Prisma.LocationRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
         }
         update: {
-          args: Prisma.Location_RequestUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>
+          args: Prisma.LocationRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
         }
         deleteMany: {
-          args: Prisma.Location_RequestDeleteManyArgs<ExtArgs>
+          args: Prisma.LocationRequestDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.Location_RequestUpdateManyArgs<ExtArgs>
+          args: Prisma.LocationRequestUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.Location_RequestUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>[]
+          args: Prisma.LocationRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>[]
         }
         upsert: {
-          args: Prisma.Location_RequestUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$Location_RequestPayload>
+          args: Prisma.LocationRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LocationRequestPayload>
         }
         aggregate: {
-          args: Prisma.Location_RequestAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateLocation_Request>
+          args: Prisma.LocationRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLocationRequest>
         }
         groupBy: {
-          args: Prisma.Location_RequestGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Location_RequestGroupByOutputType>[]
+          args: Prisma.LocationRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LocationRequestGroupByOutputType>[]
         }
         count: {
-          args: Prisma.Location_RequestCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Location_RequestCountAggregateOutputType> | number
+          args: Prisma.LocationRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LocationRequestCountAggregateOutputType> | number
         }
       }
     }
@@ -1189,8 +1189,8 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
-export const Location_RequestScalarFieldEnum = {
-  int: 'int',
+export const LocationRequestScalarFieldEnum = {
+  id: 'id',
   name: 'name',
   description: 'description',
   userId: 'userId',
@@ -1199,7 +1199,7 @@ export const Location_RequestScalarFieldEnum = {
   request_date: 'request_date'
 } as const
 
-export type Location_RequestScalarFieldEnum = (typeof Location_RequestScalarFieldEnum)[keyof typeof Location_RequestScalarFieldEnum]
+export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldEnum)[keyof typeof LocationRequestScalarFieldEnum]
 
 
 export const CommentScalarFieldEnum = {
@@ -1483,7 +1483,7 @@ export type GlobalOmitConfig = {
   category?: Prisma.CategoryOmit
   event?: Prisma.EventOmit
   location?: Prisma.LocationOmit
-  location_Request?: Prisma.Location_RequestOmit
+  locationRequest?: Prisma.LocationRequestOmit
   comment?: Prisma.CommentOmit
   reaction?: Prisma.ReactionOmit
   complaint?: Prisma.ComplaintOmit

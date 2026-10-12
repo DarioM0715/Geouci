@@ -43,10 +43,10 @@ export type Event = Prisma.EventModel
  */
 export type Location = Prisma.LocationModel
 /**
- * Model Location_Request
+ * Model LocationRequest
  * 
  */
-export type Location_Request = Prisma.Location_RequestModel
+export type LocationRequest = Prisma.LocationRequestModel
 /**
  * Model Comment
  * 

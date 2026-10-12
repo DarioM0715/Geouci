@@ -202,7 +202,7 @@ export type CategoryWhereInput = {
   description?: Prisma.StringNullableFilter<"Category"> | string | null
   events?: Prisma.EventListRelationFilter
   locations?: Prisma.LocationListRelationFilter
-  locations_request?: Prisma.Location_RequestListRelationFilter
+  locations_requests?: Prisma.LocationRequestListRelationFilter
 }
 
 export type CategoryOrderByWithRelationInput = {
@@ -211,7 +211,7 @@ export type CategoryOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   events?: Prisma.EventOrderByRelationAggregateInput
   locations?: Prisma.LocationOrderByRelationAggregateInput
-  locations_request?: Prisma.Location_RequestOrderByRelationAggregateInput
+  locations_requests?: Prisma.LocationRequestOrderByRelationAggregateInput
 }
 
 export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -223,7 +223,7 @@ export type CategoryWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Category"> | string | null
   events?: Prisma.EventListRelationFilter
   locations?: Prisma.LocationListRelationFilter
-  locations_request?: Prisma.Location_RequestListRelationFilter
+  locations_requests?: Prisma.LocationRequestListRelationFilter
 }, "id" | "name">
 
 export type CategoryOrderByWithAggregationInput = {
@@ -251,7 +251,7 @@ export type CategoryCreateInput = {
   description?: string | null
   events?: Prisma.EventCreateNestedManyWithoutCategoryInput
   locations?: Prisma.LocationCreateNestedManyWithoutCategoryInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutCategoryInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateInput = {
@@ -260,7 +260,7 @@ export type CategoryUncheckedCreateInput = {
   description?: string | null
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCategoryInput
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutCategoryInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutCategoryInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUpdateInput = {
@@ -268,7 +268,7 @@ export type CategoryUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   events?: Prisma.EventUpdateManyWithoutCategoryNestedInput
   locations?: Prisma.LocationUpdateManyWithoutCategoryNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutCategoryNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateInput = {
@@ -277,7 +277,7 @@ export type CategoryUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   events?: Prisma.EventUncheckedUpdateManyWithoutCategoryNestedInput
   locations?: Prisma.LocationUncheckedUpdateManyWithoutCategoryNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutCategoryNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryCreateManyInput = {
@@ -360,25 +360,25 @@ export type CategoryUpdateOneRequiredWithoutLocationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutLocationsInput, Prisma.CategoryUpdateWithoutLocationsInput>, Prisma.CategoryUncheckedUpdateWithoutLocationsInput>
 }
 
-export type CategoryCreateNestedOneWithoutLocations_requestInput = {
-  create?: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestInput>
-  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutLocations_requestInput
+export type CategoryCreateNestedOneWithoutLocations_requestsInput = {
+  create?: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestsInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestsInput>
+  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutLocations_requestsInput
   connect?: Prisma.CategoryWhereUniqueInput
 }
 
-export type CategoryUpdateOneRequiredWithoutLocations_requestNestedInput = {
-  create?: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestInput>
-  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutLocations_requestInput
-  upsert?: Prisma.CategoryUpsertWithoutLocations_requestInput
+export type CategoryUpdateOneRequiredWithoutLocations_requestsNestedInput = {
+  create?: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestsInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestsInput>
+  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutLocations_requestsInput
+  upsert?: Prisma.CategoryUpsertWithoutLocations_requestsInput
   connect?: Prisma.CategoryWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutLocations_requestInput, Prisma.CategoryUpdateWithoutLocations_requestInput>, Prisma.CategoryUncheckedUpdateWithoutLocations_requestInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutLocations_requestsInput, Prisma.CategoryUpdateWithoutLocations_requestsInput>, Prisma.CategoryUncheckedUpdateWithoutLocations_requestsInput>
 }
 
 export type CategoryCreateWithoutEventsInput = {
   name: string
   description?: string | null
   locations?: Prisma.LocationCreateNestedManyWithoutCategoryInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutCategoryInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateWithoutEventsInput = {
@@ -386,7 +386,7 @@ export type CategoryUncheckedCreateWithoutEventsInput = {
   name: string
   description?: string | null
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutCategoryInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutCategoryInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryCreateOrConnectWithoutEventsInput = {
@@ -409,7 +409,7 @@ export type CategoryUpdateWithoutEventsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locations?: Prisma.LocationUpdateManyWithoutCategoryNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutCategoryNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateWithoutEventsInput = {
@@ -417,14 +417,14 @@ export type CategoryUncheckedUpdateWithoutEventsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locations?: Prisma.LocationUncheckedUpdateManyWithoutCategoryNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutCategoryNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryCreateWithoutLocationsInput = {
   name: string
   description?: string | null
   events?: Prisma.EventCreateNestedManyWithoutCategoryInput
-  locations_request?: Prisma.Location_RequestCreateNestedManyWithoutCategoryInput
+  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateWithoutLocationsInput = {
@@ -432,7 +432,7 @@ export type CategoryUncheckedCreateWithoutLocationsInput = {
   name: string
   description?: string | null
   events?: Prisma.EventUncheckedCreateNestedManyWithoutCategoryInput
-  locations_request?: Prisma.Location_RequestUncheckedCreateNestedManyWithoutCategoryInput
+  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryCreateOrConnectWithoutLocationsInput = {
@@ -455,7 +455,7 @@ export type CategoryUpdateWithoutLocationsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   events?: Prisma.EventUpdateManyWithoutCategoryNestedInput
-  locations_request?: Prisma.Location_RequestUpdateManyWithoutCategoryNestedInput
+  locations_requests?: Prisma.LocationRequestUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateWithoutLocationsInput = {
@@ -463,17 +463,17 @@ export type CategoryUncheckedUpdateWithoutLocationsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   events?: Prisma.EventUncheckedUpdateManyWithoutCategoryNestedInput
-  locations_request?: Prisma.Location_RequestUncheckedUpdateManyWithoutCategoryNestedInput
+  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
-export type CategoryCreateWithoutLocations_requestInput = {
+export type CategoryCreateWithoutLocations_requestsInput = {
   name: string
   description?: string | null
   events?: Prisma.EventCreateNestedManyWithoutCategoryInput
   locations?: Prisma.LocationCreateNestedManyWithoutCategoryInput
 }
 
-export type CategoryUncheckedCreateWithoutLocations_requestInput = {
+export type CategoryUncheckedCreateWithoutLocations_requestsInput = {
   id?: number
   name: string
   description?: string | null
@@ -481,30 +481,30 @@ export type CategoryUncheckedCreateWithoutLocations_requestInput = {
   locations?: Prisma.LocationUncheckedCreateNestedManyWithoutCategoryInput
 }
 
-export type CategoryCreateOrConnectWithoutLocations_requestInput = {
+export type CategoryCreateOrConnectWithoutLocations_requestsInput = {
   where: Prisma.CategoryWhereUniqueInput
-  create: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestInput>
+  create: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestsInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestsInput>
 }
 
-export type CategoryUpsertWithoutLocations_requestInput = {
-  update: Prisma.XOR<Prisma.CategoryUpdateWithoutLocations_requestInput, Prisma.CategoryUncheckedUpdateWithoutLocations_requestInput>
-  create: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestInput>
+export type CategoryUpsertWithoutLocations_requestsInput = {
+  update: Prisma.XOR<Prisma.CategoryUpdateWithoutLocations_requestsInput, Prisma.CategoryUncheckedUpdateWithoutLocations_requestsInput>
+  create: Prisma.XOR<Prisma.CategoryCreateWithoutLocations_requestsInput, Prisma.CategoryUncheckedCreateWithoutLocations_requestsInput>
   where?: Prisma.CategoryWhereInput
 }
 
-export type CategoryUpdateToOneWithWhereWithoutLocations_requestInput = {
+export type CategoryUpdateToOneWithWhereWithoutLocations_requestsInput = {
   where?: Prisma.CategoryWhereInput
-  data: Prisma.XOR<Prisma.CategoryUpdateWithoutLocations_requestInput, Prisma.CategoryUncheckedUpdateWithoutLocations_requestInput>
+  data: Prisma.XOR<Prisma.CategoryUpdateWithoutLocations_requestsInput, Prisma.CategoryUncheckedUpdateWithoutLocations_requestsInput>
 }
 
-export type CategoryUpdateWithoutLocations_requestInput = {
+export type CategoryUpdateWithoutLocations_requestsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   events?: Prisma.EventUpdateManyWithoutCategoryNestedInput
   locations?: Prisma.LocationUpdateManyWithoutCategoryNestedInput
 }
 
-export type CategoryUncheckedUpdateWithoutLocations_requestInput = {
+export type CategoryUncheckedUpdateWithoutLocations_requestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -520,13 +520,13 @@ export type CategoryUncheckedUpdateWithoutLocations_requestInput = {
 export type CategoryCountOutputType = {
   events: number
   locations: number
-  locations_request: number
+  locations_requests: number
 }
 
 export type CategoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   events?: boolean | CategoryCountOutputTypeCountEventsArgs
   locations?: boolean | CategoryCountOutputTypeCountLocationsArgs
-  locations_request?: boolean | CategoryCountOutputTypeCountLocations_requestArgs
+  locations_requests?: boolean | CategoryCountOutputTypeCountLocations_requestsArgs
 }
 
 /**
@@ -556,8 +556,8 @@ export type CategoryCountOutputTypeCountLocationsArgs<ExtArgs extends runtime.Ty
 /**
  * CategoryCountOutputType without action
  */
-export type CategoryCountOutputTypeCountLocations_requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.Location_RequestWhereInput
+export type CategoryCountOutputTypeCountLocations_requestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LocationRequestWhereInput
 }
 
 
@@ -567,7 +567,7 @@ export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   description?: boolean
   events?: boolean | Prisma.Category$eventsArgs<ExtArgs>
   locations?: boolean | Prisma.Category$locationsArgs<ExtArgs>
-  locations_request?: boolean | Prisma.Category$locations_requestArgs<ExtArgs>
+  locations_requests?: boolean | Prisma.Category$locations_requestsArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["category"]>
 
@@ -593,7 +593,7 @@ export type CategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type CategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   events?: boolean | Prisma.Category$eventsArgs<ExtArgs>
   locations?: boolean | Prisma.Category$locationsArgs<ExtArgs>
-  locations_request?: boolean | Prisma.Category$locations_requestArgs<ExtArgs>
+  locations_requests?: boolean | Prisma.Category$locations_requestsArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -604,7 +604,7 @@ export type $CategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   objects: {
     events: Prisma.$EventPayload<ExtArgs>[]
     locations: Prisma.$LocationPayload<ExtArgs>[]
-    locations_request: Prisma.$Location_RequestPayload<ExtArgs>[]
+    locations_requests: Prisma.$LocationRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1006,7 +1006,7 @@ export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends runtime
   readonly [Symbol.toStringTag]: "PrismaPromise"
   events<T extends Prisma.Category$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   locations<T extends Prisma.Category$locationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$locationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  locations_request<T extends Prisma.Category$locations_requestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$locations_requestArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Location_RequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  locations_requests<T extends Prisma.Category$locations_requestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$locations_requestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1480,27 +1480,27 @@ export type Category$locationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Category.locations_request
+ * Category.locations_requests
  */
-export type Category$locations_requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Category$locations_requestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Location_Request
+   * Select specific fields to fetch from the LocationRequest
    */
-  select?: Prisma.Location_RequestSelect<ExtArgs> | null
+  select?: Prisma.LocationRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Location_Request
+   * Omit specific fields from the LocationRequest
    */
-  omit?: Prisma.Location_RequestOmit<ExtArgs> | null
+  omit?: Prisma.LocationRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.Location_RequestInclude<ExtArgs> | null
-  where?: Prisma.Location_RequestWhereInput
-  orderBy?: Prisma.Location_RequestOrderByWithRelationInput | Prisma.Location_RequestOrderByWithRelationInput[]
-  cursor?: Prisma.Location_RequestWhereUniqueInput
+  include?: Prisma.LocationRequestInclude<ExtArgs> | null
+  where?: Prisma.LocationRequestWhereInput
+  orderBy?: Prisma.LocationRequestOrderByWithRelationInput | Prisma.LocationRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LocationRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.Location_RequestScalarFieldEnum | Prisma.Location_RequestScalarFieldEnum[]
+  distinct?: Prisma.LocationRequestScalarFieldEnum | Prisma.LocationRequestScalarFieldEnum[]
 }
 
 /**
