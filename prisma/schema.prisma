@@ -124,7 +124,6 @@ model Comment {
   user                        User        @relation(fields: [userId], references: [id])  
   event                       Event       @relation(fields: [eventId], references: [id])
 
-  @@unique([userId, eventId])
   @@map("comments")
 }
 
@@ -152,7 +151,6 @@ model Complaint {
   user                        User        @relation(fields: [userId], references: [id])  
   event                       Event       @relation(fields: [eventId], references: [id])
 
-  @@unique([userId, eventId])
   @@map("complaints")
 }
 
