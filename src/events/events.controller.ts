@@ -22,21 +22,25 @@ export class EventsController {
   @Post()
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
   @ApiResponse({ status: 403, description: 'Forbidden.'})
+  @ApiResponse({ status: 400, description: "Bad Request."})
   createEvent(@Body() createEventDto: CreateEventDto) {
     return this.eventsService.create(createEventDto);
   }
 
   @Get()
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getAllEvents() {
     return this.eventsService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getEvent(@Param('id', ParseIntPipe) id: number) {
     return this.eventsService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiResponse({ status: 400, description: "Bad Request."})
   updateEvent(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateEventDto: UpdateEventDto,

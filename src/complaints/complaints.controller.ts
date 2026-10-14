@@ -13,27 +13,34 @@ import {
 import { ComplaintsService } from './complaints.service.js';
 import { CreateComplaintDto } from './dto/create-complaint.dto.js';
 import { UpdateComplaintDto } from './dto/update-complaint.dto.js';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('complaints')
 export class ComplaintsController {
   constructor(private readonly complaintsService: ComplaintsService) {}
 
   @Post()
+  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+  @ApiResponse({ status: 403, description: 'Forbidden.'})
+  @ApiResponse({ status: 400, description: "Bad Request."})
   createComplaint(@Body() createComplaintDto: CreateComplaintDto) {
     return this.complaintsService.create(createComplaintDto);
   }
 
   @Get()
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getAllComplaints() {
     return this.complaintsService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getComplaint(@Param('id', ParseIntPipe) id: number) {
     return this.complaintsService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiResponse({ status: 400, description: "Bad Request."})
   updateComplaint(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateComplaintDto: UpdateComplaintDto,

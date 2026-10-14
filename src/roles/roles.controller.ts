@@ -11,21 +11,25 @@ export class RolesController {
   @Post()
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
   @ApiResponse({ status: 403, description: 'Forbidden.'})
+  @ApiResponse({ status: 400, description: "Bad Request."})
   createRole(@Body() createRoleDto: CreateRoleDto) {
     return this.rolesService.create(createRoleDto);
   }
 
   @Get()
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getAllRoles() {
     return this.rolesService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getRole(@Param('id') id: string) {
     return this.rolesService.findOne(+id);
   }
 
   @Patch(':id')
+  @ApiResponse({ status: 400, description: "Bad Request."})
   updateRole(@Param('id') id: string, @Body() updateRoleDto: UpdateRoleDto) {
     return this.rolesService.update(+id, updateRoleDto);
   }

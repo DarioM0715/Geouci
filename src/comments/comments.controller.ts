@@ -13,27 +13,34 @@ import {
 import { CommentsService } from './comments.service.js';
 import { CreateCommentDto } from './dto/create-comment.dto.js';
 import { UpdateCommentDto } from './dto/update-comment.dto.js';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('comments')
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 
   @Post()
+  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+  @ApiResponse({ status: 403, description: 'Forbidden.'})
+  @ApiResponse({ status: 400, description: "Bad Request."})
   createComment(@Body() createCommentDto: CreateCommentDto) {
     return this.commentsService.create(createCommentDto);
   }
 
   @Get()
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getAllComments() {
     return this.commentsService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getComment(@Param('id', ParseIntPipe) id: number) {
     return this.commentsService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiResponse({ status: 400, description: "Bad Request."})
   updateComment(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateCommentDto: UpdateCommentDto,
