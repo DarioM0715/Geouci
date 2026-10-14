@@ -56,6 +56,7 @@ export const ModelName = {
   Category: 'Category',
   Event: 'Event',
   Location: 'Location',
+  Map: 'Map',
   LocationRequest: 'LocationRequest',
   Comment: 'Comment',
   Reaction: 'Reaction',
@@ -135,6 +136,18 @@ export const LocationScalarFieldEnum = {
 } as const
 
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
+
+
+export const MapScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  lat_min: 'lat_min',
+  lat_max: 'lat_max',
+  lon_min: 'lon_min',
+  lon_max: 'lon_max'
+} as const
+
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
 
 
 export const LocationRequestScalarFieldEnum = {
