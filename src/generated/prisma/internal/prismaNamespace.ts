@@ -402,6 +402,7 @@ export const ModelName = {
   Category: 'Category',
   Event: 'Event',
   Location: 'Location',
+  Map: 'Map',
   LocationRequest: 'LocationRequest',
   Comment: 'Comment',
   Reaction: 'Reaction',
@@ -421,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "user" | "category" | "event" | "location" | "locationRequest" | "comment" | "reaction" | "complaint"
+    modelProps: "role" | "user" | "category" | "event" | "location" | "map" | "locationRequest" | "comment" | "reaction" | "complaint"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -792,6 +793,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.LocationCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.LocationCountAggregateOutputType> | number
+        }
+      }
+    }
+    Map: {
+      payload: Prisma.$MapPayload<ExtArgs>
+      fields: Prisma.MapFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MapFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MapFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        findFirst: {
+          args: Prisma.MapFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MapFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        findMany: {
+          args: Prisma.MapFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
+        }
+        create: {
+          args: Prisma.MapCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        createMany: {
+          args: Prisma.MapCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MapCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
+        }
+        delete: {
+          args: Prisma.MapDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        update: {
+          args: Prisma.MapUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        deleteMany: {
+          args: Prisma.MapDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MapUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MapUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
+        }
+        upsert: {
+          args: Prisma.MapUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        aggregate: {
+          args: Prisma.MapAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMap>
+        }
+        groupBy: {
+          args: Prisma.MapGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MapGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MapCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MapCountAggregateOutputType> | number
         }
       }
     }
@@ -1189,6 +1264,18 @@ export const LocationScalarFieldEnum = {
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
+export const MapScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  lat_min: 'lat_min',
+  lat_max: 'lat_max',
+  lon_min: 'lon_min',
+  lon_max: 'lon_max'
+} as const
+
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
+
+
 export const LocationRequestScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1483,6 +1570,7 @@ export type GlobalOmitConfig = {
   category?: Prisma.CategoryOmit
   event?: Prisma.EventOmit
   location?: Prisma.LocationOmit
+  map?: Prisma.MapOmit
   locationRequest?: Prisma.LocationRequestOmit
   comment?: Prisma.CommentOmit
   reaction?: Prisma.ReactionOmit

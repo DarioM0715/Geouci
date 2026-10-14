@@ -67,6 +67,11 @@ export type Event = Prisma.EventModel
  */
 export type Location = Prisma.LocationModel
 /**
+ * Model Map
+ * 
+ */
+export type Map = Prisma.MapModel
+/**
  * Model LocationRequest
  * 
  */

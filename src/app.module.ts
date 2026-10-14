@@ -9,9 +9,10 @@ import { LocationsRequestModule } from './locations-request/locations-request.mo
 import { CommentsModule } from './comments/comments.module.js';
 import { ReactionsModule } from './reactions/reactions.module.js';
 import { ComplaintsModule } from './complaints/complaints.module.js';
+import { MapsModule } from './maps/maps.module.js';
 
 @Module({
-  imports: [UsersModule, PrismaModule, EventsModule, LocationsModule, RolesModule, CategoriesModule, LocationsRequestModule, CommentsModule, ReactionsModule, ComplaintsModule],
+  imports: [UsersModule, PrismaModule, EventsModule, LocationsModule, RolesModule, CategoriesModule, LocationsRequestModule, CommentsModule, ReactionsModule, ComplaintsModule, MapsModule],
   controllers: [],
   providers: [],
 })

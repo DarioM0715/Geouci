@@ -90,6 +90,15 @@ model Location {
   @@map("locations")
 }
 
+model Map {
+  id                          Int         @id @default(autoincrement())
+  name                        String
+  lat_min                     Float
+  lat_max                     Float
+  lon_min                     Float
+  lon_max                     Float
+}
+
 model LocationRequest {
   id                          Int         @id @default(autoincrement())
   name                        String
