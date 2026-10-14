@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Role } from '../../generated/prisma/enums.js';
 
 export class User {
   @ApiProperty({ description: 'The unique identifier of the user' })
@@ -11,6 +12,6 @@ export class User {
   lapel: string;
   @ApiProperty({ description: 'The status of the user' })
   status: string;
-  @ApiProperty({ description: 'The role of the user' })
-  role_id: number;
+  @ApiProperty({ description: 'The role of the user', enum: Role })
+  role: Role;
 }

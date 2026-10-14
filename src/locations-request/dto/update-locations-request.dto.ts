@@ -1,5 +1,6 @@
-import { IsInt, IsNotEmpty, IsOptional, IsPositive, IsString } from 'class-validator';
+import { IsEnum, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { LocationRequestStatus } from '../../generated/prisma/enums.js';
 
 export class UpdateLocationsRequestDto {
   @ApiProperty({ required: false })
@@ -25,8 +26,8 @@ export class UpdateLocationsRequestDto {
   @IsPositive()
   categoryId?: number;
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ required: false, enum: LocationRequestStatus })
   @IsOptional()
-  @IsString()
-  status?: string;
+  @IsEnum(LocationRequestStatus)
+  status?: LocationRequestStatus;
 }

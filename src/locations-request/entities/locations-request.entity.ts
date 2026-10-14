@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { LocationRequestStatus } from '../../generated/prisma/enums.js';
 
 export class LocationsRequest {
   @ApiProperty({ description: 'The unique identifier of the location request' })
@@ -11,8 +12,8 @@ export class LocationsRequest {
   userId: number;
   @ApiProperty({ description: 'The requested category' })
   categoryId: number;
-  @ApiProperty({ description: 'The status of the request' })
-  status: string;
+  @ApiProperty({ description: 'The status of the request', enum: LocationRequestStatus })
+  status: LocationRequestStatus;
   @ApiProperty({ description: 'The date the request was made' })
   request_date: Date;
 }

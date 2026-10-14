@@ -44,7 +44,7 @@ export type LocationRequestMinAggregateOutputType = {
   description: string | null
   userId: number | null
   categoryId: number | null
-  status: string | null
+  status: $Enums.LocationRequestStatus | null
   request_date: Date | null
 }
 
@@ -54,7 +54,7 @@ export type LocationRequestMaxAggregateOutputType = {
   description: string | null
   userId: number | null
   categoryId: number | null
-  status: string | null
+  status: $Enums.LocationRequestStatus | null
   request_date: Date | null
 }
 
@@ -205,7 +205,7 @@ export type LocationRequestGroupByOutputType = {
   description: string | null
   userId: number
   categoryId: number
-  status: string
+  status: $Enums.LocationRequestStatus
   request_date: Date
   _count: LocationRequestCountAggregateOutputType | null
   _avg: LocationRequestAvgAggregateOutputType | null
@@ -238,7 +238,7 @@ export type LocationRequestWhereInput = {
   description?: Prisma.StringNullableFilter<"LocationRequest"> | string | null
   userId?: Prisma.IntFilter<"LocationRequest"> | number
   categoryId?: Prisma.IntFilter<"LocationRequest"> | number
-  status?: Prisma.StringFilter<"LocationRequest"> | string
+  status?: Prisma.EnumLocationRequestStatusFilter<"LocationRequest"> | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFilter<"LocationRequest"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
@@ -265,7 +265,7 @@ export type LocationRequestWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"LocationRequest"> | string | null
   userId?: Prisma.IntFilter<"LocationRequest"> | number
   categoryId?: Prisma.IntFilter<"LocationRequest"> | number
-  status?: Prisma.StringFilter<"LocationRequest"> | string
+  status?: Prisma.EnumLocationRequestStatusFilter<"LocationRequest"> | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFilter<"LocationRequest"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
@@ -295,14 +295,14 @@ export type LocationRequestScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"LocationRequest"> | string | null
   userId?: Prisma.IntWithAggregatesFilter<"LocationRequest"> | number
   categoryId?: Prisma.IntWithAggregatesFilter<"LocationRequest"> | number
-  status?: Prisma.StringWithAggregatesFilter<"LocationRequest"> | string
+  status?: Prisma.EnumLocationRequestStatusWithAggregatesFilter<"LocationRequest"> | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeWithAggregatesFilter<"LocationRequest"> | Date | string
 }
 
 export type LocationRequestCreateInput = {
   name: string
   description?: string | null
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
   user: Prisma.UserCreateNestedOneWithoutLocations_requestsInput
   category: Prisma.CategoryCreateNestedOneWithoutLocations_requestsInput
@@ -314,14 +314,14 @@ export type LocationRequestUncheckedCreateInput = {
   description?: string | null
   userId: number
   categoryId: number
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
 }
 
 export type LocationRequestUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutLocations_requestsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutLocations_requestsNestedInput
@@ -333,7 +333,7 @@ export type LocationRequestUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -343,14 +343,14 @@ export type LocationRequestCreateManyInput = {
   description?: string | null
   userId: number
   categoryId: number
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
 }
 
 export type LocationRequestUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -360,7 +360,7 @@ export type LocationRequestUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -500,10 +500,14 @@ export type LocationRequestUncheckedUpdateManyWithoutCategoryNestedInput = {
   deleteMany?: Prisma.LocationRequestScalarWhereInput | Prisma.LocationRequestScalarWhereInput[]
 }
 
+export type EnumLocationRequestStatusFieldUpdateOperationsInput = {
+  set?: $Enums.LocationRequestStatus
+}
+
 export type LocationRequestCreateWithoutUserInput = {
   name: string
   description?: string | null
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutLocations_requestsInput
 }
@@ -513,7 +517,7 @@ export type LocationRequestUncheckedCreateWithoutUserInput = {
   name: string
   description?: string | null
   categoryId: number
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
 }
 
@@ -552,14 +556,14 @@ export type LocationRequestScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"LocationRequest"> | string | null
   userId?: Prisma.IntFilter<"LocationRequest"> | number
   categoryId?: Prisma.IntFilter<"LocationRequest"> | number
-  status?: Prisma.StringFilter<"LocationRequest"> | string
+  status?: Prisma.EnumLocationRequestStatusFilter<"LocationRequest"> | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFilter<"LocationRequest"> | Date | string
 }
 
 export type LocationRequestCreateWithoutCategoryInput = {
   name: string
   description?: string | null
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
   user: Prisma.UserCreateNestedOneWithoutLocations_requestsInput
 }
@@ -569,7 +573,7 @@ export type LocationRequestUncheckedCreateWithoutCategoryInput = {
   name: string
   description?: string | null
   userId: number
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
 }
 
@@ -604,14 +608,14 @@ export type LocationRequestCreateManyUserInput = {
   name: string
   description?: string | null
   categoryId: number
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
 }
 
 export type LocationRequestUpdateWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneRequiredWithoutLocations_requestsNestedInput
 }
@@ -621,7 +625,7 @@ export type LocationRequestUncheckedUpdateWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -630,7 +634,7 @@ export type LocationRequestUncheckedUpdateManyWithoutUserInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -639,14 +643,14 @@ export type LocationRequestCreateManyCategoryInput = {
   name: string
   description?: string | null
   userId: number
-  status?: string
+  status?: $Enums.LocationRequestStatus
   request_date?: Date | string
 }
 
 export type LocationRequestUpdateWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutLocations_requestsNestedInput
 }
@@ -656,7 +660,7 @@ export type LocationRequestUncheckedUpdateWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -665,7 +669,7 @@ export type LocationRequestUncheckedUpdateManyWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumLocationRequestStatusFieldUpdateOperationsInput | $Enums.LocationRequestStatus
   request_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -743,7 +747,7 @@ export type $LocationRequestPayload<ExtArgs extends runtime.Types.Extensions.Int
     description: string | null
     userId: number
     categoryId: number
-    status: string
+    status: $Enums.LocationRequestStatus
     request_date: Date
   }, ExtArgs["result"]["locationRequest"]>
   composites: {}
@@ -1175,7 +1179,7 @@ export interface LocationRequestFieldRefs {
   readonly description: Prisma.FieldRef<"LocationRequest", 'String'>
   readonly userId: Prisma.FieldRef<"LocationRequest", 'Int'>
   readonly categoryId: Prisma.FieldRef<"LocationRequest", 'Int'>
-  readonly status: Prisma.FieldRef<"LocationRequest", 'String'>
+  readonly status: Prisma.FieldRef<"LocationRequest", 'LocationRequestStatus'>
   readonly request_date: Prisma.FieldRef<"LocationRequest", 'DateTime'>
 }
     

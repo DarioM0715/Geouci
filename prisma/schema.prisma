@@ -27,7 +27,7 @@ model User {
   lapel                       String      @unique
   password_hash               String      @map("password_hash")
   status                      String      @default("active")
-  role                        Role
+  role                        Role        @default(usuario)
 
   events                      Event[]
   locations_requests          LocationRequest[]

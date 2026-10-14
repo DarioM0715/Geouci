@@ -28,12 +28,10 @@ export type AggregateUser = {
 
 export type UserAvgAggregateOutputType = {
   id: number | null
-  role_id: number | null
 }
 
 export type UserSumAggregateOutputType = {
   id: number | null
-  role_id: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -43,7 +41,7 @@ export type UserMinAggregateOutputType = {
   lapel: string | null
   password_hash: string | null
   status: string | null
-  role_id: number | null
+  role: $Enums.Role | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -53,7 +51,7 @@ export type UserMaxAggregateOutputType = {
   lapel: string | null
   password_hash: string | null
   status: string | null
-  role_id: number | null
+  role: $Enums.Role | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -63,19 +61,17 @@ export type UserCountAggregateOutputType = {
   lapel: number
   password_hash: number
   status: number
-  role_id: number
+  role: number
   _all: number
 }
 
 
 export type UserAvgAggregateInputType = {
   id?: true
-  role_id?: true
 }
 
 export type UserSumAggregateInputType = {
   id?: true
-  role_id?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -85,7 +81,7 @@ export type UserMinAggregateInputType = {
   lapel?: true
   password_hash?: true
   status?: true
-  role_id?: true
+  role?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -95,7 +91,7 @@ export type UserMaxAggregateInputType = {
   lapel?: true
   password_hash?: true
   status?: true
-  role_id?: true
+  role?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -105,7 +101,7 @@ export type UserCountAggregateInputType = {
   lapel?: true
   password_hash?: true
   status?: true
-  role_id?: true
+  role?: true
   _all?: true
 }
 
@@ -202,7 +198,7 @@ export type UserGroupByOutputType = {
   lapel: string
   password_hash: string
   status: string
-  role_id: number
+  role: $Enums.Role
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -235,8 +231,7 @@ export type UserWhereInput = {
   lapel?: Prisma.StringFilter<"User"> | string
   password_hash?: Prisma.StringFilter<"User"> | string
   status?: Prisma.StringFilter<"User"> | string
-  role_id?: Prisma.IntFilter<"User"> | number
-  role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
+  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   events?: Prisma.EventListRelationFilter
   locations_requests?: Prisma.LocationRequestListRelationFilter
   comments?: Prisma.CommentListRelationFilter
@@ -252,8 +247,7 @@ export type UserOrderByWithRelationInput = {
   lapel?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
-  role?: Prisma.RoleOrderByWithRelationInput
+  role?: Prisma.SortOrder
   events?: Prisma.EventOrderByRelationAggregateInput
   locations_requests?: Prisma.LocationRequestOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
@@ -272,8 +266,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"User"> | string
   password_hash?: Prisma.StringFilter<"User"> | string
   status?: Prisma.StringFilter<"User"> | string
-  role_id?: Prisma.IntFilter<"User"> | number
-  role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
+  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   events?: Prisma.EventListRelationFilter
   locations_requests?: Prisma.LocationRequestListRelationFilter
   comments?: Prisma.CommentListRelationFilter
@@ -289,7 +282,7 @@ export type UserOrderByWithAggregationInput = {
   lapel?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -307,7 +300,7 @@ export type UserScalarWhereWithAggregatesInput = {
   lapel?: Prisma.StringWithAggregatesFilter<"User"> | string
   password_hash?: Prisma.StringWithAggregatesFilter<"User"> | string
   status?: Prisma.StringWithAggregatesFilter<"User"> | string
-  role_id?: Prisma.IntWithAggregatesFilter<"User"> | number
+  role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
 }
 
 export type UserCreateInput = {
@@ -316,7 +309,7 @@ export type UserCreateInput = {
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
@@ -332,7 +325,7 @@ export type UserUncheckedCreateInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
@@ -347,7 +340,7 @@ export type UserUpdateInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
@@ -363,7 +356,7 @@ export type UserUncheckedUpdateInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -379,7 +372,7 @@ export type UserCreateManyInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
 }
 
 export type UserUpdateManyMutationInput = {
@@ -388,6 +381,7 @@ export type UserUpdateManyMutationInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -397,17 +391,7 @@ export type UserUncheckedUpdateManyInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserListRelationFilter = {
-  every?: Prisma.UserWhereInput
-  some?: Prisma.UserWhereInput
-  none?: Prisma.UserWhereInput
-}
-
-export type UserOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -417,12 +401,11 @@ export type UserCountOrderByAggregateInput = {
   lapel?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -432,7 +415,7 @@ export type UserMaxOrderByAggregateInput = {
   lapel?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -442,12 +425,11 @@ export type UserMinOrderByAggregateInput = {
   lapel?: Prisma.SortOrder
   password_hash?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  role?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -455,46 +437,20 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type UserCreateNestedManyWithoutRoleInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
-  createMany?: Prisma.UserCreateManyRoleInputEnvelope
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+export type StringFieldUpdateOperationsInput = {
+  set?: string
 }
 
-export type UserUncheckedCreateNestedManyWithoutRoleInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
-  createMany?: Prisma.UserCreateManyRoleInputEnvelope
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+export type EnumRoleFieldUpdateOperationsInput = {
+  set?: $Enums.Role
 }
 
-export type UserUpdateManyWithoutRoleNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRoleInput | Prisma.UserUpsertWithWhereUniqueWithoutRoleInput[]
-  createMany?: Prisma.UserCreateManyRoleInputEnvelope
-  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutRoleInput | Prisma.UserUpdateWithWhereUniqueWithoutRoleInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRoleInput | Prisma.UserUpdateManyWithWhereWithoutRoleInput[]
-  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
-}
-
-export type UserUncheckedUpdateManyWithoutRoleNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput> | Prisma.UserCreateWithoutRoleInput[] | Prisma.UserUncheckedCreateWithoutRoleInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRoleInput | Prisma.UserCreateOrConnectWithoutRoleInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutRoleInput | Prisma.UserUpsertWithWhereUniqueWithoutRoleInput[]
-  createMany?: Prisma.UserCreateManyRoleInputEnvelope
-  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutRoleInput | Prisma.UserUpdateWithWhereUniqueWithoutRoleInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutRoleInput | Prisma.UserUpdateManyWithWhereWithoutRoleInput[]
-  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type UserCreateNestedOneWithoutEventsInput = {
@@ -581,81 +537,13 @@ export type UserUpdateOneRequiredWithoutComplaintsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutComplaintsInput, Prisma.UserUpdateWithoutComplaintsInput>, Prisma.UserUncheckedUpdateWithoutComplaintsInput>
 }
 
-export type UserCreateWithoutRoleInput = {
-  name: string
-  email: string
-  lapel: string
-  password_hash: string
-  status?: string
-  events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
-  complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutRoleInput = {
-  id?: number
-  name: string
-  email: string
-  lapel: string
-  password_hash: string
-  status?: string
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
-  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutRoleInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput>
-}
-
-export type UserCreateManyRoleInputEnvelope = {
-  data: Prisma.UserCreateManyRoleInput | Prisma.UserCreateManyRoleInput[]
-  skipDuplicates?: boolean
-}
-
-export type UserUpsertWithWhereUniqueWithoutRoleInput = {
-  where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutRoleInput, Prisma.UserUncheckedUpdateWithoutRoleInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutRoleInput, Prisma.UserUncheckedCreateWithoutRoleInput>
-}
-
-export type UserUpdateWithWhereUniqueWithoutRoleInput = {
-  where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutRoleInput, Prisma.UserUncheckedUpdateWithoutRoleInput>
-}
-
-export type UserUpdateManyWithWhereWithoutRoleInput = {
-  where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutRoleInput>
-}
-
-export type UserScalarWhereInput = {
-  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
-  OR?: Prisma.UserScalarWhereInput[]
-  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
-  id?: Prisma.IntFilter<"User"> | number
-  name?: Prisma.StringFilter<"User"> | string
-  email?: Prisma.StringFilter<"User"> | string
-  lapel?: Prisma.StringFilter<"User"> | string
-  password_hash?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.StringFilter<"User"> | string
-  role_id?: Prisma.IntFilter<"User"> | number
-}
-
 export type UserCreateWithoutEventsInput = {
   name: string
   email: string
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
@@ -670,7 +558,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
@@ -700,7 +588,7 @@ export type UserUpdateWithoutEventsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
@@ -715,7 +603,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
@@ -729,7 +617,7 @@ export type UserCreateWithoutLocationsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
@@ -744,7 +632,7 @@ export type UserUncheckedCreateWithoutLocationsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
@@ -774,7 +662,7 @@ export type UserUpdateWithoutLocationsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
@@ -789,7 +677,7 @@ export type UserUncheckedUpdateWithoutLocationsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -803,7 +691,7 @@ export type UserCreateWithoutLocations_requestsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
@@ -818,7 +706,7 @@ export type UserUncheckedCreateWithoutLocations_requestsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
@@ -848,7 +736,7 @@ export type UserUpdateWithoutLocations_requestsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
@@ -863,7 +751,7 @@ export type UserUncheckedUpdateWithoutLocations_requestsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
@@ -877,7 +765,7 @@ export type UserCreateWithoutCommentsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
@@ -892,7 +780,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
@@ -922,7 +810,7 @@ export type UserUpdateWithoutCommentsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
@@ -937,7 +825,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
@@ -951,7 +839,7 @@ export type UserCreateWithoutReactionsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
@@ -966,7 +854,7 @@ export type UserUncheckedCreateWithoutReactionsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
@@ -996,7 +884,7 @@ export type UserUpdateWithoutReactionsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
@@ -1011,7 +899,7 @@ export type UserUncheckedUpdateWithoutReactionsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -1025,7 +913,7 @@ export type UserCreateWithoutComplaintsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  role?: $Enums.Role
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
@@ -1040,7 +928,7 @@ export type UserUncheckedCreateWithoutComplaintsInput = {
   lapel: string
   password_hash: string
   status?: string
-  role_id: number
+  role?: $Enums.Role
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
@@ -1070,7 +958,7 @@ export type UserUpdateWithoutComplaintsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
@@ -1085,59 +973,12 @@ export type UserUncheckedUpdateWithoutComplaintsInput = {
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
   password_hash?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateManyRoleInput = {
-  id?: number
-  name: string
-  email: string
-  lapel: string
-  password_hash: string
-  status?: string
-}
-
-export type UserUpdateWithoutRoleInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
-  complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutRoleInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
-  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateManyWithoutRoleInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -1223,8 +1064,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lapel?: boolean
   password_hash?: boolean
   status?: boolean
-  role_id?: boolean
-  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
+  role?: boolean
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
   locations_requests?: boolean | Prisma.User$locations_requestsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
@@ -1241,8 +1081,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lapel?: boolean
   password_hash?: boolean
   status?: boolean
-  role_id?: boolean
-  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
+  role?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1252,8 +1091,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   lapel?: boolean
   password_hash?: boolean
   status?: boolean
-  role_id?: boolean
-  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
+  role?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1263,12 +1101,11 @@ export type UserSelectScalar = {
   lapel?: boolean
   password_hash?: boolean
   status?: boolean
-  role_id?: boolean
+  role?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "lapel" | "password_hash" | "status" | "role_id", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "lapel" | "password_hash" | "status" | "role", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
   locations_requests?: boolean | Prisma.User$locations_requestsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
@@ -1277,17 +1114,12 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   locations?: boolean | Prisma.User$locationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
-}
-export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
-}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    role: Prisma.$RolePayload<ExtArgs>
     events: Prisma.$EventPayload<ExtArgs>[]
     locations_requests: Prisma.$LocationRequestPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
@@ -1302,7 +1134,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lapel: string
     password_hash: string
     status: string
-    role_id: number
+    role: $Enums.Role
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1697,7 +1529,6 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  role<T extends Prisma.RoleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RoleDefaultArgs<ExtArgs>>): Prisma.Prisma__RoleClient<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   locations_requests<T extends Prisma.User$locations_requestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$locations_requestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1739,7 +1570,7 @@ export interface UserFieldRefs {
   readonly lapel: Prisma.FieldRef<"User", 'String'>
   readonly password_hash: Prisma.FieldRef<"User", 'String'>
   readonly status: Prisma.FieldRef<"User", 'String'>
-  readonly role_id: Prisma.FieldRef<"User", 'Int'>
+  readonly role: Prisma.FieldRef<"User", 'Role'>
 }
     
 
@@ -1994,10 +1825,6 @@ export type UserCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
   skipDuplicates?: boolean
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -2068,10 +1895,6 @@ export type UserUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many Users to update.
    */
   limit?: number
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
