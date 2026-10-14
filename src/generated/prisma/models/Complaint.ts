@@ -240,7 +240,6 @@ export type ComplaintOrderByWithRelationInput = {
 
 export type ComplaintWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  userId_eventId?: Prisma.ComplaintUserIdEventIdCompoundUniqueInput
   AND?: Prisma.ComplaintWhereInput | Prisma.ComplaintWhereInput[]
   OR?: Prisma.ComplaintWhereInput[]
   NOT?: Prisma.ComplaintWhereInput | Prisma.ComplaintWhereInput[]
@@ -250,7 +249,7 @@ export type ComplaintWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeFilter<"Complaint"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
-}, "id" | "userId_eventId">
+}, "id">
 
 export type ComplaintOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -335,11 +334,6 @@ export type ComplaintListRelationFilter = {
 
 export type ComplaintOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type ComplaintUserIdEventIdCompoundUniqueInput = {
-  userId: number
-  eventId: number
 }
 
 export type ComplaintCountOrderByAggregateInput = {
