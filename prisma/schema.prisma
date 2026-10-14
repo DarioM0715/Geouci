@@ -9,13 +9,15 @@ datasource db {
   provider = "postgresql"
 }
 
-model Role {
-  id                          Int         @id @default(autoincrement())
-  name                        String      @unique
-  
-  users                       User[] 
+enum Role {
+  usuario
+  gestor
+}
 
-  @@map("roles")
+enum LocationRequestStatus {
+  pendiente
+  aceptada
+  cancelada
 }
 
 model User {
@@ -25,9 +27,8 @@ model User {
   lapel                       String      @unique
   password_hash               String      @map("password_hash")
   status                      String      @default("active")
-  role_id                     Int         @map("role_id")
+  role                        Role
 
-  role                        Role        @relation(fields: [role_id], references: [id])
   events                      Event[]
   locations_requests          LocationRequest[]
   comments                    Comment[]
@@ -105,7 +106,7 @@ model LocationRequest {
   description                 String?
   userId                      Int         @map("user_id")
   categoryId                  Int         @map("category_id")
-  status                      String      @default("pending")
+  status                      LocationRequestStatus @default(pendiente)
   request_date                DateTime    @default(now())
 
   user                        User        @relation(fields: [userId], references: [id])
