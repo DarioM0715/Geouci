@@ -1132,12 +1132,14 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   email: 'email',
+  name: 'name',
   lapel: 'lapel',
-  password_hash: 'password_hash',
-  status: 'status',
-  role: 'role'
+  role: 'role',
+  ist_resident: 'ist_resident',
+  suspended: 'suspended',
+  reason_suspension: 'reason_suspension',
+  created_at: 'created_at'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1154,15 +1156,15 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 
 export const EventScalarFieldEnum = {
   id: 'id',
+  mapId: 'mapId',
+  categoryId: 'categoryId',
+  organizerId: 'organizerId',
   name: 'name',
   description: 'description',
-  userId: 'userId',
-  categoryId: 'categoryId',
-  locationId: 'locationId',
   start_date: 'start_date',
   end_date: 'end_date',
   its_official: 'its_official',
-  status: 'status'
+  outstanding: 'outstanding'
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -1170,12 +1172,14 @@ export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof Ev
 
 export const LocationScalarFieldEnum = {
   id: 'id',
+  mapId: 'mapId',
+  categoryId: 'categoryId',
   name: 'name',
   description: 'description',
   latitude: 'latitude',
   longitude: 'longitude',
-  categoryId: 'categoryId',
-  userId: 'userId'
+  its_official: 'its_official',
+  created_at: 'created_at'
 } as const
 
 export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
@@ -1195,12 +1199,16 @@ export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapSca
 
 export const LocationRequestScalarFieldEnum = {
   id: 'id',
+  applicantId: 'applicantId',
+  categoryId: 'categoryId',
+  managerId: 'managerId',
+  locationId: 'locationId',
   name: 'name',
   description: 'description',
-  userId: 'userId',
-  categoryId: 'categoryId',
+  reason: 'reason',
   status: 'status',
-  request_date: 'request_date'
+  request_date: 'request_date',
+  done_at: 'done_at'
 } as const
 
 export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldEnum)[keyof typeof LocationRequestScalarFieldEnum]
@@ -1208,10 +1216,11 @@ export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldE
 
 export const CommentScalarFieldEnum = {
   id: 'id',
-  content: 'content',
-  userId: 'userId',
   eventId: 'eventId',
-  created_at: 'created_at'
+  userId: 'userId',
+  text: 'text',
+  created_at: 'created_at',
+  edited_at: 'edited_at'
 } as const
 
 export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
@@ -1219,9 +1228,10 @@ export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeo
 
 export const ReactionScalarFieldEnum = {
   id: 'id',
-  type: 'type',
-  userId: 'userId',
   eventId: 'eventId',
+  userId: 'userId',
+  type: 'type',
+  validated: 'validated',
   created_at: 'created_at'
 } as const
 
@@ -1230,9 +1240,9 @@ export type ReactionScalarFieldEnum = (typeof ReactionScalarFieldEnum)[keyof typ
 
 export const ComplaintScalarFieldEnum = {
   id: 'id',
-  reason: 'reason',
-  userId: 'userId',
   eventId: 'eventId',
+  userId: 'userId',
+  reason: 'reason',
   created_at: 'created_at'
 } as const
 
@@ -1312,6 +1322,13 @@ export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1322,13 +1339,6 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 

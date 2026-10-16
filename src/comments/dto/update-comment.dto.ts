@@ -6,7 +6,7 @@ export class UpdateCommentDto {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  content?: string;
+  text?: string;
 
   @ApiProperty({ required: false })
   @IsOptional()

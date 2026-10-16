@@ -11,12 +11,15 @@ export class Event {
     start_date: Date;
     @ApiProperty({ description: 'The end date of the event' })
     end_date: Date;
-    @ApiProperty({ description: 'The status of the event' })
-    status: string;
     @ApiProperty({ description: 'Indicates if the event is official' })
     its_official: boolean;
+    @ApiProperty({ description: 'Indicates if the event is outstanding' })
+    outstanding: boolean;
 
-    userId: number;
+    @ApiProperty({ description: 'The organizer of the event' })
+    organizerId: number;
+    @ApiProperty({ description: 'The category of the event' })
     categoryId: number;
-    locationId: number;
+    @ApiProperty({ description: 'The map the event belongs to' })
+    mapId: number;
 }

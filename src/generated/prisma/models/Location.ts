@@ -28,96 +28,108 @@ export type AggregateLocation = {
 
 export type LocationAvgAggregateOutputType = {
   id: number | null
+  mapId: number | null
+  categoryId: number | null
   latitude: number | null
   longitude: number | null
-  categoryId: number | null
-  userId: number | null
 }
 
 export type LocationSumAggregateOutputType = {
   id: number | null
+  mapId: number | null
+  categoryId: number | null
   latitude: number | null
   longitude: number | null
-  categoryId: number | null
-  userId: number | null
 }
 
 export type LocationMinAggregateOutputType = {
   id: number | null
+  mapId: number | null
+  categoryId: number | null
   name: string | null
   description: string | null
   latitude: number | null
   longitude: number | null
-  categoryId: number | null
-  userId: number | null
+  its_official: boolean | null
+  created_at: Date | null
 }
 
 export type LocationMaxAggregateOutputType = {
   id: number | null
+  mapId: number | null
+  categoryId: number | null
   name: string | null
   description: string | null
   latitude: number | null
   longitude: number | null
-  categoryId: number | null
-  userId: number | null
+  its_official: boolean | null
+  created_at: Date | null
 }
 
 export type LocationCountAggregateOutputType = {
   id: number
+  mapId: number
+  categoryId: number
   name: number
   description: number
   latitude: number
   longitude: number
-  categoryId: number
-  userId: number
+  its_official: number
+  created_at: number
   _all: number
 }
 
 
 export type LocationAvgAggregateInputType = {
   id?: true
+  mapId?: true
+  categoryId?: true
   latitude?: true
   longitude?: true
-  categoryId?: true
-  userId?: true
 }
 
 export type LocationSumAggregateInputType = {
   id?: true
+  mapId?: true
+  categoryId?: true
   latitude?: true
   longitude?: true
-  categoryId?: true
-  userId?: true
 }
 
 export type LocationMinAggregateInputType = {
   id?: true
+  mapId?: true
+  categoryId?: true
   name?: true
   description?: true
   latitude?: true
   longitude?: true
-  categoryId?: true
-  userId?: true
+  its_official?: true
+  created_at?: true
 }
 
 export type LocationMaxAggregateInputType = {
   id?: true
+  mapId?: true
+  categoryId?: true
   name?: true
   description?: true
   latitude?: true
   longitude?: true
-  categoryId?: true
-  userId?: true
+  its_official?: true
+  created_at?: true
 }
 
 export type LocationCountAggregateInputType = {
   id?: true
+  mapId?: true
+  categoryId?: true
   name?: true
   description?: true
   latitude?: true
   longitude?: true
-  categoryId?: true
-  userId?: true
+  its_official?: true
+  created_at?: true
   _all?: true
 }
 
@@ -209,12 +221,14 @@ export type LocationGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type LocationGroupByOutputType = {
   id: number
+  mapId: number
+  categoryId: number
   name: string
-  description: string | null
+  description: string
   latitude: number
   longitude: number
-  categoryId: number
-  userId: number
+  its_official: boolean
+  created_at: Date
   _count: LocationCountAggregateOutputType | null
   _avg: LocationAvgAggregateOutputType | null
   _sum: LocationSumAggregateOutputType | null
@@ -242,28 +256,32 @@ export type LocationWhereInput = {
   OR?: Prisma.LocationWhereInput[]
   NOT?: Prisma.LocationWhereInput | Prisma.LocationWhereInput[]
   id?: Prisma.IntFilter<"Location"> | number
+  mapId?: Prisma.IntFilter<"Location"> | number
+  categoryId?: Prisma.IntFilter<"Location"> | number
   name?: Prisma.StringFilter<"Location"> | string
-  description?: Prisma.StringNullableFilter<"Location"> | string | null
+  description?: Prisma.StringFilter<"Location"> | string
   latitude?: Prisma.FloatFilter<"Location"> | number
   longitude?: Prisma.FloatFilter<"Location"> | number
-  categoryId?: Prisma.IntFilter<"Location"> | number
-  userId?: Prisma.IntFilter<"Location"> | number
+  its_official?: Prisma.BoolFilter<"Location"> | boolean
+  created_at?: Prisma.DateTimeFilter<"Location"> | Date | string
+  map?: Prisma.XOR<Prisma.MapScalarRelationFilter, Prisma.MapWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  events?: Prisma.EventListRelationFilter
+  locations_request?: Prisma.LocationRequestListRelationFilter
 }
 
 export type LocationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  its_official?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
+  map?: Prisma.MapOrderByWithRelationInput
   category?: Prisma.CategoryOrderByWithRelationInput
-  user?: Prisma.UserOrderByWithRelationInput
-  events?: Prisma.EventOrderByRelationAggregateInput
+  locations_request?: Prisma.LocationRequestOrderByRelationAggregateInput
 }
 
 export type LocationWhereUniqueInput = Prisma.AtLeast<{
@@ -271,25 +289,29 @@ export type LocationWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LocationWhereInput | Prisma.LocationWhereInput[]
   OR?: Prisma.LocationWhereInput[]
   NOT?: Prisma.LocationWhereInput | Prisma.LocationWhereInput[]
+  mapId?: Prisma.IntFilter<"Location"> | number
+  categoryId?: Prisma.IntFilter<"Location"> | number
   name?: Prisma.StringFilter<"Location"> | string
-  description?: Prisma.StringNullableFilter<"Location"> | string | null
+  description?: Prisma.StringFilter<"Location"> | string
   latitude?: Prisma.FloatFilter<"Location"> | number
   longitude?: Prisma.FloatFilter<"Location"> | number
-  categoryId?: Prisma.IntFilter<"Location"> | number
-  userId?: Prisma.IntFilter<"Location"> | number
+  its_official?: Prisma.BoolFilter<"Location"> | boolean
+  created_at?: Prisma.DateTimeFilter<"Location"> | Date | string
+  map?: Prisma.XOR<Prisma.MapScalarRelationFilter, Prisma.MapWhereInput>
   category?: Prisma.XOR<Prisma.CategoryScalarRelationFilter, Prisma.CategoryWhereInput>
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  events?: Prisma.EventListRelationFilter
+  locations_request?: Prisma.LocationRequestListRelationFilter
 }, "id">
 
 export type LocationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  its_official?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
   _count?: Prisma.LocationCountOrderByAggregateInput
   _avg?: Prisma.LocationAvgOrderByAggregateInput
   _max?: Prisma.LocationMaxOrderByAggregateInput
@@ -302,81 +324,97 @@ export type LocationScalarWhereWithAggregatesInput = {
   OR?: Prisma.LocationScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LocationScalarWhereWithAggregatesInput | Prisma.LocationScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Location"> | number
+  mapId?: Prisma.IntWithAggregatesFilter<"Location"> | number
+  categoryId?: Prisma.IntWithAggregatesFilter<"Location"> | number
   name?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  description?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  description?: Prisma.StringWithAggregatesFilter<"Location"> | string
   latitude?: Prisma.FloatWithAggregatesFilter<"Location"> | number
   longitude?: Prisma.FloatWithAggregatesFilter<"Location"> | number
-  categoryId?: Prisma.IntWithAggregatesFilter<"Location"> | number
-  userId?: Prisma.IntWithAggregatesFilter<"Location"> | number
+  its_official?: Prisma.BoolWithAggregatesFilter<"Location"> | boolean
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
 }
 
 export type LocationCreateInput = {
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
+  its_official: boolean
+  created_at?: Date | string
+  map: Prisma.MapCreateNestedOneWithoutLocationsInput
   category: Prisma.CategoryCreateNestedOneWithoutLocationsInput
-  user: Prisma.UserCreateNestedOneWithoutLocationsInput
-  events?: Prisma.EventCreateNestedManyWithoutLocationInput
+  locations_request?: Prisma.LocationRequestCreateNestedManyWithoutLocationInput
 }
 
 export type LocationUncheckedCreateInput = {
   id?: number
+  mapId: number
+  categoryId: number
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
-  categoryId: number
-  userId: number
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutLocationInput
+  its_official: boolean
+  created_at?: Date | string
+  locations_request?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutLocationInput
 }
 
 export type LocationUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  map?: Prisma.MapUpdateOneRequiredWithoutLocationsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutLocationsNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutLocationsNestedInput
-  events?: Prisma.EventUpdateManyWithoutLocationNestedInput
+  locations_request?: Prisma.LocationRequestUpdateManyWithoutLocationNestedInput
 }
 
 export type LocationUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  mapId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
-  events?: Prisma.EventUncheckedUpdateManyWithoutLocationNestedInput
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locations_request?: Prisma.LocationRequestUncheckedUpdateManyWithoutLocationNestedInput
 }
 
 export type LocationCreateManyInput = {
   id?: number
+  mapId: number
+  categoryId: number
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
-  categoryId: number
-  userId: number
+  its_official: boolean
+  created_at?: Date | string
 }
 
 export type LocationUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LocationUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  mapId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LocationListRelationFilter = {
@@ -389,97 +427,61 @@ export type LocationOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type LocationScalarRelationFilter = {
-  is?: Prisma.LocationWhereInput
-  isNot?: Prisma.LocationWhereInput
-}
-
 export type LocationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  its_official?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
 }
 
 export type LocationAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
 export type LocationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  its_official?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
 }
 
 export type LocationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  its_official?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
 }
 
 export type LocationSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  mapId?: Prisma.SortOrder
+  categoryId?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  categoryId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
 }
 
-export type LocationCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.LocationCreateWithoutUserInput, Prisma.LocationUncheckedCreateWithoutUserInput> | Prisma.LocationCreateWithoutUserInput[] | Prisma.LocationUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutUserInput | Prisma.LocationCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.LocationCreateManyUserInputEnvelope
-  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-}
-
-export type LocationUncheckedCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.LocationCreateWithoutUserInput, Prisma.LocationUncheckedCreateWithoutUserInput> | Prisma.LocationCreateWithoutUserInput[] | Prisma.LocationUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutUserInput | Prisma.LocationCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.LocationCreateManyUserInputEnvelope
-  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-}
-
-export type LocationUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.LocationCreateWithoutUserInput, Prisma.LocationUncheckedCreateWithoutUserInput> | Prisma.LocationCreateWithoutUserInput[] | Prisma.LocationUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutUserInput | Prisma.LocationCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.LocationUpsertWithWhereUniqueWithoutUserInput | Prisma.LocationUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.LocationCreateManyUserInputEnvelope
-  set?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  disconnect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  delete?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  update?: Prisma.LocationUpdateWithWhereUniqueWithoutUserInput | Prisma.LocationUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.LocationUpdateManyWithWhereWithoutUserInput | Prisma.LocationUpdateManyWithWhereWithoutUserInput[]
-  deleteMany?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
-}
-
-export type LocationUncheckedUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.LocationCreateWithoutUserInput, Prisma.LocationUncheckedCreateWithoutUserInput> | Prisma.LocationCreateWithoutUserInput[] | Prisma.LocationUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutUserInput | Prisma.LocationCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.LocationUpsertWithWhereUniqueWithoutUserInput | Prisma.LocationUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.LocationCreateManyUserInputEnvelope
-  set?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  disconnect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  delete?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
-  update?: Prisma.LocationUpdateWithWhereUniqueWithoutUserInput | Prisma.LocationUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.LocationUpdateManyWithWhereWithoutUserInput | Prisma.LocationUpdateManyWithWhereWithoutUserInput[]
-  deleteMany?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
+export type LocationNullableScalarRelationFilter = {
+  is?: Prisma.LocationWhereInput | null
+  isNot?: Prisma.LocationWhereInput | null
 }
 
 export type LocationCreateNestedManyWithoutCategoryInput = {
@@ -524,20 +526,6 @@ export type LocationUncheckedUpdateManyWithoutCategoryNestedInput = {
   deleteMany?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
 }
 
-export type LocationCreateNestedOneWithoutEventsInput = {
-  create?: Prisma.XOR<Prisma.LocationCreateWithoutEventsInput, Prisma.LocationUncheckedCreateWithoutEventsInput>
-  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutEventsInput
-  connect?: Prisma.LocationWhereUniqueInput
-}
-
-export type LocationUpdateOneRequiredWithoutEventsNestedInput = {
-  create?: Prisma.XOR<Prisma.LocationCreateWithoutEventsInput, Prisma.LocationUncheckedCreateWithoutEventsInput>
-  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutEventsInput
-  upsert?: Prisma.LocationUpsertWithoutEventsInput
-  connect?: Prisma.LocationWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.LocationUpdateToOneWithWhereWithoutEventsInput, Prisma.LocationUpdateWithoutEventsInput>, Prisma.LocationUncheckedUpdateWithoutEventsInput>
-}
-
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -546,81 +534,85 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type LocationCreateWithoutUserInput = {
-  name: string
-  description?: string | null
-  latitude: number
-  longitude: number
-  category: Prisma.CategoryCreateNestedOneWithoutLocationsInput
-  events?: Prisma.EventCreateNestedManyWithoutLocationInput
+export type LocationCreateNestedManyWithoutMapInput = {
+  create?: Prisma.XOR<Prisma.LocationCreateWithoutMapInput, Prisma.LocationUncheckedCreateWithoutMapInput> | Prisma.LocationCreateWithoutMapInput[] | Prisma.LocationUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutMapInput | Prisma.LocationCreateOrConnectWithoutMapInput[]
+  createMany?: Prisma.LocationCreateManyMapInputEnvelope
+  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
 }
 
-export type LocationUncheckedCreateWithoutUserInput = {
-  id?: number
-  name: string
-  description?: string | null
-  latitude: number
-  longitude: number
-  categoryId: number
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutLocationInput
+export type LocationUncheckedCreateNestedManyWithoutMapInput = {
+  create?: Prisma.XOR<Prisma.LocationCreateWithoutMapInput, Prisma.LocationUncheckedCreateWithoutMapInput> | Prisma.LocationCreateWithoutMapInput[] | Prisma.LocationUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutMapInput | Prisma.LocationCreateOrConnectWithoutMapInput[]
+  createMany?: Prisma.LocationCreateManyMapInputEnvelope
+  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
 }
 
-export type LocationCreateOrConnectWithoutUserInput = {
-  where: Prisma.LocationWhereUniqueInput
-  create: Prisma.XOR<Prisma.LocationCreateWithoutUserInput, Prisma.LocationUncheckedCreateWithoutUserInput>
+export type LocationUpdateManyWithoutMapNestedInput = {
+  create?: Prisma.XOR<Prisma.LocationCreateWithoutMapInput, Prisma.LocationUncheckedCreateWithoutMapInput> | Prisma.LocationCreateWithoutMapInput[] | Prisma.LocationUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutMapInput | Prisma.LocationCreateOrConnectWithoutMapInput[]
+  upsert?: Prisma.LocationUpsertWithWhereUniqueWithoutMapInput | Prisma.LocationUpsertWithWhereUniqueWithoutMapInput[]
+  createMany?: Prisma.LocationCreateManyMapInputEnvelope
+  set?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  disconnect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  delete?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  update?: Prisma.LocationUpdateWithWhereUniqueWithoutMapInput | Prisma.LocationUpdateWithWhereUniqueWithoutMapInput[]
+  updateMany?: Prisma.LocationUpdateManyWithWhereWithoutMapInput | Prisma.LocationUpdateManyWithWhereWithoutMapInput[]
+  deleteMany?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
 }
 
-export type LocationCreateManyUserInputEnvelope = {
-  data: Prisma.LocationCreateManyUserInput | Prisma.LocationCreateManyUserInput[]
-  skipDuplicates?: boolean
+export type LocationUncheckedUpdateManyWithoutMapNestedInput = {
+  create?: Prisma.XOR<Prisma.LocationCreateWithoutMapInput, Prisma.LocationUncheckedCreateWithoutMapInput> | Prisma.LocationCreateWithoutMapInput[] | Prisma.LocationUncheckedCreateWithoutMapInput[]
+  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutMapInput | Prisma.LocationCreateOrConnectWithoutMapInput[]
+  upsert?: Prisma.LocationUpsertWithWhereUniqueWithoutMapInput | Prisma.LocationUpsertWithWhereUniqueWithoutMapInput[]
+  createMany?: Prisma.LocationCreateManyMapInputEnvelope
+  set?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  disconnect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  delete?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  connect?: Prisma.LocationWhereUniqueInput | Prisma.LocationWhereUniqueInput[]
+  update?: Prisma.LocationUpdateWithWhereUniqueWithoutMapInput | Prisma.LocationUpdateWithWhereUniqueWithoutMapInput[]
+  updateMany?: Prisma.LocationUpdateManyWithWhereWithoutMapInput | Prisma.LocationUpdateManyWithWhereWithoutMapInput[]
+  deleteMany?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
 }
 
-export type LocationUpsertWithWhereUniqueWithoutUserInput = {
-  where: Prisma.LocationWhereUniqueInput
-  update: Prisma.XOR<Prisma.LocationUpdateWithoutUserInput, Prisma.LocationUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.LocationCreateWithoutUserInput, Prisma.LocationUncheckedCreateWithoutUserInput>
+export type LocationCreateNestedOneWithoutLocations_requestInput = {
+  create?: Prisma.XOR<Prisma.LocationCreateWithoutLocations_requestInput, Prisma.LocationUncheckedCreateWithoutLocations_requestInput>
+  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutLocations_requestInput
+  connect?: Prisma.LocationWhereUniqueInput
 }
 
-export type LocationUpdateWithWhereUniqueWithoutUserInput = {
-  where: Prisma.LocationWhereUniqueInput
-  data: Prisma.XOR<Prisma.LocationUpdateWithoutUserInput, Prisma.LocationUncheckedUpdateWithoutUserInput>
-}
-
-export type LocationUpdateManyWithWhereWithoutUserInput = {
-  where: Prisma.LocationScalarWhereInput
-  data: Prisma.XOR<Prisma.LocationUpdateManyMutationInput, Prisma.LocationUncheckedUpdateManyWithoutUserInput>
-}
-
-export type LocationScalarWhereInput = {
-  AND?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
-  OR?: Prisma.LocationScalarWhereInput[]
-  NOT?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
-  id?: Prisma.IntFilter<"Location"> | number
-  name?: Prisma.StringFilter<"Location"> | string
-  description?: Prisma.StringNullableFilter<"Location"> | string | null
-  latitude?: Prisma.FloatFilter<"Location"> | number
-  longitude?: Prisma.FloatFilter<"Location"> | number
-  categoryId?: Prisma.IntFilter<"Location"> | number
-  userId?: Prisma.IntFilter<"Location"> | number
+export type LocationUpdateOneWithoutLocations_requestNestedInput = {
+  create?: Prisma.XOR<Prisma.LocationCreateWithoutLocations_requestInput, Prisma.LocationUncheckedCreateWithoutLocations_requestInput>
+  connectOrCreate?: Prisma.LocationCreateOrConnectWithoutLocations_requestInput
+  upsert?: Prisma.LocationUpsertWithoutLocations_requestInput
+  disconnect?: Prisma.LocationWhereInput | boolean
+  delete?: Prisma.LocationWhereInput | boolean
+  connect?: Prisma.LocationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LocationUpdateToOneWithWhereWithoutLocations_requestInput, Prisma.LocationUpdateWithoutLocations_requestInput>, Prisma.LocationUncheckedUpdateWithoutLocations_requestInput>
 }
 
 export type LocationCreateWithoutCategoryInput = {
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
-  user: Prisma.UserCreateNestedOneWithoutLocationsInput
-  events?: Prisma.EventCreateNestedManyWithoutLocationInput
+  its_official: boolean
+  created_at?: Date | string
+  map: Prisma.MapCreateNestedOneWithoutLocationsInput
+  locations_request?: Prisma.LocationRequestCreateNestedManyWithoutLocationInput
 }
 
 export type LocationUncheckedCreateWithoutCategoryInput = {
   id?: number
+  mapId: number
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
-  userId: number
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutLocationInput
+  its_official: boolean
+  created_at?: Date | string
+  locations_request?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutLocationInput
 }
 
 export type LocationCreateOrConnectWithoutCategoryInput = {
@@ -649,132 +641,220 @@ export type LocationUpdateManyWithWhereWithoutCategoryInput = {
   data: Prisma.XOR<Prisma.LocationUpdateManyMutationInput, Prisma.LocationUncheckedUpdateManyWithoutCategoryInput>
 }
 
-export type LocationCreateWithoutEventsInput = {
+export type LocationScalarWhereInput = {
+  AND?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
+  OR?: Prisma.LocationScalarWhereInput[]
+  NOT?: Prisma.LocationScalarWhereInput | Prisma.LocationScalarWhereInput[]
+  id?: Prisma.IntFilter<"Location"> | number
+  mapId?: Prisma.IntFilter<"Location"> | number
+  categoryId?: Prisma.IntFilter<"Location"> | number
+  name?: Prisma.StringFilter<"Location"> | string
+  description?: Prisma.StringFilter<"Location"> | string
+  latitude?: Prisma.FloatFilter<"Location"> | number
+  longitude?: Prisma.FloatFilter<"Location"> | number
+  its_official?: Prisma.BoolFilter<"Location"> | boolean
+  created_at?: Prisma.DateTimeFilter<"Location"> | Date | string
+}
+
+export type LocationCreateWithoutMapInput = {
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
+  its_official: boolean
+  created_at?: Date | string
   category: Prisma.CategoryCreateNestedOneWithoutLocationsInput
-  user: Prisma.UserCreateNestedOneWithoutLocationsInput
+  locations_request?: Prisma.LocationRequestCreateNestedManyWithoutLocationInput
 }
 
-export type LocationUncheckedCreateWithoutEventsInput = {
+export type LocationUncheckedCreateWithoutMapInput = {
   id?: number
+  categoryId: number
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
-  categoryId: number
-  userId: number
+  its_official: boolean
+  created_at?: Date | string
+  locations_request?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutLocationInput
 }
 
-export type LocationCreateOrConnectWithoutEventsInput = {
+export type LocationCreateOrConnectWithoutMapInput = {
   where: Prisma.LocationWhereUniqueInput
-  create: Prisma.XOR<Prisma.LocationCreateWithoutEventsInput, Prisma.LocationUncheckedCreateWithoutEventsInput>
+  create: Prisma.XOR<Prisma.LocationCreateWithoutMapInput, Prisma.LocationUncheckedCreateWithoutMapInput>
 }
 
-export type LocationUpsertWithoutEventsInput = {
-  update: Prisma.XOR<Prisma.LocationUpdateWithoutEventsInput, Prisma.LocationUncheckedUpdateWithoutEventsInput>
-  create: Prisma.XOR<Prisma.LocationCreateWithoutEventsInput, Prisma.LocationUncheckedCreateWithoutEventsInput>
-  where?: Prisma.LocationWhereInput
+export type LocationCreateManyMapInputEnvelope = {
+  data: Prisma.LocationCreateManyMapInput | Prisma.LocationCreateManyMapInput[]
+  skipDuplicates?: boolean
 }
 
-export type LocationUpdateToOneWithWhereWithoutEventsInput = {
-  where?: Prisma.LocationWhereInput
-  data: Prisma.XOR<Prisma.LocationUpdateWithoutEventsInput, Prisma.LocationUncheckedUpdateWithoutEventsInput>
+export type LocationUpsertWithWhereUniqueWithoutMapInput = {
+  where: Prisma.LocationWhereUniqueInput
+  update: Prisma.XOR<Prisma.LocationUpdateWithoutMapInput, Prisma.LocationUncheckedUpdateWithoutMapInput>
+  create: Prisma.XOR<Prisma.LocationCreateWithoutMapInput, Prisma.LocationUncheckedCreateWithoutMapInput>
 }
 
-export type LocationUpdateWithoutEventsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  category?: Prisma.CategoryUpdateOneRequiredWithoutLocationsNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutLocationsNestedInput
+export type LocationUpdateWithWhereUniqueWithoutMapInput = {
+  where: Prisma.LocationWhereUniqueInput
+  data: Prisma.XOR<Prisma.LocationUpdateWithoutMapInput, Prisma.LocationUncheckedUpdateWithoutMapInput>
 }
 
-export type LocationUncheckedUpdateWithoutEventsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+export type LocationUpdateManyWithWhereWithoutMapInput = {
+  where: Prisma.LocationScalarWhereInput
+  data: Prisma.XOR<Prisma.LocationUpdateManyMutationInput, Prisma.LocationUncheckedUpdateManyWithoutMapInput>
 }
 
-export type LocationCreateManyUserInput = {
-  id?: number
+export type LocationCreateWithoutLocations_requestInput = {
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
+  its_official: boolean
+  created_at?: Date | string
+  map: Prisma.MapCreateNestedOneWithoutLocationsInput
+  category: Prisma.CategoryCreateNestedOneWithoutLocationsInput
+}
+
+export type LocationUncheckedCreateWithoutLocations_requestInput = {
+  id?: number
+  mapId: number
   categoryId: number
+  name: string
+  description: string
+  latitude: number
+  longitude: number
+  its_official: boolean
+  created_at?: Date | string
 }
 
-export type LocationUpdateWithoutUserInput = {
+export type LocationCreateOrConnectWithoutLocations_requestInput = {
+  where: Prisma.LocationWhereUniqueInput
+  create: Prisma.XOR<Prisma.LocationCreateWithoutLocations_requestInput, Prisma.LocationUncheckedCreateWithoutLocations_requestInput>
+}
+
+export type LocationUpsertWithoutLocations_requestInput = {
+  update: Prisma.XOR<Prisma.LocationUpdateWithoutLocations_requestInput, Prisma.LocationUncheckedUpdateWithoutLocations_requestInput>
+  create: Prisma.XOR<Prisma.LocationCreateWithoutLocations_requestInput, Prisma.LocationUncheckedCreateWithoutLocations_requestInput>
+  where?: Prisma.LocationWhereInput
+}
+
+export type LocationUpdateToOneWithWhereWithoutLocations_requestInput = {
+  where?: Prisma.LocationWhereInput
+  data: Prisma.XOR<Prisma.LocationUpdateWithoutLocations_requestInput, Prisma.LocationUncheckedUpdateWithoutLocations_requestInput>
+}
+
+export type LocationUpdateWithoutLocations_requestInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  map?: Prisma.MapUpdateOneRequiredWithoutLocationsNestedInput
   category?: Prisma.CategoryUpdateOneRequiredWithoutLocationsNestedInput
-  events?: Prisma.EventUpdateManyWithoutLocationNestedInput
 }
 
-export type LocationUncheckedUpdateWithoutUserInput = {
+export type LocationUncheckedUpdateWithoutLocations_requestInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  mapId?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
-  events?: Prisma.EventUncheckedUpdateManyWithoutLocationNestedInput
-}
-
-export type LocationUncheckedUpdateManyWithoutUserInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LocationCreateManyCategoryInput = {
   id?: number
+  mapId: number
   name: string
-  description?: string | null
+  description: string
   latitude: number
   longitude: number
-  userId: number
+  its_official: boolean
+  created_at?: Date | string
 }
 
 export type LocationUpdateWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  user?: Prisma.UserUpdateOneRequiredWithoutLocationsNestedInput
-  events?: Prisma.EventUpdateManyWithoutLocationNestedInput
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  map?: Prisma.MapUpdateOneRequiredWithoutLocationsNestedInput
+  locations_request?: Prisma.LocationRequestUpdateManyWithoutLocationNestedInput
 }
 
 export type LocationUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  mapId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
-  events?: Prisma.EventUncheckedUpdateManyWithoutLocationNestedInput
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locations_request?: Prisma.LocationRequestUncheckedUpdateManyWithoutLocationNestedInput
 }
 
 export type LocationUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  mapId?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type LocationCreateManyMapInput = {
+  id?: number
+  categoryId: number
+  name: string
+  description: string
+  latitude: number
+  longitude: number
+  its_official: boolean
+  created_at?: Date | string
+}
+
+export type LocationUpdateWithoutMapInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.CategoryUpdateOneRequiredWithoutLocationsNestedInput
+  locations_request?: Prisma.LocationRequestUpdateManyWithoutLocationNestedInput
+}
+
+export type LocationUncheckedUpdateWithoutMapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  locations_request?: Prisma.LocationRequestUncheckedUpdateManyWithoutLocationNestedInput
+}
+
+export type LocationUncheckedUpdateManyWithoutMapInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  categoryId?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  its_official?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -783,11 +863,11 @@ export type LocationUncheckedUpdateManyWithoutCategoryInput = {
  */
 
 export type LocationCountOutputType = {
-  events: number
+  locations_request: number
 }
 
 export type LocationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  events?: boolean | LocationCountOutputTypeCountEventsArgs
+  locations_request?: boolean | LocationCountOutputTypeCountLocations_requestArgs
 }
 
 /**
@@ -803,90 +883,100 @@ export type LocationCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * LocationCountOutputType without action
  */
-export type LocationCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EventWhereInput
+export type LocationCountOutputTypeCountLocations_requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LocationRequestWhereInput
 }
 
 
 export type LocationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  mapId?: boolean
+  categoryId?: boolean
   name?: boolean
   description?: boolean
   latitude?: boolean
   longitude?: boolean
-  categoryId?: boolean
-  userId?: boolean
+  its_official?: boolean
+  created_at?: boolean
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  events?: boolean | Prisma.Location$eventsArgs<ExtArgs>
+  locations_request?: boolean | Prisma.Location$locations_requestArgs<ExtArgs>
   _count?: boolean | Prisma.LocationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["location"]>
 
 export type LocationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  mapId?: boolean
+  categoryId?: boolean
   name?: boolean
   description?: boolean
   latitude?: boolean
   longitude?: boolean
-  categoryId?: boolean
-  userId?: boolean
+  its_official?: boolean
+  created_at?: boolean
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["location"]>
 
 export type LocationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  mapId?: boolean
+  categoryId?: boolean
   name?: boolean
   description?: boolean
   latitude?: boolean
   longitude?: boolean
-  categoryId?: boolean
-  userId?: boolean
+  its_official?: boolean
+  created_at?: boolean
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["location"]>
 
 export type LocationSelectScalar = {
   id?: boolean
+  mapId?: boolean
+  categoryId?: boolean
   name?: boolean
   description?: boolean
   latitude?: boolean
   longitude?: boolean
-  categoryId?: boolean
-  userId?: boolean
+  its_official?: boolean
+  created_at?: boolean
 }
 
-export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "latitude" | "longitude" | "categoryId" | "userId", ExtArgs["result"]["location"]>
+export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "mapId" | "categoryId" | "name" | "description" | "latitude" | "longitude" | "its_official" | "created_at", ExtArgs["result"]["location"]>
 export type LocationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  events?: boolean | Prisma.Location$eventsArgs<ExtArgs>
+  locations_request?: boolean | Prisma.Location$locations_requestArgs<ExtArgs>
   _count?: boolean | Prisma.LocationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type LocationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type LocationIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  map?: boolean | Prisma.MapDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $LocationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Location"
   objects: {
+    map: Prisma.$MapPayload<ExtArgs>
     category: Prisma.$CategoryPayload<ExtArgs>
-    user: Prisma.$UserPayload<ExtArgs>
-    events: Prisma.$EventPayload<ExtArgs>[]
+    locations_request: Prisma.$LocationRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    mapId: number
+    categoryId: number
     name: string
-    description: string | null
+    description: string
     latitude: number
     longitude: number
-    categoryId: number
-    userId: number
+    its_official: boolean
+    created_at: Date
   }, ExtArgs["result"]["location"]>
   composites: {}
 }
@@ -1281,9 +1371,9 @@ readonly fields: LocationFieldRefs;
  */
 export interface Prisma__LocationClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  map<T extends Prisma.MapDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.MapDefaultArgs<ExtArgs>>): Prisma.Prisma__MapClient<runtime.Types.Result.GetResult<Prisma.$MapPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   category<T extends Prisma.CategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  events<T extends Prisma.Location$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Location$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  locations_request<T extends Prisma.Location$locations_requestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Location$locations_requestArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1314,12 +1404,14 @@ export interface Prisma__LocationClient<T, Null = never, ExtArgs extends runtime
  */
 export interface LocationFieldRefs {
   readonly id: Prisma.FieldRef<"Location", 'Int'>
+  readonly mapId: Prisma.FieldRef<"Location", 'Int'>
+  readonly categoryId: Prisma.FieldRef<"Location", 'Int'>
   readonly name: Prisma.FieldRef<"Location", 'String'>
   readonly description: Prisma.FieldRef<"Location", 'String'>
   readonly latitude: Prisma.FieldRef<"Location", 'Float'>
   readonly longitude: Prisma.FieldRef<"Location", 'Float'>
-  readonly categoryId: Prisma.FieldRef<"Location", 'Int'>
-  readonly userId: Prisma.FieldRef<"Location", 'Int'>
+  readonly its_official: Prisma.FieldRef<"Location", 'Boolean'>
+  readonly created_at: Prisma.FieldRef<"Location", 'DateTime'>
 }
     
 
@@ -1721,27 +1813,27 @@ export type LocationDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Location.events
+ * Location.locations_request
  */
-export type Location$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Location$locations_requestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Event
+   * Select specific fields to fetch from the LocationRequest
    */
-  select?: Prisma.EventSelect<ExtArgs> | null
+  select?: Prisma.LocationRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Event
+   * Omit specific fields from the LocationRequest
    */
-  omit?: Prisma.EventOmit<ExtArgs> | null
+  omit?: Prisma.LocationRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventInclude<ExtArgs> | null
-  where?: Prisma.EventWhereInput
-  orderBy?: Prisma.EventOrderByWithRelationInput | Prisma.EventOrderByWithRelationInput[]
-  cursor?: Prisma.EventWhereUniqueInput
+  include?: Prisma.LocationRequestInclude<ExtArgs> | null
+  where?: Prisma.LocationRequestWhereInput
+  orderBy?: Prisma.LocationRequestOrderByWithRelationInput | Prisma.LocationRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LocationRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
+  distinct?: Prisma.LocationRequestScalarFieldEnum | Prisma.LocationRequestScalarFieldEnum[]
 }
 
 /**

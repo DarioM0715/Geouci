@@ -23,27 +23,26 @@ export class CreateEventDto {
   @IsDate()
   end_date: Date;
 
-  @ApiProperty({ required: false, default: 'pending' })
-  @IsOptional()
-  @IsString()
-  status?: string;
-
-  @ApiProperty()
+  @ApiProperty({ description: 'Indicates if the event is official' })
   @IsBoolean()
   its_official: boolean;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Indicates if the event is outstanding' })
+  @IsBoolean()
+  outstanding: boolean;
+
+  @ApiProperty({ description: 'The organizer of the event' })
   @IsInt()
   @IsPositive()
-  userId: number;
+  organizerId: number;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'The category of the event' })
   @IsInt()
   @IsPositive()
   categoryId: number;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'The map the event belongs to' })
   @IsInt()
   @IsPositive()
-  locationId: number;
+  mapId: number;
 }

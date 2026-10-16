@@ -28,37 +28,37 @@ export type AggregateComplaint = {
 
 export type ComplaintAvgAggregateOutputType = {
   id: number | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
 }
 
 export type ComplaintSumAggregateOutputType = {
   id: number | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
 }
 
 export type ComplaintMinAggregateOutputType = {
   id: number | null
-  reason: string | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
+  reason: string | null
   created_at: Date | null
 }
 
 export type ComplaintMaxAggregateOutputType = {
   id: number | null
-  reason: string | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
+  reason: string | null
   created_at: Date | null
 }
 
 export type ComplaintCountAggregateOutputType = {
   id: number
-  reason: number
-  userId: number
   eventId: number
+  userId: number
+  reason: number
   created_at: number
   _all: number
 }
@@ -66,37 +66,37 @@ export type ComplaintCountAggregateOutputType = {
 
 export type ComplaintAvgAggregateInputType = {
   id?: true
-  userId?: true
   eventId?: true
+  userId?: true
 }
 
 export type ComplaintSumAggregateInputType = {
   id?: true
-  userId?: true
   eventId?: true
+  userId?: true
 }
 
 export type ComplaintMinAggregateInputType = {
   id?: true
-  reason?: true
-  userId?: true
   eventId?: true
+  userId?: true
+  reason?: true
   created_at?: true
 }
 
 export type ComplaintMaxAggregateInputType = {
   id?: true
-  reason?: true
-  userId?: true
   eventId?: true
+  userId?: true
+  reason?: true
   created_at?: true
 }
 
 export type ComplaintCountAggregateInputType = {
   id?: true
-  reason?: true
-  userId?: true
   eventId?: true
+  userId?: true
+  reason?: true
   created_at?: true
   _all?: true
 }
@@ -189,9 +189,9 @@ export type ComplaintGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type ComplaintGroupByOutputType = {
   id: number
-  reason: string
-  userId: number
   eventId: number
+  userId: number
+  reason: string
   created_at: Date
   _count: ComplaintCountAggregateOutputType | null
   _avg: ComplaintAvgAggregateOutputType | null
@@ -220,9 +220,9 @@ export type ComplaintWhereInput = {
   OR?: Prisma.ComplaintWhereInput[]
   NOT?: Prisma.ComplaintWhereInput | Prisma.ComplaintWhereInput[]
   id?: Prisma.IntFilter<"Complaint"> | number
-  reason?: Prisma.StringFilter<"Complaint"> | string
-  userId?: Prisma.IntFilter<"Complaint"> | number
   eventId?: Prisma.IntFilter<"Complaint"> | number
+  userId?: Prisma.IntFilter<"Complaint"> | number
+  reason?: Prisma.StringFilter<"Complaint"> | string
   created_at?: Prisma.DateTimeFilter<"Complaint"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
@@ -230,9 +230,9 @@ export type ComplaintWhereInput = {
 
 export type ComplaintOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   event?: Prisma.EventOrderByWithRelationInput
@@ -243,9 +243,9 @@ export type ComplaintWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ComplaintWhereInput | Prisma.ComplaintWhereInput[]
   OR?: Prisma.ComplaintWhereInput[]
   NOT?: Prisma.ComplaintWhereInput | Prisma.ComplaintWhereInput[]
-  reason?: Prisma.StringFilter<"Complaint"> | string
-  userId?: Prisma.IntFilter<"Complaint"> | number
   eventId?: Prisma.IntFilter<"Complaint"> | number
+  userId?: Prisma.IntFilter<"Complaint"> | number
+  reason?: Prisma.StringFilter<"Complaint"> | string
   created_at?: Prisma.DateTimeFilter<"Complaint"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
@@ -253,9 +253,9 @@ export type ComplaintWhereUniqueInput = Prisma.AtLeast<{
 
 export type ComplaintOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   _count?: Prisma.ComplaintCountOrderByAggregateInput
   _avg?: Prisma.ComplaintAvgOrderByAggregateInput
@@ -269,9 +269,9 @@ export type ComplaintScalarWhereWithAggregatesInput = {
   OR?: Prisma.ComplaintScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ComplaintScalarWhereWithAggregatesInput | Prisma.ComplaintScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Complaint"> | number
-  reason?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
-  userId?: Prisma.IntWithAggregatesFilter<"Complaint"> | number
   eventId?: Prisma.IntWithAggregatesFilter<"Complaint"> | number
+  userId?: Prisma.IntWithAggregatesFilter<"Complaint"> | number
+  reason?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Complaint"> | Date | string
 }
 
@@ -284,9 +284,9 @@ export type ComplaintCreateInput = {
 
 export type ComplaintUncheckedCreateInput = {
   id?: number
-  reason: string
-  userId: number
   eventId: number
+  userId: number
+  reason: string
   created_at?: Date | string
 }
 
@@ -299,17 +299,17 @@ export type ComplaintUpdateInput = {
 
 export type ComplaintUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ComplaintCreateManyInput = {
   id?: number
-  reason: string
-  userId: number
   eventId: number
+  userId: number
+  reason: string
   created_at?: Date | string
 }
 
@@ -320,9 +320,9 @@ export type ComplaintUpdateManyMutationInput = {
 
 export type ComplaintUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -338,38 +338,38 @@ export type ComplaintOrderByRelationAggregateInput = {
 
 export type ComplaintCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
 export type ComplaintAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type ComplaintMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
 export type ComplaintMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
 export type ComplaintSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type ComplaintCreateNestedManyWithoutUserInput = {
@@ -464,8 +464,8 @@ export type ComplaintCreateWithoutUserInput = {
 
 export type ComplaintUncheckedCreateWithoutUserInput = {
   id?: number
-  reason: string
   eventId: number
+  reason: string
   created_at?: Date | string
 }
 
@@ -500,9 +500,9 @@ export type ComplaintScalarWhereInput = {
   OR?: Prisma.ComplaintScalarWhereInput[]
   NOT?: Prisma.ComplaintScalarWhereInput | Prisma.ComplaintScalarWhereInput[]
   id?: Prisma.IntFilter<"Complaint"> | number
-  reason?: Prisma.StringFilter<"Complaint"> | string
-  userId?: Prisma.IntFilter<"Complaint"> | number
   eventId?: Prisma.IntFilter<"Complaint"> | number
+  userId?: Prisma.IntFilter<"Complaint"> | number
+  reason?: Prisma.StringFilter<"Complaint"> | string
   created_at?: Prisma.DateTimeFilter<"Complaint"> | Date | string
 }
 
@@ -514,8 +514,8 @@ export type ComplaintCreateWithoutEventInput = {
 
 export type ComplaintUncheckedCreateWithoutEventInput = {
   id?: number
-  reason: string
   userId: number
+  reason: string
   created_at?: Date | string
 }
 
@@ -547,8 +547,8 @@ export type ComplaintUpdateManyWithWhereWithoutEventInput = {
 
 export type ComplaintCreateManyUserInput = {
   id?: number
-  reason: string
   eventId: number
+  reason: string
   created_at?: Date | string
 }
 
@@ -560,22 +560,22 @@ export type ComplaintUpdateWithoutUserInput = {
 
 export type ComplaintUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ComplaintUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ComplaintCreateManyEventInput = {
   id?: number
-  reason: string
   userId: number
+  reason: string
   created_at?: Date | string
 }
 
@@ -587,15 +587,15 @@ export type ComplaintUpdateWithoutEventInput = {
 
 export type ComplaintUncheckedUpdateWithoutEventInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ComplaintUncheckedUpdateManyWithoutEventInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  reason?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -603,9 +603,9 @@ export type ComplaintUncheckedUpdateManyWithoutEventInput = {
 
 export type ComplaintSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  reason?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  reason?: boolean
   created_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -613,9 +613,9 @@ export type ComplaintSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type ComplaintSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  reason?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  reason?: boolean
   created_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -623,9 +623,9 @@ export type ComplaintSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
 
 export type ComplaintSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  reason?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  reason?: boolean
   created_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -633,13 +633,13 @@ export type ComplaintSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 
 export type ComplaintSelectScalar = {
   id?: boolean
-  reason?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  reason?: boolean
   created_at?: boolean
 }
 
-export type ComplaintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "reason" | "userId" | "eventId" | "created_at", ExtArgs["result"]["complaint"]>
+export type ComplaintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "eventId" | "userId" | "reason" | "created_at", ExtArgs["result"]["complaint"]>
 export type ComplaintInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -661,9 +661,9 @@ export type $ComplaintPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    reason: string
-    userId: number
     eventId: number
+    userId: number
+    reason: string
     created_at: Date
   }, ExtArgs["result"]["complaint"]>
   composites: {}
@@ -1091,9 +1091,9 @@ export interface Prisma__ComplaintClient<T, Null = never, ExtArgs extends runtim
  */
 export interface ComplaintFieldRefs {
   readonly id: Prisma.FieldRef<"Complaint", 'Int'>
-  readonly reason: Prisma.FieldRef<"Complaint", 'String'>
-  readonly userId: Prisma.FieldRef<"Complaint", 'Int'>
   readonly eventId: Prisma.FieldRef<"Complaint", 'Int'>
+  readonly userId: Prisma.FieldRef<"Complaint", 'Int'>
+  readonly reason: Prisma.FieldRef<"Complaint", 'String'>
   readonly created_at: Prisma.FieldRef<"Complaint", 'DateTime'>
 }
     

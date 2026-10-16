@@ -240,6 +240,8 @@ export type MapWhereInput = {
   lat_max?: Prisma.FloatFilter<"Map"> | number
   lon_min?: Prisma.FloatFilter<"Map"> | number
   lon_max?: Prisma.FloatFilter<"Map"> | number
+  locations?: Prisma.LocationListRelationFilter
+  events?: Prisma.EventListRelationFilter
 }
 
 export type MapOrderByWithRelationInput = {
@@ -249,6 +251,8 @@ export type MapOrderByWithRelationInput = {
   lat_max?: Prisma.SortOrder
   lon_min?: Prisma.SortOrder
   lon_max?: Prisma.SortOrder
+  locations?: Prisma.LocationOrderByRelationAggregateInput
+  events?: Prisma.EventOrderByRelationAggregateInput
 }
 
 export type MapWhereUniqueInput = Prisma.AtLeast<{
@@ -261,6 +265,8 @@ export type MapWhereUniqueInput = Prisma.AtLeast<{
   lat_max?: Prisma.FloatFilter<"Map"> | number
   lon_min?: Prisma.FloatFilter<"Map"> | number
   lon_max?: Prisma.FloatFilter<"Map"> | number
+  locations?: Prisma.LocationListRelationFilter
+  events?: Prisma.EventListRelationFilter
 }, "id">
 
 export type MapOrderByWithAggregationInput = {
@@ -295,6 +301,8 @@ export type MapCreateInput = {
   lat_max: number
   lon_min: number
   lon_max: number
+  locations?: Prisma.LocationCreateNestedManyWithoutMapInput
+  events?: Prisma.EventCreateNestedManyWithoutMapInput
 }
 
 export type MapUncheckedCreateInput = {
@@ -304,6 +312,8 @@ export type MapUncheckedCreateInput = {
   lat_max: number
   lon_min: number
   lon_max: number
+  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutMapInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutMapInput
 }
 
 export type MapUpdateInput = {
@@ -312,6 +322,8 @@ export type MapUpdateInput = {
   lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
   lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
   lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  locations?: Prisma.LocationUpdateManyWithoutMapNestedInput
+  events?: Prisma.EventUpdateManyWithoutMapNestedInput
 }
 
 export type MapUncheckedUpdateInput = {
@@ -321,6 +333,8 @@ export type MapUncheckedUpdateInput = {
   lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
   lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
   lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  locations?: Prisma.LocationUncheckedUpdateManyWithoutMapNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutMapNestedInput
 }
 
 export type MapCreateManyInput = {
@@ -347,6 +361,11 @@ export type MapUncheckedUpdateManyInput = {
   lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
   lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
   lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+}
+
+export type MapScalarRelationFilter = {
+  is?: Prisma.MapWhereInput
+  isNot?: Prisma.MapWhereInput
 }
 
 export type MapCountOrderByAggregateInput = {
@@ -392,6 +411,180 @@ export type MapSumOrderByAggregateInput = {
   lon_max?: Prisma.SortOrder
 }
 
+export type MapCreateNestedOneWithoutEventsInput = {
+  create?: Prisma.XOR<Prisma.MapCreateWithoutEventsInput, Prisma.MapUncheckedCreateWithoutEventsInput>
+  connectOrCreate?: Prisma.MapCreateOrConnectWithoutEventsInput
+  connect?: Prisma.MapWhereUniqueInput
+}
+
+export type MapUpdateOneRequiredWithoutEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.MapCreateWithoutEventsInput, Prisma.MapUncheckedCreateWithoutEventsInput>
+  connectOrCreate?: Prisma.MapCreateOrConnectWithoutEventsInput
+  upsert?: Prisma.MapUpsertWithoutEventsInput
+  connect?: Prisma.MapWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MapUpdateToOneWithWhereWithoutEventsInput, Prisma.MapUpdateWithoutEventsInput>, Prisma.MapUncheckedUpdateWithoutEventsInput>
+}
+
+export type MapCreateNestedOneWithoutLocationsInput = {
+  create?: Prisma.XOR<Prisma.MapCreateWithoutLocationsInput, Prisma.MapUncheckedCreateWithoutLocationsInput>
+  connectOrCreate?: Prisma.MapCreateOrConnectWithoutLocationsInput
+  connect?: Prisma.MapWhereUniqueInput
+}
+
+export type MapUpdateOneRequiredWithoutLocationsNestedInput = {
+  create?: Prisma.XOR<Prisma.MapCreateWithoutLocationsInput, Prisma.MapUncheckedCreateWithoutLocationsInput>
+  connectOrCreate?: Prisma.MapCreateOrConnectWithoutLocationsInput
+  upsert?: Prisma.MapUpsertWithoutLocationsInput
+  connect?: Prisma.MapWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.MapUpdateToOneWithWhereWithoutLocationsInput, Prisma.MapUpdateWithoutLocationsInput>, Prisma.MapUncheckedUpdateWithoutLocationsInput>
+}
+
+export type MapCreateWithoutEventsInput = {
+  name: string
+  lat_min: number
+  lat_max: number
+  lon_min: number
+  lon_max: number
+  locations?: Prisma.LocationCreateNestedManyWithoutMapInput
+}
+
+export type MapUncheckedCreateWithoutEventsInput = {
+  id?: number
+  name: string
+  lat_min: number
+  lat_max: number
+  lon_min: number
+  lon_max: number
+  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutMapInput
+}
+
+export type MapCreateOrConnectWithoutEventsInput = {
+  where: Prisma.MapWhereUniqueInput
+  create: Prisma.XOR<Prisma.MapCreateWithoutEventsInput, Prisma.MapUncheckedCreateWithoutEventsInput>
+}
+
+export type MapUpsertWithoutEventsInput = {
+  update: Prisma.XOR<Prisma.MapUpdateWithoutEventsInput, Prisma.MapUncheckedUpdateWithoutEventsInput>
+  create: Prisma.XOR<Prisma.MapCreateWithoutEventsInput, Prisma.MapUncheckedCreateWithoutEventsInput>
+  where?: Prisma.MapWhereInput
+}
+
+export type MapUpdateToOneWithWhereWithoutEventsInput = {
+  where?: Prisma.MapWhereInput
+  data: Prisma.XOR<Prisma.MapUpdateWithoutEventsInput, Prisma.MapUncheckedUpdateWithoutEventsInput>
+}
+
+export type MapUpdateWithoutEventsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lat_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  locations?: Prisma.LocationUpdateManyWithoutMapNestedInput
+}
+
+export type MapUncheckedUpdateWithoutEventsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lat_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  locations?: Prisma.LocationUncheckedUpdateManyWithoutMapNestedInput
+}
+
+export type MapCreateWithoutLocationsInput = {
+  name: string
+  lat_min: number
+  lat_max: number
+  lon_min: number
+  lon_max: number
+  events?: Prisma.EventCreateNestedManyWithoutMapInput
+}
+
+export type MapUncheckedCreateWithoutLocationsInput = {
+  id?: number
+  name: string
+  lat_min: number
+  lat_max: number
+  lon_min: number
+  lon_max: number
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutMapInput
+}
+
+export type MapCreateOrConnectWithoutLocationsInput = {
+  where: Prisma.MapWhereUniqueInput
+  create: Prisma.XOR<Prisma.MapCreateWithoutLocationsInput, Prisma.MapUncheckedCreateWithoutLocationsInput>
+}
+
+export type MapUpsertWithoutLocationsInput = {
+  update: Prisma.XOR<Prisma.MapUpdateWithoutLocationsInput, Prisma.MapUncheckedUpdateWithoutLocationsInput>
+  create: Prisma.XOR<Prisma.MapCreateWithoutLocationsInput, Prisma.MapUncheckedCreateWithoutLocationsInput>
+  where?: Prisma.MapWhereInput
+}
+
+export type MapUpdateToOneWithWhereWithoutLocationsInput = {
+  where?: Prisma.MapWhereInput
+  data: Prisma.XOR<Prisma.MapUpdateWithoutLocationsInput, Prisma.MapUncheckedUpdateWithoutLocationsInput>
+}
+
+export type MapUpdateWithoutLocationsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lat_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  events?: Prisma.EventUpdateManyWithoutMapNestedInput
+}
+
+export type MapUncheckedUpdateWithoutLocationsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lat_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lat_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_min?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon_max?: Prisma.FloatFieldUpdateOperationsInput | number
+  events?: Prisma.EventUncheckedUpdateManyWithoutMapNestedInput
+}
+
+
+/**
+ * Count Type MapCountOutputType
+ */
+
+export type MapCountOutputType = {
+  locations: number
+  events: number
+}
+
+export type MapCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  locations?: boolean | MapCountOutputTypeCountLocationsArgs
+  events?: boolean | MapCountOutputTypeCountEventsArgs
+}
+
+/**
+ * MapCountOutputType without action
+ */
+export type MapCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MapCountOutputType
+   */
+  select?: Prisma.MapCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * MapCountOutputType without action
+ */
+export type MapCountOutputTypeCountLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LocationWhereInput
+}
+
+/**
+ * MapCountOutputType without action
+ */
+export type MapCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EventWhereInput
+}
 
 
 export type MapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -401,6 +594,9 @@ export type MapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   lat_max?: boolean
   lon_min?: boolean
   lon_max?: boolean
+  locations?: boolean | Prisma.Map$locationsArgs<ExtArgs>
+  events?: boolean | Prisma.Map$eventsArgs<ExtArgs>
+  _count?: boolean | Prisma.MapCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["map"]>
 
 export type MapSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -431,10 +627,20 @@ export type MapSelectScalar = {
 }
 
 export type MapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "lat_min" | "lat_max" | "lon_min" | "lon_max", ExtArgs["result"]["map"]>
+export type MapInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  locations?: boolean | Prisma.Map$locationsArgs<ExtArgs>
+  events?: boolean | Prisma.Map$eventsArgs<ExtArgs>
+  _count?: boolean | Prisma.MapCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type MapIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type MapIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $MapPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Map"
-  objects: {}
+  objects: {
+    locations: Prisma.$LocationPayload<ExtArgs>[]
+    events: Prisma.$EventPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
@@ -836,6 +1042,8 @@ readonly fields: MapFieldRefs;
  */
 export interface Prisma__MapClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  locations<T extends Prisma.Map$locationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Map$locationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  events<T extends Prisma.Map$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Map$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -888,6 +1096,10 @@ export type MapFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
+  /**
    * Filter, which Map to fetch.
    */
   where: Prisma.MapWhereUniqueInput
@@ -906,6 +1118,10 @@ export type MapFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
+  /**
    * Filter, which Map to fetch.
    */
   where: Prisma.MapWhereUniqueInput
@@ -923,6 +1139,10 @@ export type MapFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Map
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
   /**
    * Filter, which Map to fetch.
    */
@@ -972,6 +1192,10 @@ export type MapFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.Int
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
+  /**
    * Filter, which Map to fetch.
    */
   where?: Prisma.MapWhereInput
@@ -1019,6 +1243,10 @@ export type MapFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Map
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
   /**
    * Filter, which Maps to fetch.
    */
@@ -1068,6 +1296,10 @@ export type MapCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
+  /**
    * The data needed to create a Map.
    */
   data: Prisma.XOR<Prisma.MapCreateInput, Prisma.MapUncheckedCreateInput>
@@ -1115,6 +1347,10 @@ export type MapUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    * Omit specific fields from the Map
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
   /**
    * The data needed to update a Map.
    */
@@ -1182,6 +1418,10 @@ export type MapUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
+  /**
    * The filter to search for the Map to update in case it exists.
    */
   where: Prisma.MapWhereUniqueInput
@@ -1208,6 +1448,10 @@ export type MapDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
+  /**
    * Filter which Map to delete.
    */
   where: Prisma.MapWhereUniqueInput
@@ -1228,6 +1472,54 @@ export type MapDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
+ * Map.locations
+ */
+export type Map$locationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Location
+   */
+  select?: Prisma.LocationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Location
+   */
+  omit?: Prisma.LocationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LocationInclude<ExtArgs> | null
+  where?: Prisma.LocationWhereInput
+  orderBy?: Prisma.LocationOrderByWithRelationInput | Prisma.LocationOrderByWithRelationInput[]
+  cursor?: Prisma.LocationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LocationScalarFieldEnum | Prisma.LocationScalarFieldEnum[]
+}
+
+/**
+ * Map.events
+ */
+export type Map$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Event
+   */
+  select?: Prisma.EventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Event
+   */
+  omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
+  where?: Prisma.EventWhereInput
+  orderBy?: Prisma.EventOrderByWithRelationInput | Prisma.EventOrderByWithRelationInput[]
+  cursor?: Prisma.EventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
+}
+
+/**
  * Map without action
  */
 export type MapDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1239,4 +1531,8 @@ export type MapDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the Map
    */
   omit?: Prisma.MapOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MapInclude<ExtArgs> | null
 }
