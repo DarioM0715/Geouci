@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { Role } from '../../generated/prisma/enums.js';
 
 export class CreateUserDto {
@@ -18,18 +18,23 @@ export class CreateUserDto {
   @IsNotEmpty()
   lapel: string;
 
-  @ApiProperty({ description: 'The password of the user' })
-  @IsString()
-  @IsNotEmpty()
-  password: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @IsString()
-  status?: string;
-
   @ApiProperty({ required: false, enum: Role })
   @IsOptional()
   @IsEnum(Role)
   role?: Role;
+
+  @ApiProperty({ required: false, default: false })
+  @IsOptional()
+  @IsBoolean()
+  ist_resident?: boolean;
+
+  @ApiProperty({ required: false, default: false })
+  @IsOptional()
+  @IsBoolean()
+  suspended?: boolean;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  reason_suspension?: string;
 }

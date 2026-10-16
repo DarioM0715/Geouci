@@ -28,20 +28,19 @@ export class UpdateEventDto {
 
   @ApiProperty({ required: false })
   @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  status?: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
   @IsBoolean()
   its_official?: boolean;
 
   @ApiProperty({ required: false })
   @IsOptional()
+  @IsBoolean()
+  outstanding?: boolean;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsInt()
   @IsPositive()
-  userId?: number;
+  organizerId?: number;
 
   @ApiProperty({ required: false })
   @IsOptional()
@@ -53,5 +52,5 @@ export class UpdateEventDto {
   @IsOptional()
   @IsInt()
   @IsPositive()
-  locationId?: number;
+  mapId?: number;
 }

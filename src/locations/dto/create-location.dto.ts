@@ -1,10 +1,10 @@
 import {
+  IsBoolean,
   IsInt,
   IsLatitude,
   IsLongitude,
   IsNotEmpty,
   IsNumber,
-  IsOptional,
   IsPositive,
   IsString,
 } from 'class-validator';
@@ -16,10 +16,9 @@ export class CreateLocationDto {
   @IsNotEmpty()
   name: string;
 
-  @ApiProperty({ required: false })
-  @IsOptional()
+  @ApiProperty({ description: 'The description of the location' })
   @IsString()
-  description?: string;
+  description: string;
 
   @ApiProperty({ description: 'Latitude of the location' })
   @IsNumber()
@@ -31,13 +30,17 @@ export class CreateLocationDto {
   @IsLongitude()
   longitude: number;
 
+  @ApiProperty({ description: 'Indicates if the location is official' })
+  @IsBoolean()
+  its_official: boolean;
+
   @ApiProperty({ description: 'The category this location belongs to' })
   @IsInt()
   @IsPositive()
   categoryId: number;
 
-  @ApiProperty({ description: 'The user who created the location' })
+  @ApiProperty({ description: 'The map this location belongs to' })
   @IsInt()
   @IsPositive()
-  userId: number;
+  mapId: number;
 }

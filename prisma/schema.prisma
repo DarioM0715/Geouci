@@ -22,25 +22,29 @@ enum LocationRequestStatus {
 
 model User {
   id                          Int         @id @default(autoincrement())
-  name                        String
+
   email                       String      @unique
+  name                        String
   lapel                       String      @unique
-  password_hash               String      @map("password_hash")
-  status                      String      @default("active")
   role                        Role        @default(usuario)
+  ist_resident                Boolean     @default(false)
+  suspended                   Boolean     @default(false)
+  reason_suspension           String?
+  created_at                  DateTime    @default(now())
 
   events                      Event[]
-  locations_requests          LocationRequest[]
   comments                    Comment[]
   reactions                   Reaction[]
   complaints                  Complaint[]
-  locations                   Location[]
+  location_requests_applicant LocationRequest[] @relation("UserApplicantRequests")
+  location_requests_manager   LocationRequest[] @relation("UserManagerRequests")
 
   @@map("users")
 }
 
 model Category {
   id                          Int          @id @default(autoincrement())
+
   name                        String       @unique
   description                 String?
   
@@ -53,19 +57,20 @@ model Category {
 
 model Event {
   id                          Int         @id @default(autoincrement())
+  mapId                       Int         @map("map_id")
+  categoryId                  Int         @map("category_id")
+  organizerId                 Int         @map("organizer_id")
+
   name                        String
   description                 String?
-  userId                      Int         @map("user_id")
-  categoryId                  Int         @map("category_id")
-  locationId                  Int         @map("location_id")
   start_date                  DateTime
   end_date                    DateTime
   its_official                Boolean
-  status                      String      @default("pending")
+  outstanding                 Boolean
 
-  user                        User        @relation(fields: [userId], references: [id])
+  user                        User        @relation(fields: [organizerId], references: [id])
   category                    Category    @relation(fields: [categoryId], references: [id])
-  location                    Location    @relation(fields: [locationId], references: [id])
+  map                         Map         @relation(fields: [mapId], references: [id])
 
   comments                    Comment[]
   reactions                   Reaction[]
@@ -76,51 +81,68 @@ model Event {
 
 model Location {
   id                          Int         @id @default(autoincrement())
+  mapId                       Int         @map("map_id")
+  categoryId                  Int         @map("category_id")
+
   name                        String
-  description                 String?
+  description                 String
   latitude                    Float
   longitude                   Float
-  categoryId                  Int         @map("category_id")
-  userId                      Int         @map("user_id")
+  its_official                Boolean
+  created_at                  DateTime    @default(now())
 
+  map                         Map         @relation(fields: [mapId], references: [id])
   category                    Category    @relation(fields: [categoryId], references: [id])
-  user                        User        @relation(fields: [userId], references: [id])
-  events                      Event[]
 
+  locations_request           LocationRequest[]
 
   @@map("locations")
 }
 
 model Map {
   id                          Int         @id @default(autoincrement())
+
   name                        String
   lat_min                     Float
   lat_max                     Float
   lon_min                     Float
   lon_max                     Float
+
+  locations                   Location[]
+  events                      Event[]
 }
 
 model LocationRequest {
   id                          Int         @id @default(autoincrement())
+  applicantId                 Int         @map("applicant_id")
+  categoryId                  Int         @map("category_id")
+  managerId                   Int?        @map("manager_id")  
+  locationId                  Int?        @map("location_id")
+
   name                        String
   description                 String?
-  userId                      Int         @map("user_id")
-  categoryId                  Int         @map("category_id")
+  reason                      String
   status                      LocationRequestStatus @default(pendiente)
   request_date                DateTime    @default(now())
+  done_at                     DateTime
 
-  user                        User        @relation(fields: [userId], references: [id])
   category                    Category    @relation(fields: [categoryId], references: [id])
+  location                    Location?   @relation(fields: [locationId], references: [id])
+  applicant                   User        @relation("UserApplicantRequests", fields: [applicantId], references: [id])
+  manager                     User?       @relation("UserManagerRequests", fields: [managerId], references: [id])
+
 
   @@map("locations_request")
 }
 
 model Comment {
   id                          Int         @id @default(autoincrement())
-  content                     String
-  userId                      Int         @map("user_id")
   eventId                     Int         @map("event_id")
+  userId                      Int         @map("user_id")
+
+  text                        String
   created_at                  DateTime    @default(now())
+  edited_at                   DateTime    @default(now())
 
   user                        User        @relation(fields: [userId], references: [id])  
   event                       Event       @relation(fields: [eventId], references: [id])
@@ -130,9 +152,11 @@ model Comment {
 
 model Reaction {
   id                          Int         @id @default(autoincrement())
-  type                        String
-  userId                      Int         @map("user_id")
   eventId                     Int         @map("event_id")
+  userId                      Int         @map("user_id")
+
+  type                        String
+  validated                   Boolean     @default(false)
   created_at                  DateTime    @default(now())
 
   user                        User        @relation(fields: [userId], references: [id])  
@@ -144,9 +168,10 @@ model Reaction {
 
 model Complaint {
   id                          Int         @id @default(autoincrement())
-  reason                      String
-  userId                      Int         @map("user_id")
   eventId                     Int         @map("event_id")
+  userId                      Int         @map("user_id")
+
+  reason                      String
   created_at                  DateTime    @default(now())
 
   user                        User        @relation(fields: [userId], references: [id])  

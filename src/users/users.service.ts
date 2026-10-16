@@ -9,23 +9,15 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(data: CreateUserDto) {
-    const { password, ...rest } = data;
-
-    return this.prisma.user.create({
-      data: { ...rest, password_hash: this.hashPassword(password) },
-      omit: { password_hash: true },
-    });
+    return this.prisma.user.create({ data });
   }
 
   findAll() {
-    return this.prisma.user.findMany({ omit: { password_hash: true } });
+    return this.prisma.user.findMany();
   }
 
   async findOne(id: number) {
-    const user = await this.prisma.user.findUnique({
-      where: { id },
-      omit: { password_hash: true },
-    });
+    const user = await this.prisma.user.findUnique({ where: { id } });
 
     if (!user) {
       throw new NotFoundException(`Usuario con id ${id} no encontrado`);
@@ -37,16 +29,7 @@ export class UsersService {
   async update(id: number, data: UpdateUserDto) {
     await this.findOne(id);
 
-    const { password, ...rest } = data;
-    const userData = password
-      ? { ...rest, password_hash: this.hashPassword(password) }
-      : rest;
-
-    return this.prisma.user.update({
-      where: { id },
-      data: userData,
-      omit: { password_hash: true },
-    });
+    return this.prisma.user.update({ where: { id }, data });
   }
 
   async remove(id: number) {

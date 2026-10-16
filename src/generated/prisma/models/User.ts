@@ -36,32 +36,38 @@ export type UserSumAggregateOutputType = {
 
 export type UserMinAggregateOutputType = {
   id: number | null
-  name: string | null
   email: string | null
+  name: string | null
   lapel: string | null
-  password_hash: string | null
-  status: string | null
   role: $Enums.Role | null
+  ist_resident: boolean | null
+  suspended: boolean | null
+  reason_suspension: string | null
+  created_at: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: number | null
-  name: string | null
   email: string | null
+  name: string | null
   lapel: string | null
-  password_hash: string | null
-  status: string | null
   role: $Enums.Role | null
+  ist_resident: boolean | null
+  suspended: boolean | null
+  reason_suspension: string | null
+  created_at: Date | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
-  name: number
   email: number
+  name: number
   lapel: number
-  password_hash: number
-  status: number
   role: number
+  ist_resident: number
+  suspended: number
+  reason_suspension: number
+  created_at: number
   _all: number
 }
 
@@ -76,32 +82,38 @@ export type UserSumAggregateInputType = {
 
 export type UserMinAggregateInputType = {
   id?: true
-  name?: true
   email?: true
+  name?: true
   lapel?: true
-  password_hash?: true
-  status?: true
   role?: true
+  ist_resident?: true
+  suspended?: true
+  reason_suspension?: true
+  created_at?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
-  name?: true
   email?: true
+  name?: true
   lapel?: true
-  password_hash?: true
-  status?: true
   role?: true
+  ist_resident?: true
+  suspended?: true
+  reason_suspension?: true
+  created_at?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
-  name?: true
   email?: true
+  name?: true
   lapel?: true
-  password_hash?: true
-  status?: true
   role?: true
+  ist_resident?: true
+  suspended?: true
+  reason_suspension?: true
+  created_at?: true
   _all?: true
 }
 
@@ -193,12 +205,14 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status: string
   role: $Enums.Role
+  ist_resident: boolean
+  suspended: boolean
+  reason_suspension: string | null
+  created_at: Date
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -226,34 +240,38 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.IntFilter<"User"> | number
-  name?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
+  name?: Prisma.StringFilter<"User"> | string
   lapel?: Prisma.StringFilter<"User"> | string
-  password_hash?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  ist_resident?: Prisma.BoolFilter<"User"> | boolean
+  suspended?: Prisma.BoolFilter<"User"> | boolean
+  reason_suspension?: Prisma.StringNullableFilter<"User"> | string | null
+  created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   events?: Prisma.EventListRelationFilter
-  locations_requests?: Prisma.LocationRequestListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   reactions?: Prisma.ReactionListRelationFilter
   complaints?: Prisma.ComplaintListRelationFilter
-  locations?: Prisma.LocationListRelationFilter
+  location_requests_applicant?: Prisma.LocationRequestListRelationFilter
+  location_requests_manager?: Prisma.LocationRequestListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   lapel?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  ist_resident?: Prisma.SortOrder
+  suspended?: Prisma.SortOrder
+  reason_suspension?: Prisma.SortOrderInput | Prisma.SortOrder
+  created_at?: Prisma.SortOrder
   events?: Prisma.EventOrderByRelationAggregateInput
-  locations_requests?: Prisma.LocationRequestOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   reactions?: Prisma.ReactionOrderByRelationAggregateInput
   complaints?: Prisma.ComplaintOrderByRelationAggregateInput
-  locations?: Prisma.LocationOrderByRelationAggregateInput
+  location_requests_applicant?: Prisma.LocationRequestOrderByRelationAggregateInput
+  location_requests_manager?: Prisma.LocationRequestOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -264,25 +282,29 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringFilter<"User"> | string
-  password_hash?: Prisma.StringFilter<"User"> | string
-  status?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
+  ist_resident?: Prisma.BoolFilter<"User"> | boolean
+  suspended?: Prisma.BoolFilter<"User"> | boolean
+  reason_suspension?: Prisma.StringNullableFilter<"User"> | string | null
+  created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   events?: Prisma.EventListRelationFilter
-  locations_requests?: Prisma.LocationRequestListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   reactions?: Prisma.ReactionListRelationFilter
   complaints?: Prisma.ComplaintListRelationFilter
-  locations?: Prisma.LocationListRelationFilter
+  location_requests_applicant?: Prisma.LocationRequestListRelationFilter
+  location_requests_manager?: Prisma.LocationRequestListRelationFilter
 }, "id" | "email" | "lapel">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   lapel?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  ist_resident?: Prisma.SortOrder
+  suspended?: Prisma.SortOrder
+  reason_suspension?: Prisma.SortOrderInput | Prisma.SortOrder
+  created_at?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -295,113 +317,131 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"User"> | number
-  name?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  name?: Prisma.StringWithAggregatesFilter<"User"> | string
   lapel?: Prisma.StringWithAggregatesFilter<"User"> | string
-  password_hash?: Prisma.StringWithAggregatesFilter<"User"> | string
-  status?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
+  ist_resident?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  suspended?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  reason_suspension?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  created_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestCreateNestedManyWithoutManagerInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutManagerInput
 }
 
 export type UserUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUpdateManyWithoutManagerNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedUpdateManyWithoutManagerNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   lapel?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  ist_resident?: Prisma.SortOrder
+  suspended?: Prisma.SortOrder
+  reason_suspension?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -410,22 +450,26 @@ export type UserAvgOrderByAggregateInput = {
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   lapel?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  ist_resident?: Prisma.SortOrder
+  suspended?: Prisma.SortOrder
+  reason_suspension?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   lapel?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  ist_resident?: Prisma.SortOrder
+  suspended?: Prisma.SortOrder
+  reason_suspension?: Prisma.SortOrder
+  created_at?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -437,12 +481,29 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -467,32 +528,34 @@ export type UserUpdateOneRequiredWithoutEventsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEventsInput, Prisma.UserUpdateWithoutEventsInput>, Prisma.UserUncheckedUpdateWithoutEventsInput>
 }
 
-export type UserCreateNestedOneWithoutLocationsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLocationsInput, Prisma.UserUncheckedCreateWithoutLocationsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocationsInput
+export type UserCreateNestedOneWithoutLocation_requests_applicantInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_applicantInput, Prisma.UserUncheckedCreateWithoutLocation_requests_applicantInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocation_requests_applicantInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutLocationsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLocationsInput, Prisma.UserUncheckedCreateWithoutLocationsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocationsInput
-  upsert?: Prisma.UserUpsertWithoutLocationsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocationsInput, Prisma.UserUpdateWithoutLocationsInput>, Prisma.UserUncheckedUpdateWithoutLocationsInput>
-}
-
-export type UserCreateNestedOneWithoutLocations_requestsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocations_requestsInput
+export type UserCreateNestedOneWithoutLocation_requests_managerInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_managerInput, Prisma.UserUncheckedCreateWithoutLocation_requests_managerInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocation_requests_managerInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutLocations_requestsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocations_requestsInput
-  upsert?: Prisma.UserUpsertWithoutLocations_requestsInput
+export type UserUpdateOneRequiredWithoutLocation_requests_applicantNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_applicantInput, Prisma.UserUncheckedCreateWithoutLocation_requests_applicantInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocation_requests_applicantInput
+  upsert?: Prisma.UserUpsertWithoutLocation_requests_applicantInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocations_requestsInput, Prisma.UserUpdateWithoutLocations_requestsInput>, Prisma.UserUncheckedUpdateWithoutLocations_requestsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocation_requests_applicantInput, Prisma.UserUpdateWithoutLocation_requests_applicantInput>, Prisma.UserUncheckedUpdateWithoutLocation_requests_applicantInput>
+}
+
+export type UserUpdateOneWithoutLocation_requests_managerNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_managerInput, Prisma.UserUncheckedCreateWithoutLocation_requests_managerInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocation_requests_managerInput
+  upsert?: Prisma.UserUpsertWithoutLocation_requests_managerInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocation_requests_managerInput, Prisma.UserUpdateWithoutLocation_requests_managerInput>, Prisma.UserUncheckedUpdateWithoutLocation_requests_managerInput>
 }
 
 export type UserCreateNestedOneWithoutCommentsInput = {
@@ -538,32 +601,36 @@ export type UserUpdateOneRequiredWithoutComplaintsNestedInput = {
 }
 
 export type UserCreateWithoutEventsInput = {
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestCreateNestedManyWithoutManagerInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutManagerInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -583,209 +650,233 @@ export type UserUpdateToOneWithWhereWithoutEventsInput = {
 }
 
 export type UserUpdateWithoutEventsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUpdateManyWithoutManagerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedUpdateManyWithoutManagerNestedInput
 }
 
-export type UserCreateWithoutLocationsInput = {
-  name: string
+export type UserCreateWithoutLocation_requests_applicantInput = {
   email: string
-  lapel: string
-  password_hash: string
-  status?: string
-  role?: $Enums.Role
-  events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
-  complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutLocationsInput = {
-  id?: number
   name: string
-  email: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
-  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutLocationsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutLocationsInput, Prisma.UserUncheckedCreateWithoutLocationsInput>
-}
-
-export type UserUpsertWithoutLocationsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutLocationsInput, Prisma.UserUncheckedUpdateWithoutLocationsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutLocationsInput, Prisma.UserUncheckedCreateWithoutLocationsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutLocationsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutLocationsInput, Prisma.UserUncheckedUpdateWithoutLocationsInput>
-}
-
-export type UserUpdateWithoutLocationsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
-  complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutLocationsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
-  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-}
-
-export type UserCreateWithoutLocations_requestsInput = {
-  name: string
-  email: string
-  lapel: string
-  password_hash: string
-  status?: string
-  role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
+  location_requests_manager?: Prisma.LocationRequestCreateNestedManyWithoutManagerInput
 }
 
-export type UserUncheckedCreateWithoutLocations_requestsInput = {
+export type UserUncheckedCreateWithoutLocation_requests_applicantInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutManagerInput
 }
 
-export type UserCreateOrConnectWithoutLocations_requestsInput = {
+export type UserCreateOrConnectWithoutLocation_requests_applicantInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_applicantInput, Prisma.UserUncheckedCreateWithoutLocation_requests_applicantInput>
 }
 
-export type UserUpsertWithoutLocations_requestsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutLocations_requestsInput, Prisma.UserUncheckedUpdateWithoutLocations_requestsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutLocations_requestsInput, Prisma.UserUncheckedCreateWithoutLocations_requestsInput>
+export type UserCreateWithoutLocation_requests_managerInput = {
+  email: string
+  name: string
+  lapel: string
+  role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestCreateNestedManyWithoutApplicantInput
+}
+
+export type UserUncheckedCreateWithoutLocation_requests_managerInput = {
+  id?: number
+  email: string
+  name: string
+  lapel: string
+  role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutApplicantInput
+}
+
+export type UserCreateOrConnectWithoutLocation_requests_managerInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_managerInput, Prisma.UserUncheckedCreateWithoutLocation_requests_managerInput>
+}
+
+export type UserUpsertWithoutLocation_requests_applicantInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLocation_requests_applicantInput, Prisma.UserUncheckedUpdateWithoutLocation_requests_applicantInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_applicantInput, Prisma.UserUncheckedCreateWithoutLocation_requests_applicantInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutLocations_requestsInput = {
+export type UserUpdateToOneWithWhereWithoutLocation_requests_applicantInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutLocations_requestsInput, Prisma.UserUncheckedUpdateWithoutLocations_requestsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLocation_requests_applicantInput, Prisma.UserUncheckedUpdateWithoutLocation_requests_applicantInput>
 }
 
-export type UserUpdateWithoutLocations_requestsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+export type UserUpdateWithoutLocation_requests_applicantInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
+  location_requests_manager?: Prisma.LocationRequestUpdateManyWithoutManagerNestedInput
 }
 
-export type UserUncheckedUpdateWithoutLocations_requestsInput = {
+export type UserUncheckedUpdateWithoutLocation_requests_applicantInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedUpdateManyWithoutManagerNestedInput
+}
+
+export type UserUpsertWithoutLocation_requests_managerInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLocation_requests_managerInput, Prisma.UserUncheckedUpdateWithoutLocation_requests_managerInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocation_requests_managerInput, Prisma.UserUncheckedCreateWithoutLocation_requests_managerInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLocation_requests_managerInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLocation_requests_managerInput, Prisma.UserUncheckedUpdateWithoutLocation_requests_managerInput>
+}
+
+export type UserUpdateWithoutLocation_requests_managerInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lapel?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUpdateManyWithoutApplicantNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLocation_requests_managerInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  lapel?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedUpdateManyWithoutApplicantNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestCreateNestedManyWithoutManagerInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutManagerInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -805,61 +896,69 @@ export type UserUpdateToOneWithWhereWithoutCommentsInput = {
 }
 
 export type UserUpdateWithoutCommentsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUpdateManyWithoutManagerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedUpdateManyWithoutManagerNestedInput
 }
 
 export type UserCreateWithoutReactionsInput = {
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestCreateNestedManyWithoutManagerInput
 }
 
 export type UserUncheckedCreateWithoutReactionsInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutManagerInput
 }
 
 export type UserCreateOrConnectWithoutReactionsInput = {
@@ -879,61 +978,69 @@ export type UserUpdateToOneWithWhereWithoutReactionsInput = {
 }
 
 export type UserUpdateWithoutReactionsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUpdateManyWithoutManagerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReactionsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedUpdateManyWithoutManagerNestedInput
 }
 
 export type UserCreateWithoutComplaintsInput = {
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestCreateNestedManyWithoutManagerInput
 }
 
 export type UserUncheckedCreateWithoutComplaintsInput = {
   id?: number
-  name: string
   email: string
+  name: string
   lapel: string
-  password_hash: string
-  status?: string
   role?: $Enums.Role
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: string | null
+  created_at?: Date | string
   events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
-  locations_requests?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutUserInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
   reactions?: Prisma.ReactionUncheckedCreateNestedManyWithoutUserInput
-  locations?: Prisma.LocationUncheckedCreateNestedManyWithoutUserInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutApplicantInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedCreateNestedManyWithoutManagerInput
 }
 
 export type UserCreateOrConnectWithoutComplaintsInput = {
@@ -953,32 +1060,36 @@ export type UserUpdateToOneWithWhereWithoutComplaintsInput = {
 }
 
 export type UserUpdateWithoutComplaintsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUpdateManyWithoutManagerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutComplaintsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   lapel?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  ist_resident?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  suspended?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  reason_suspension?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
-  locations_requests?: Prisma.LocationRequestUncheckedUpdateManyWithoutUserNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
   reactions?: Prisma.ReactionUncheckedUpdateManyWithoutUserNestedInput
-  locations?: Prisma.LocationUncheckedUpdateManyWithoutUserNestedInput
+  location_requests_applicant?: Prisma.LocationRequestUncheckedUpdateManyWithoutApplicantNestedInput
+  location_requests_manager?: Prisma.LocationRequestUncheckedUpdateManyWithoutManagerNestedInput
 }
 
 
@@ -988,20 +1099,20 @@ export type UserUncheckedUpdateWithoutComplaintsInput = {
 
 export type UserCountOutputType = {
   events: number
-  locations_requests: number
   comments: number
   reactions: number
   complaints: number
-  locations: number
+  location_requests_applicant: number
+  location_requests_manager: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   events?: boolean | UserCountOutputTypeCountEventsArgs
-  locations_requests?: boolean | UserCountOutputTypeCountLocations_requestsArgs
   comments?: boolean | UserCountOutputTypeCountCommentsArgs
   reactions?: boolean | UserCountOutputTypeCountReactionsArgs
   complaints?: boolean | UserCountOutputTypeCountComplaintsArgs
-  locations?: boolean | UserCountOutputTypeCountLocationsArgs
+  location_requests_applicant?: boolean | UserCountOutputTypeCountLocation_requests_applicantArgs
+  location_requests_manager?: boolean | UserCountOutputTypeCountLocation_requests_managerArgs
 }
 
 /**
@@ -1019,13 +1130,6 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  */
 export type UserCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.EventWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountLocations_requestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LocationRequestWhereInput
 }
 
 /**
@@ -1052,66 +1156,81 @@ export type UserCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountLocationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LocationWhereInput
+export type UserCountOutputTypeCountLocation_requests_applicantArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LocationRequestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLocation_requests_managerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LocationRequestWhereInput
 }
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
   email?: boolean
+  name?: boolean
   lapel?: boolean
-  password_hash?: boolean
-  status?: boolean
   role?: boolean
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: boolean
+  created_at?: boolean
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
-  locations_requests?: boolean | Prisma.User$locations_requestsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   reactions?: boolean | Prisma.User$reactionsArgs<ExtArgs>
   complaints?: boolean | Prisma.User$complaintsArgs<ExtArgs>
-  locations?: boolean | Prisma.User$locationsArgs<ExtArgs>
+  location_requests_applicant?: boolean | Prisma.User$location_requests_applicantArgs<ExtArgs>
+  location_requests_manager?: boolean | Prisma.User$location_requests_managerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
   email?: boolean
+  name?: boolean
   lapel?: boolean
-  password_hash?: boolean
-  status?: boolean
   role?: boolean
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: boolean
+  created_at?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
   email?: boolean
+  name?: boolean
   lapel?: boolean
-  password_hash?: boolean
-  status?: boolean
   role?: boolean
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: boolean
+  created_at?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
-  name?: boolean
   email?: boolean
+  name?: boolean
   lapel?: boolean
-  password_hash?: boolean
-  status?: boolean
   role?: boolean
+  ist_resident?: boolean
+  suspended?: boolean
+  reason_suspension?: boolean
+  created_at?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "lapel" | "password_hash" | "status" | "role", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "lapel" | "role" | "ist_resident" | "suspended" | "reason_suspension" | "created_at", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
-  locations_requests?: boolean | Prisma.User$locations_requestsArgs<ExtArgs>
   comments?: boolean | Prisma.User$commentsArgs<ExtArgs>
   reactions?: boolean | Prisma.User$reactionsArgs<ExtArgs>
   complaints?: boolean | Prisma.User$complaintsArgs<ExtArgs>
-  locations?: boolean | Prisma.User$locationsArgs<ExtArgs>
+  location_requests_applicant?: boolean | Prisma.User$location_requests_applicantArgs<ExtArgs>
+  location_requests_manager?: boolean | Prisma.User$location_requests_managerArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1121,20 +1240,22 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     events: Prisma.$EventPayload<ExtArgs>[]
-    locations_requests: Prisma.$LocationRequestPayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
     reactions: Prisma.$ReactionPayload<ExtArgs>[]
     complaints: Prisma.$ComplaintPayload<ExtArgs>[]
-    locations: Prisma.$LocationPayload<ExtArgs>[]
+    location_requests_applicant: Prisma.$LocationRequestPayload<ExtArgs>[]
+    location_requests_manager: Prisma.$LocationRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    name: string
     email: string
+    name: string
     lapel: string
-    password_hash: string
-    status: string
     role: $Enums.Role
+    ist_resident: boolean
+    suspended: boolean
+    reason_suspension: string | null
+    created_at: Date
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1530,11 +1651,11 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  locations_requests<T extends Prisma.User$locations_requestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$locations_requestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reactions<T extends Prisma.User$reactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   complaints<T extends Prisma.User$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  locations<T extends Prisma.User$locationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$locationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  location_requests_applicant<T extends Prisma.User$location_requests_applicantArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$location_requests_applicantArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  location_requests_manager<T extends Prisma.User$location_requests_managerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$location_requests_managerArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LocationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1565,12 +1686,14 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'Int'>
-  readonly name: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly name: Prisma.FieldRef<"User", 'String'>
   readonly lapel: Prisma.FieldRef<"User", 'String'>
-  readonly password_hash: Prisma.FieldRef<"User", 'String'>
-  readonly status: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
+  readonly ist_resident: Prisma.FieldRef<"User", 'Boolean'>
+  readonly suspended: Prisma.FieldRef<"User", 'Boolean'>
+  readonly reason_suspension: Prisma.FieldRef<"User", 'String'>
+  readonly created_at: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 
@@ -1988,30 +2111,6 @@ export type User$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 /**
- * User.locations_requests
- */
-export type User$locations_requestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the LocationRequest
-   */
-  select?: Prisma.LocationRequestSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the LocationRequest
-   */
-  omit?: Prisma.LocationRequestOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.LocationRequestInclude<ExtArgs> | null
-  where?: Prisma.LocationRequestWhereInput
-  orderBy?: Prisma.LocationRequestOrderByWithRelationInput | Prisma.LocationRequestOrderByWithRelationInput[]
-  cursor?: Prisma.LocationRequestWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.LocationRequestScalarFieldEnum | Prisma.LocationRequestScalarFieldEnum[]
-}
-
-/**
  * User.comments
  */
 export type User$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2084,27 +2183,51 @@ export type User$complaintsArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * User.locations
+ * User.location_requests_applicant
  */
-export type User$locationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$location_requests_applicantArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Location
+   * Select specific fields to fetch from the LocationRequest
    */
-  select?: Prisma.LocationSelect<ExtArgs> | null
+  select?: Prisma.LocationRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Location
+   * Omit specific fields from the LocationRequest
    */
-  omit?: Prisma.LocationOmit<ExtArgs> | null
+  omit?: Prisma.LocationRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.LocationInclude<ExtArgs> | null
-  where?: Prisma.LocationWhereInput
-  orderBy?: Prisma.LocationOrderByWithRelationInput | Prisma.LocationOrderByWithRelationInput[]
-  cursor?: Prisma.LocationWhereUniqueInput
+  include?: Prisma.LocationRequestInclude<ExtArgs> | null
+  where?: Prisma.LocationRequestWhereInput
+  orderBy?: Prisma.LocationRequestOrderByWithRelationInput | Prisma.LocationRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LocationRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.LocationScalarFieldEnum | Prisma.LocationScalarFieldEnum[]
+  distinct?: Prisma.LocationRequestScalarFieldEnum | Prisma.LocationRequestScalarFieldEnum[]
+}
+
+/**
+ * User.location_requests_manager
+ */
+export type User$location_requests_managerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LocationRequest
+   */
+  select?: Prisma.LocationRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LocationRequest
+   */
+  omit?: Prisma.LocationRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LocationRequestInclude<ExtArgs> | null
+  where?: Prisma.LocationRequestWhereInput
+  orderBy?: Prisma.LocationRequestOrderByWithRelationInput | Prisma.LocationRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LocationRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LocationRequestScalarFieldEnum | Prisma.LocationRequestScalarFieldEnum[]
 }
 
 /**

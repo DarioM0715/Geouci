@@ -5,7 +5,7 @@ export class CreateCommentDto {
   @ApiProperty({ description: 'The content of the comment' })
   @IsString()
   @IsNotEmpty()
-  content: string;
+  text: string;
 
   @ApiProperty({ description: 'The user who wrote the comment' })
   @IsInt()

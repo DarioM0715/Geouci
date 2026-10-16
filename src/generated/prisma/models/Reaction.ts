@@ -28,37 +28,40 @@ export type AggregateReaction = {
 
 export type ReactionAvgAggregateOutputType = {
   id: number | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
 }
 
 export type ReactionSumAggregateOutputType = {
   id: number | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
 }
 
 export type ReactionMinAggregateOutputType = {
   id: number | null
-  type: string | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
+  type: string | null
+  validated: boolean | null
   created_at: Date | null
 }
 
 export type ReactionMaxAggregateOutputType = {
   id: number | null
-  type: string | null
-  userId: number | null
   eventId: number | null
+  userId: number | null
+  type: string | null
+  validated: boolean | null
   created_at: Date | null
 }
 
 export type ReactionCountAggregateOutputType = {
   id: number
-  type: number
-  userId: number
   eventId: number
+  userId: number
+  type: number
+  validated: number
   created_at: number
   _all: number
 }
@@ -66,37 +69,40 @@ export type ReactionCountAggregateOutputType = {
 
 export type ReactionAvgAggregateInputType = {
   id?: true
-  userId?: true
   eventId?: true
+  userId?: true
 }
 
 export type ReactionSumAggregateInputType = {
   id?: true
-  userId?: true
   eventId?: true
+  userId?: true
 }
 
 export type ReactionMinAggregateInputType = {
   id?: true
-  type?: true
-  userId?: true
   eventId?: true
+  userId?: true
+  type?: true
+  validated?: true
   created_at?: true
 }
 
 export type ReactionMaxAggregateInputType = {
   id?: true
-  type?: true
-  userId?: true
   eventId?: true
+  userId?: true
+  type?: true
+  validated?: true
   created_at?: true
 }
 
 export type ReactionCountAggregateInputType = {
   id?: true
-  type?: true
-  userId?: true
   eventId?: true
+  userId?: true
+  type?: true
+  validated?: true
   created_at?: true
   _all?: true
 }
@@ -189,9 +195,10 @@ export type ReactionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type ReactionGroupByOutputType = {
   id: number
-  type: string
-  userId: number
   eventId: number
+  userId: number
+  type: string
+  validated: boolean
   created_at: Date
   _count: ReactionCountAggregateOutputType | null
   _avg: ReactionAvgAggregateOutputType | null
@@ -220,9 +227,10 @@ export type ReactionWhereInput = {
   OR?: Prisma.ReactionWhereInput[]
   NOT?: Prisma.ReactionWhereInput | Prisma.ReactionWhereInput[]
   id?: Prisma.IntFilter<"Reaction"> | number
-  type?: Prisma.StringFilter<"Reaction"> | string
-  userId?: Prisma.IntFilter<"Reaction"> | number
   eventId?: Prisma.IntFilter<"Reaction"> | number
+  userId?: Prisma.IntFilter<"Reaction"> | number
+  type?: Prisma.StringFilter<"Reaction"> | string
+  validated?: Prisma.BoolFilter<"Reaction"> | boolean
   created_at?: Prisma.DateTimeFilter<"Reaction"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
@@ -230,9 +238,10 @@ export type ReactionWhereInput = {
 
 export type ReactionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  validated?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   event?: Prisma.EventOrderByWithRelationInput
@@ -244,9 +253,10 @@ export type ReactionWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ReactionWhereInput | Prisma.ReactionWhereInput[]
   OR?: Prisma.ReactionWhereInput[]
   NOT?: Prisma.ReactionWhereInput | Prisma.ReactionWhereInput[]
-  type?: Prisma.StringFilter<"Reaction"> | string
-  userId?: Prisma.IntFilter<"Reaction"> | number
   eventId?: Prisma.IntFilter<"Reaction"> | number
+  userId?: Prisma.IntFilter<"Reaction"> | number
+  type?: Prisma.StringFilter<"Reaction"> | string
+  validated?: Prisma.BoolFilter<"Reaction"> | boolean
   created_at?: Prisma.DateTimeFilter<"Reaction"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>
@@ -254,9 +264,10 @@ export type ReactionWhereUniqueInput = Prisma.AtLeast<{
 
 export type ReactionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  validated?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   _count?: Prisma.ReactionCountOrderByAggregateInput
   _avg?: Prisma.ReactionAvgOrderByAggregateInput
@@ -270,14 +281,16 @@ export type ReactionScalarWhereWithAggregatesInput = {
   OR?: Prisma.ReactionScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ReactionScalarWhereWithAggregatesInput | Prisma.ReactionScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Reaction"> | number
-  type?: Prisma.StringWithAggregatesFilter<"Reaction"> | string
-  userId?: Prisma.IntWithAggregatesFilter<"Reaction"> | number
   eventId?: Prisma.IntWithAggregatesFilter<"Reaction"> | number
+  userId?: Prisma.IntWithAggregatesFilter<"Reaction"> | number
+  type?: Prisma.StringWithAggregatesFilter<"Reaction"> | string
+  validated?: Prisma.BoolWithAggregatesFilter<"Reaction"> | boolean
   created_at?: Prisma.DateTimeWithAggregatesFilter<"Reaction"> | Date | string
 }
 
 export type ReactionCreateInput = {
   type: string
+  validated?: boolean
   created_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutReactionsInput
   event: Prisma.EventCreateNestedOneWithoutReactionsInput
@@ -285,14 +298,16 @@ export type ReactionCreateInput = {
 
 export type ReactionUncheckedCreateInput = {
   id?: number
-  type: string
-  userId: number
   eventId: number
+  userId: number
+  type: string
+  validated?: boolean
   created_at?: Date | string
 }
 
 export type ReactionUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutReactionsNestedInput
   event?: Prisma.EventUpdateOneRequiredWithoutReactionsNestedInput
@@ -300,30 +315,34 @@ export type ReactionUpdateInput = {
 
 export type ReactionUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ReactionCreateManyInput = {
   id?: number
-  type: string
-  userId: number
   eventId: number
+  userId: number
+  type: string
+  validated?: boolean
   created_at?: Date | string
 }
 
 export type ReactionUpdateManyMutationInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ReactionUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -344,38 +363,41 @@ export type ReactionUserIdEventIdCompoundUniqueInput = {
 
 export type ReactionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  validated?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
 export type ReactionAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type ReactionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  validated?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
 export type ReactionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  validated?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
 }
 
 export type ReactionSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   eventId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
 }
 
 export type ReactionCreateNestedManyWithoutUserInput = {
@@ -464,14 +486,16 @@ export type ReactionUncheckedUpdateManyWithoutEventNestedInput = {
 
 export type ReactionCreateWithoutUserInput = {
   type: string
+  validated?: boolean
   created_at?: Date | string
   event: Prisma.EventCreateNestedOneWithoutReactionsInput
 }
 
 export type ReactionUncheckedCreateWithoutUserInput = {
   id?: number
-  type: string
   eventId: number
+  type: string
+  validated?: boolean
   created_at?: Date | string
 }
 
@@ -506,22 +530,25 @@ export type ReactionScalarWhereInput = {
   OR?: Prisma.ReactionScalarWhereInput[]
   NOT?: Prisma.ReactionScalarWhereInput | Prisma.ReactionScalarWhereInput[]
   id?: Prisma.IntFilter<"Reaction"> | number
-  type?: Prisma.StringFilter<"Reaction"> | string
-  userId?: Prisma.IntFilter<"Reaction"> | number
   eventId?: Prisma.IntFilter<"Reaction"> | number
+  userId?: Prisma.IntFilter<"Reaction"> | number
+  type?: Prisma.StringFilter<"Reaction"> | string
+  validated?: Prisma.BoolFilter<"Reaction"> | boolean
   created_at?: Prisma.DateTimeFilter<"Reaction"> | Date | string
 }
 
 export type ReactionCreateWithoutEventInput = {
   type: string
+  validated?: boolean
   created_at?: Date | string
   user: Prisma.UserCreateNestedOneWithoutReactionsInput
 }
 
 export type ReactionUncheckedCreateWithoutEventInput = {
   id?: number
-  type: string
   userId: number
+  type: string
+  validated?: boolean
   created_at?: Date | string
 }
 
@@ -553,55 +580,63 @@ export type ReactionUpdateManyWithWhereWithoutEventInput = {
 
 export type ReactionCreateManyUserInput = {
   id?: number
-  type: string
   eventId: number
+  type: string
+  validated?: boolean
   created_at?: Date | string
 }
 
 export type ReactionUpdateWithoutUserInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   event?: Prisma.EventUpdateOneRequiredWithoutReactionsNestedInput
 }
 
 export type ReactionUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ReactionUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   eventId?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ReactionCreateManyEventInput = {
   id?: number
-  type: string
   userId: number
+  type: string
+  validated?: boolean
   created_at?: Date | string
 }
 
 export type ReactionUpdateWithoutEventInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutReactionsNestedInput
 }
 
 export type ReactionUncheckedUpdateWithoutEventInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ReactionUncheckedUpdateManyWithoutEventInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  validated?: Prisma.BoolFieldUpdateOperationsInput | boolean
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -609,9 +644,10 @@ export type ReactionUncheckedUpdateManyWithoutEventInput = {
 
 export type ReactionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  type?: boolean
+  validated?: boolean
   created_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -619,9 +655,10 @@ export type ReactionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 
 export type ReactionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  type?: boolean
+  validated?: boolean
   created_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -629,9 +666,10 @@ export type ReactionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type ReactionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  type?: boolean
+  validated?: boolean
   created_at?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -639,13 +677,14 @@ export type ReactionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 
 export type ReactionSelectScalar = {
   id?: boolean
-  type?: boolean
-  userId?: boolean
   eventId?: boolean
+  userId?: boolean
+  type?: boolean
+  validated?: boolean
   created_at?: boolean
 }
 
-export type ReactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "userId" | "eventId" | "created_at", ExtArgs["result"]["reaction"]>
+export type ReactionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "eventId" | "userId" | "type" | "validated" | "created_at", ExtArgs["result"]["reaction"]>
 export type ReactionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   event?: boolean | Prisma.EventDefaultArgs<ExtArgs>
@@ -667,9 +706,10 @@ export type $ReactionPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    type: string
-    userId: number
     eventId: number
+    userId: number
+    type: string
+    validated: boolean
     created_at: Date
   }, ExtArgs["result"]["reaction"]>
   composites: {}
@@ -1097,9 +1137,10 @@ export interface Prisma__ReactionClient<T, Null = never, ExtArgs extends runtime
  */
 export interface ReactionFieldRefs {
   readonly id: Prisma.FieldRef<"Reaction", 'Int'>
-  readonly type: Prisma.FieldRef<"Reaction", 'String'>
-  readonly userId: Prisma.FieldRef<"Reaction", 'Int'>
   readonly eventId: Prisma.FieldRef<"Reaction", 'Int'>
+  readonly userId: Prisma.FieldRef<"Reaction", 'Int'>
+  readonly type: Prisma.FieldRef<"Reaction", 'String'>
+  readonly validated: Prisma.FieldRef<"Reaction", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"Reaction", 'DateTime'>
 }
     

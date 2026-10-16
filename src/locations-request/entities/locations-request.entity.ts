@@ -9,11 +9,19 @@ export class LocationsRequest {
   @ApiProperty({ description: 'The description of the location request' })
   description: string | null;
   @ApiProperty({ description: 'The user who made the request' })
-  userId: number;
+  applicantId: number;
   @ApiProperty({ description: 'The requested category' })
   categoryId: number;
+  @ApiProperty({ description: 'The manager who handled the request' })
+  managerId: number | null;
+  @ApiProperty({ description: 'The resulting location' })
+  locationId: number | null;
+  @ApiProperty({ description: 'The reason of the request' })
+  reason: string;
   @ApiProperty({ description: 'The status of the request', enum: LocationRequestStatus })
   status: LocationRequestStatus;
   @ApiProperty({ description: 'The date the request was made' })
   request_date: Date;
+  @ApiProperty({ description: 'The date the request was completed' })
+  done_at: Date;
 }

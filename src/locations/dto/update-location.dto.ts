@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsInt,
   IsLatitude,
   IsLongitude,
@@ -36,6 +37,11 @@ export class UpdateLocationDto {
 
   @ApiProperty({ required: false })
   @IsOptional()
+  @IsBoolean()
+  its_official?: boolean;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsInt()
   @IsPositive()
   categoryId?: number;
@@ -44,5 +50,5 @@ export class UpdateLocationDto {
   @IsOptional()
   @IsInt()
   @IsPositive()
-  userId?: number;
+  mapId?: number;
 }
