@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { CommentsService } from './comments.service.js';
 import { CreateCommentDto } from './dto/create-comment.dto.js';
 import { UpdateCommentDto } from './dto/update-comment.dto.js';
+import { FindCommentsQueryDto } from './dto/find-comments-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('comments')
@@ -29,8 +31,8 @@ export class CommentsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllComments() {
-    return this.commentsService.findAll();
+  getAllComments(@Query() query: FindCommentsQueryDto) {
+    return this.commentsService.findAll(query);
   }
 
   @Get(':id')

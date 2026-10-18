@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service.js';
 import { CreateCategoryDto } from './dto/create-category.dto.js';
 import { UpdateCategoryDto } from './dto/update-category.dto.js';
+import { FindCategoriesQueryDto } from './dto/find-categories-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('categories')
@@ -29,8 +31,8 @@ export class CategoriesController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllCategories() {
-    return this.categoriesService.findAll();
+  getAllCategories(@Query() query: FindCategoriesQueryDto) {
+    return this.categoriesService.findAll(query);
   }
 
   @Get(':id')

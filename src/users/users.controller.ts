@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
+import { FindUsersQueryDto } from './dto/find-users-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -32,8 +34,8 @@ export class UsersController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllUsers() {
-    return this.usersService.findAll();
+  getAllUsers(@Query() query: FindUsersQueryDto) {
+    return this.usersService.findAll(query);
   }
 
   @Get(':id')
