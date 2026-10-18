@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { LocationsService } from './locations.service.js';
 import { CreateLocationDto } from './dto/create-location.dto.js';
 import { UpdateLocationDto } from './dto/update-location.dto.js';
+import { FindLocationsQueryDto } from './dto/find-locations-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('locations')
@@ -29,8 +31,8 @@ export class LocationsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllLocations() {
-    return this.locationsService.findAll();
+  getAllLocations(@Query() query: FindLocationsQueryDto) {
+    return this.locationsService.findAll(query);
   }
 
   @Get(':id')

@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { MapsService } from './maps.service.js';
 import { CreateMapDto } from './dto/create-map.dto.js';
 import { UpdateMapDto } from './dto/update-map.dto.js';
+import { FindMapsQueryDto } from './dto/find-maps-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('maps')
@@ -29,8 +31,8 @@ export class MapsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllMaps() {
-    return this.mapsService.findAll();
+  getAllMaps(@Query() query: FindMapsQueryDto) {
+    return this.mapsService.findAll(query);
   }
 
   @Get(':id')

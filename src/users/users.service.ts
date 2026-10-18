@@ -2,7 +2,12 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { randomBytes, scryptSync } from 'node:crypto';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
+import { FindUsersQueryDto } from './dto/find-users-query.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import { Prisma } from '../generated/prisma/client.js';
+import { buildOrderBy, buildPagination, toPaginatedResult} from '../common/helpers/pagination.helper.js';
+
+const USER_SORTABLE = [ 'id', 'name', 'email', 'lapel', 'role', 'created_at'] as const;
 
 @Injectable()
 export class UsersService {
@@ -12,8 +17,32 @@ export class UsersService {
     return this.prisma.user.create({ data });
   }
 
-  findAll() {
-    return this.prisma.user.findMany();
+  async findAll(query: FindUsersQueryDto) {
+    const where: Prisma.UserWhereInput = {};
+
+    if (query.name) where.name = { contains: query.name, mode: 'insensitive' };
+    if (query.email) where.email = { contains: query.email, mode: 'insensitive' };
+    if (query.lapel) where.lapel = { contains: query.lapel, mode: 'insensitive' };
+    if (query.role) where.role = query.role;
+    if (query.ist_resident !== undefined) where.ist_resident = query.ist_resident;
+    if (query.suspended !== undefined) where.suspended = query.suspended;
+    if (query.search) {
+      where.OR = [
+        { name: { contains: query.search, mode: 'insensitive' } },
+        { email: { contains: query.search, mode: 'insensitive' } },
+        { lapel: { contains: query.search, mode: 'insensitive' } },
+      ];
+    }
+
+    const { page, limit, skip, take } = buildPagination(query.page, query.limit);
+    const orderBy = buildOrderBy(query.sort, query.order, USER_SORTABLE, 'id');
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.user.findMany({ where, orderBy, skip, take }),
+      this.prisma.user.count({ where }),
+    ]);
+
+    return toPaginatedResult(data, total, page, limit);
   }
 
   async findOne(id: number) {

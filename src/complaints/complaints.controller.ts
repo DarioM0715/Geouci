@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ComplaintsService } from './complaints.service.js';
 import { CreateComplaintDto } from './dto/create-complaint.dto.js';
 import { UpdateComplaintDto } from './dto/update-complaint.dto.js';
+import { FindComplaintsQueryDto } from './dto/find-complaints-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('complaints')
@@ -29,8 +31,8 @@ export class ComplaintsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllComplaints() {
-    return this.complaintsService.findAll();
+  getAllComplaints(@Query() query: FindComplaintsQueryDto) {
+    return this.complaintsService.findAll(query);
   }
 
   @Get(':id')

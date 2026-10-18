@@ -2,6 +2,13 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateReactionDto } from './dto/create-reaction.dto.js';
 import { UpdateReactionDto } from './dto/update-reaction.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import { Prisma } from '../generated/prisma/client.js';
+import { FindReactionsQueryDto } from './dto/find-reactions-query.dto.js';
+import {
+  buildOrderBy,
+  buildPagination,
+  toPaginatedResult,
+} from '../common/helpers/pagination.helper.js';
 
 @Injectable()
 export class ReactionsService {
@@ -11,8 +18,25 @@ export class ReactionsService {
     return this.prisma.reaction.create({ data });
   }
 
-  findAll() {
-    return this.prisma.reaction.findMany();
+  async findAll(query: FindReactionsQueryDto) {
+    const sortable = ['id', 'created_at'] as const;
+    const where: Prisma.ReactionWhereInput = {};
+
+    if (query.eventId !== undefined) where.eventId = query.eventId;
+    if (query.userId !== undefined) where.userId = query.userId;
+    if (query.type) where.type = { contains: query.type, mode: 'insensitive' };
+    if (query.validated !== undefined) where.validated = query.validated;
+    if (query.search) where.type = { contains: query.search, mode: 'insensitive' };
+
+    const { page, limit, skip, take } = buildPagination(query.page, query.limit);
+    const orderBy = buildOrderBy(query.sort, query.order, sortable, 'id');
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.reaction.findMany({ where, orderBy, skip, take }),
+      this.prisma.reaction.count({ where }),
+    ]);
+
+    return toPaginatedResult(data, total, page, limit);
   }
 
   async findOne(id: number) {
