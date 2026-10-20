@@ -51,7 +51,15 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Event: 'Event'
+  User: 'User',
+  Category: 'Category',
+  Event: 'Event',
+  Location: 'Location',
+  Map: 'Map',
+  LocationRequest: 'LocationRequest',
+  Comment: 'Comment',
+  Reaction: 'Reaction',
+  Complaint: 'Complaint'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,17 +78,123 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  lapel: 'lapel',
+  role: 'role',
+  ist_resident: 'ist_resident',
+  suspended: 'suspended',
+  reason_suspension: 'reason_suspension',
+  created_at: 'created_at'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
 export const EventScalarFieldEnum = {
   id: 'id',
+  mapId: 'mapId',
+  categoryId: 'categoryId',
+  organizerId: 'organizerId',
   name: 'name',
   description: 'description',
   start_date: 'start_date',
   end_date: 'end_date',
-  category: 'category',
-  its_official: 'its_official'
+  its_official: 'its_official',
+  outstanding: 'outstanding'
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+
+
+export const LocationScalarFieldEnum = {
+  id: 'id',
+  mapId: 'mapId',
+  categoryId: 'categoryId',
+  name: 'name',
+  description: 'description',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  its_official: 'its_official',
+  created_at: 'created_at'
+} as const
+
+export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
+
+
+export const MapScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  lat_min: 'lat_min',
+  lat_max: 'lat_max',
+  lon_min: 'lon_min',
+  lon_max: 'lon_max'
+} as const
+
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
+
+
+export const LocationRequestScalarFieldEnum = {
+  id: 'id',
+  applicantId: 'applicantId',
+  categoryId: 'categoryId',
+  managerId: 'managerId',
+  locationId: 'locationId',
+  name: 'name',
+  description: 'description',
+  reason: 'reason',
+  status: 'status',
+  request_date: 'request_date',
+  done_at: 'done_at'
+} as const
+
+export type LocationRequestScalarFieldEnum = (typeof LocationRequestScalarFieldEnum)[keyof typeof LocationRequestScalarFieldEnum]
+
+
+export const CommentScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  userId: 'userId',
+  text: 'text',
+  created_at: 'created_at',
+  edited_at: 'edited_at'
+} as const
+
+export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+export const ReactionScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  userId: 'userId',
+  type: 'type',
+  validated: 'validated',
+  created_at: 'created_at'
+} as const
+
+export type ReactionScalarFieldEnum = (typeof ReactionScalarFieldEnum)[keyof typeof ReactionScalarFieldEnum]
+
+
+export const ComplaintScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  userId: 'userId',
+  reason: 'reason',
+  created_at: 'created_at'
+} as const
+
+export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -97,4 +211,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
