@@ -42,7 +42,7 @@ export class EventsService {
     const orderBy = buildOrderBy(query.sort, query.order, sortable, 'id');
 
     const [data, total] = await this.prisma.$transaction([
-      this.prisma.event.findMany({ where, orderBy, skip, take }),
+      this.prisma.event.findMany({ where, orderBy, skip, take, include : { category: true }}),
       this.prisma.event.count({ where }),
     ]);
 
@@ -50,7 +50,14 @@ export class EventsService {
   }
 
   async findOne(id: number) {
-    const event = await this.prisma.event.findUnique({ where: { id } });
+    const event = await this.prisma.event.findUnique({
+      where: { id },
+      include: {
+        map: true,
+        category: true,
+        user: true,
+      }
+    });
 
     if (!event) {
       throw new NotFoundException(`Evento con id ${id} no encontrado`);

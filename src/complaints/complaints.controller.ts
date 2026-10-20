@@ -16,6 +16,8 @@ import { CreateComplaintDto } from './dto/create-complaint.dto.js';
 import { UpdateComplaintDto } from './dto/update-complaint.dto.js';
 import { FindComplaintsQueryDto } from './dto/find-complaints-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
+import { Roles } from '../auth/decorators/roles.decorator.js';
+import { Role } from '../generated/prisma/enums.js';
 
 @Controller('complaints')
 export class ComplaintsController {
@@ -30,12 +32,14 @@ export class ComplaintsController {
   }
 
   @Get()
+  @Roles(Role.gestor)
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getAllComplaints(@Query() query: FindComplaintsQueryDto) {
     return this.complaintsService.findAll(query);
   }
 
   @Get(':id')
+  @Roles(Role.gestor)
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getComplaint(@Param('id', ParseIntPipe) id: number) {
     return this.complaintsService.findOne(id);
