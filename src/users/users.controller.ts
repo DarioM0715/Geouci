@@ -13,6 +13,7 @@ import {
 import { UsersService } from './users.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
+import { BulkDeleteDto } from '../common/dto/bulk-delete.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -56,5 +57,17 @@ export class UsersController {
   @HttpCode(HttpStatus.NO_CONTENT)
   removeUser(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.remove(id);
+  }
+
+  @Post('bulk-delete')
+  @Roles(Role.gestor)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiResponse({ status: 204, description: 'Los registros han sido eliminados.' })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiResponse({ status: 404, description: 'Record Not Found.' })
+  @ApiResponse({ status: 409, description: 'Conflict.' })
+  bulkDeleteUsers(@Body() bulkDeleteDto: BulkDeleteDto) {
+    return this.usersService.removeMany(bulkDeleteDto.ids);
   }
 }

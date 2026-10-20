@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateReactionDto } from './dto/create-reaction.dto.js';
 import { UpdateReactionDto } from './dto/update-reaction.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import { executeBulkDelete } from '../common/helpers/bulk-delete.helper.js';
 
 @Injectable()
 export class ReactionsService {
@@ -35,5 +36,19 @@ export class ReactionsService {
     await this.findOne(id);
 
     await this.prisma.reaction.delete({ where: { id } });
+  }
+
+  async removeMany(ids: number[]): Promise<void> {
+    const unique = [...new Set(ids)];
+
+    await this.prisma.$transaction(async (tx) => {
+      await executeBulkDelete({
+        ids: unique,
+        label: 'reacciones',
+        fetchExisting: () =>
+          tx.reaction.findMany({ where: { id: { in: unique } }, select: { id: true } }),
+        performDelete: () => tx.reaction.deleteMany({ where: { id: { in: unique } } }),
+      });
+    });
   }
 }

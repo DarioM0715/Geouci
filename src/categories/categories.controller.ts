@@ -14,6 +14,9 @@ import { CategoriesService } from './categories.service.js';
 import { CreateCategoryDto } from './dto/create-category.dto.js';
 import { UpdateCategoryDto } from './dto/update-category.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
+import { Roles } from '../auth/decorators/roles.decorator.js';
+import { Role } from '../generated/prisma/enums.js';
+import { BulkDeleteDto } from '../common/dto/bulk-delete.dto.js';
 
 @Controller('categories')
 export class CategoriesController {
@@ -52,5 +55,17 @@ export class CategoriesController {
   @HttpCode(HttpStatus.NO_CONTENT)
   removeCategory(@Param('id', ParseIntPipe) id: number) {
     return this.categoriesService.remove(id);
+  }
+
+  @Post('bulk-delete')
+  @Roles(Role.gestor)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiResponse({ status: 204, description: 'Los registros han sido eliminados.' })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiResponse({ status: 404, description: 'Record Not Found.' })
+  @ApiResponse({ status: 409, description: 'Conflict.' })
+  bulkDeleteCategories(@Body() bulkDeleteDto: BulkDeleteDto) {
+    return this.categoriesService.removeMany(bulkDeleteDto.ids);
   }
 }
