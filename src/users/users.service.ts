@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
 import { FindUsersQueryDto } from './dto/find-users-query.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import { executeBulkDelete } from '../common/helpers/bulk-delete.helper.js';
 import { Prisma } from '../generated/prisma/client.js';
 import { buildOrderBy, buildPagination, toPaginatedResult} from '../common/helpers/pagination.helper.js';
 
@@ -65,6 +66,72 @@ export class UsersService {
     await this.findOne(id);
 
     await this.prisma.user.delete({ where: { id } });
+  }
+
+  async removeMany(ids: number[]): Promise<void> {
+    const unique = [...new Set(ids)];
+
+    await this.prisma.$transaction(async (tx) => {
+      await executeBulkDelete({
+        ids: unique,
+        label: 'usuarios',
+        fetchExisting: () =>
+          tx.user.findMany({ where: { id: { in: unique } }, select: { id: true } }),
+        checks: [
+          {
+            relation: 'eventos',
+            getBlockedIds: async (ids) =>
+              (
+                await tx.event.findMany({
+                  where: { organizerId: { in: ids } },
+                  select: { organizerId: true },
+                })
+              ).map((row) => row.organizerId),
+          },
+          {
+            relation: 'comentarios',
+            getBlockedIds: async (ids) =>
+              (
+                await tx.comment.findMany({
+                  where: { userId: { in: ids } },
+                  select: { userId: true },
+                })
+              ).map((row) => row.userId),
+          },
+          {
+            relation: 'reacciones',
+            getBlockedIds: async (ids) =>
+              (
+                await tx.reaction.findMany({
+                  where: { userId: { in: ids } },
+                  select: { userId: true },
+                })
+              ).map((row) => row.userId),
+          },
+          {
+            relation: 'reclamos',
+            getBlockedIds: async (ids) =>
+              (
+                await tx.complaint.findMany({
+                  where: { userId: { in: ids } },
+                  select: { userId: true },
+                })
+              ).map((row) => row.userId),
+          },
+          {
+            relation: 'solicitudes (solicitante)',
+            getBlockedIds: async (ids) =>
+              (
+                await tx.locationRequest.findMany({
+                  where: { applicantId: { in: ids } },
+                  select: { applicantId: true },
+                })
+              ).map((row) => row.applicantId),
+          },
+        ],
+        performDelete: () => tx.user.deleteMany({ where: { id: { in: unique } } }),
+      });
+    });
   }
 
   private hashPassword(password: string): string {

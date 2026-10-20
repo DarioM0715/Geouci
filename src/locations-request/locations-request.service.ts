@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateLocationsRequestDto } from './dto/create-locations-request.dto.js';
 import { UpdateLocationsRequestDto } from './dto/update-locations-request.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
+import { executeBulkDelete } from '../common/helpers/bulk-delete.helper.js';
 import { Prisma } from '../generated/prisma/client.js';
 import { FindLocationsRequestQueryDto } from './dto/find-locations-request-query.dto.js';
 import {
@@ -67,5 +68,19 @@ export class LocationsRequestService {
     await this.findOne(id);
 
     await this.prisma.locationRequest.delete({ where: { id } });
+  }
+
+  async removeMany(ids: number[]): Promise<void> {
+    const unique = [...new Set(ids)];
+
+    await this.prisma.$transaction(async (tx) => {
+      await executeBulkDelete({
+        ids: unique,
+        label: 'solicitudes de ubicación',
+        fetchExisting: () =>
+          tx.locationRequest.findMany({ where: { id: { in: unique } }, select: { id: true } }),
+        performDelete: () => tx.locationRequest.deleteMany({ where: { id: { in: unique } } }),
+      });
+    });
   }
 }
