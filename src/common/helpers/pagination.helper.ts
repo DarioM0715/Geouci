@@ -50,7 +50,6 @@ export function toPaginatedResult<T>(
   const totalPages = Math.ceil(total / limit);
 
   return {
-    data,
     meta: {
       total,
       page,
@@ -59,5 +58,6 @@ export function toPaginatedResult<T>(
       hasNext: page < totalPages,
       hasPrev: page > 1,
     },
+    data,
   };
 }
