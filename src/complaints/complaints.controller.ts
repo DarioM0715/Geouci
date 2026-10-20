@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ComplaintsService } from './complaints.service.js';
 import { CreateComplaintDto } from './dto/create-complaint.dto.js';
 import { UpdateComplaintDto } from './dto/update-complaint.dto.js';
+import { FindComplaintsQueryDto } from './dto/find-complaints-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -31,12 +33,14 @@ export class ComplaintsController {
   }
 
   @Get()
+  @Roles(Role.gestor)
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllComplaints() {
-    return this.complaintsService.findAll();
+  getAllComplaints(@Query() query: FindComplaintsQueryDto) {
+    return this.complaintsService.findAll(query);
   }
 
   @Get(':id')
+  @Roles(Role.gestor)
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
   getComplaint(@Param('id', ParseIntPipe) id: number) {
     return this.complaintsService.findOne(id);

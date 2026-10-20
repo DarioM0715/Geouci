@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { EventsService } from './events.service.js';
 import { CreateEventDto } from './dto/create-event.dto.js';
 import { UpdateEventDto } from './dto/update-event.dto.js';
+import { FindEventsQueryDto } from './dto/find-events-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -32,8 +34,8 @@ export class EventsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllEvents() {
-    return this.eventsService.findAll();
+  getAllEvents(@Query() query: FindEventsQueryDto) {
+    return this.eventsService.findAll(query);
   }
 
   @Get(':id')

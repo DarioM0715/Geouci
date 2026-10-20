@@ -3,6 +3,13 @@ import { CreateLocationDto } from './dto/create-location.dto.js';
 import { UpdateLocationDto } from './dto/update-location.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { executeBulkDelete } from '../common/helpers/bulk-delete.helper.js';
+import { Prisma } from '../generated/prisma/client.js';
+import { FindLocationsQueryDto } from './dto/find-locations-query.dto.js';
+import {
+  buildOrderBy,
+  buildPagination,
+  toPaginatedResult,
+} from '../common/helpers/pagination.helper.js';
 
 @Injectable()
 export class LocationsService {
@@ -12,8 +19,32 @@ export class LocationsService {
     return this.prisma.location.create({ data });
   }
 
-  findAll() {
-    return this.prisma.location.findMany();
+  async findAll(query: FindLocationsQueryDto) {
+    const sortable = ['id', 'name', 'created_at'] as const;
+    const where: Prisma.LocationWhereInput = {};
+
+    if (query.name) where.name = { contains: query.name, mode: 'insensitive' };
+    if (query.description)
+      where.description = { contains: query.description, mode: 'insensitive' };
+    if (query.its_official !== undefined) where.its_official = query.its_official;
+    if (query.categoryId !== undefined) where.categoryId = query.categoryId;
+    if (query.mapId !== undefined) where.mapId = query.mapId;
+    if (query.search) {
+      where.OR = [
+        { name: { contains: query.search, mode: 'insensitive' } },
+        { description: { contains: query.search, mode: 'insensitive' } },
+      ];
+    }
+
+    const { page, limit, skip, take } = buildPagination(query.page, query.limit);
+    const orderBy = buildOrderBy(query.sort, query.order, sortable, 'id');
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.location.findMany({ where, orderBy, skip, take }),
+      this.prisma.location.count({ where }),
+    ]);
+
+    return toPaginatedResult(data, total, page, limit);
   }
 
   async findOne(id: number) {

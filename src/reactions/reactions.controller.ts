@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ReactionsService } from './reactions.service.js';
 import { CreateReactionDto } from './dto/create-reaction.dto.js';
 import { UpdateReactionDto } from './dto/update-reaction.dto.js';
+import { FindReactionsQueryDto } from './dto/find-reactions-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -32,8 +34,8 @@ export class ReactionsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllReactions() {
-    return this.reactionsService.findAll();
+  getAllReactions(@Query() query: FindReactionsQueryDto) {
+    return this.reactionsService.findAll(query);
   }
 
   @Get(':id')

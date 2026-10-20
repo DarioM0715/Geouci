@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { LocationsService } from './locations.service.js';
 import { CreateLocationDto } from './dto/create-location.dto.js';
 import { UpdateLocationDto } from './dto/update-location.dto.js';
+import { FindLocationsQueryDto } from './dto/find-locations-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -23,6 +25,7 @@ export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {}
 
   @Post()
+  @Roles(Role.gestor)
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
   @ApiResponse({ status: 403, description: 'Forbidden.'})
   @ApiResponse({ status: 400, description: "Bad Request."})
@@ -32,8 +35,8 @@ export class LocationsController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllLocations() {
-    return this.locationsService.findAll();
+  getAllLocations(@Query() query: FindLocationsQueryDto) {
+    return this.locationsService.findAll(query);
   }
 
   @Get(':id')
@@ -43,6 +46,7 @@ export class LocationsController {
   }
 
   @Patch(':id')
+  @Roles(Role.gestor)
   @ApiResponse({ status: 400, description: "Bad Request."})
   updateLocation(
     @Param('id', ParseIntPipe) id: number,
@@ -52,6 +56,7 @@ export class LocationsController {
   }
 
   @Delete(':id')
+  @Roles(Role.gestor)
   @HttpCode(HttpStatus.NO_CONTENT)
   removeLocation(@Param('id', ParseIntPipe) id: number) {
     return this.locationsService.remove(id);

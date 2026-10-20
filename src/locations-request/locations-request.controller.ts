@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { LocationsRequestService } from './locations-request.service.js';
 import { CreateLocationsRequestDto } from './dto/create-locations-request.dto.js';
 import { UpdateLocationsRequestDto } from './dto/update-locations-request.dto.js';
+import { FindLocationsRequestQueryDto } from './dto/find-locations-request-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -32,8 +34,8 @@ export class LocationsRequestController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllLocationsRequests() {
-    return this.locationsRequestService.findAll();
+  getAllLocationsRequests(@Query() query: FindLocationsRequestQueryDto) {
+    return this.locationsRequestService.findAll(query);
   }
 
   @Get(':id')

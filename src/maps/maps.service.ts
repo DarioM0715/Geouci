@@ -3,6 +3,13 @@ import { CreateMapDto } from './dto/create-map.dto.js';
 import { UpdateMapDto } from './dto/update-map.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { executeBulkDelete } from '../common/helpers/bulk-delete.helper.js';
+import { Prisma } from '../generated/prisma/client.js';
+import { FindMapsQueryDto } from './dto/find-maps-query.dto.js';
+import {
+  buildOrderBy,
+  buildPagination,
+  toPaginatedResult,
+} from '../common/helpers/pagination.helper.js';
 
 @Injectable()
 export class MapsService {
@@ -12,8 +19,22 @@ export class MapsService {
     return this.prisma.map.create({ data });
   }
 
-  findAll() {
-    return this.prisma.map.findMany();
+  async findAll(query: FindMapsQueryDto) {
+    const sortable = ['id', 'name'] as const;
+    const where: Prisma.MapWhereInput = {};
+
+    if (query.name) where.name = { contains: query.name, mode: 'insensitive' };
+    if (query.search) where.name = { contains: query.search, mode: 'insensitive' };
+
+    const { page, limit, skip, take } = buildPagination(query.page, query.limit);
+    const orderBy = buildOrderBy(query.sort, query.order, sortable, 'id');
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.map.findMany({ where, orderBy, skip, take }),
+      this.prisma.map.count({ where }),
+    ]);
+
+    return toPaginatedResult(data, total, page, limit);
   }
 
   async findOne(id: number) {

@@ -9,10 +9,12 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service.js';
 import { CreateCategoryDto } from './dto/create-category.dto.js';
 import { UpdateCategoryDto } from './dto/update-category.dto.js';
+import { FindCategoriesQueryDto } from './dto/find-categories-query.dto.js';
 import { ApiResponse } from '@nestjs/swagger';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Role } from '../generated/prisma/enums.js';
@@ -23,6 +25,7 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Post()
+  @Roles(Role.gestor)
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
   @ApiResponse({ status: 403, description: 'Forbidden.'})
   @ApiResponse({ status: 400, description: "Bad Request."})
@@ -32,8 +35,8 @@ export class CategoriesController {
 
   @Get()
   @ApiResponse({ status: 404, description: 'Record Not Found.'})
-  getAllCategories() {
-    return this.categoriesService.findAll();
+  getAllCategories(@Query() query: FindCategoriesQueryDto) {
+    return this.categoriesService.findAll(query);
   }
 
   @Get(':id')
@@ -43,6 +46,7 @@ export class CategoriesController {
   }
 
   @Patch(':id')
+  @Roles(Role.gestor)
   @ApiResponse({ status: 400, description: "Bad Request."})
   updateCategory(
     @Param('id', ParseIntPipe) id: number,
@@ -52,6 +56,7 @@ export class CategoriesController {
   }
 
   @Delete(':id')
+  @Roles(Role.gestor)
   @HttpCode(HttpStatus.NO_CONTENT)
   removeCategory(@Param('id', ParseIntPipe) id: number) {
     return this.categoriesService.remove(id);

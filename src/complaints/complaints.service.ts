@@ -3,6 +3,13 @@ import { CreateComplaintDto } from './dto/create-complaint.dto.js';
 import { UpdateComplaintDto } from './dto/update-complaint.dto.js';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { executeBulkDelete } from '../common/helpers/bulk-delete.helper.js';
+import { Prisma } from '../generated/prisma/client.js';
+import { FindComplaintsQueryDto } from './dto/find-complaints-query.dto.js';
+import {
+  buildOrderBy,
+  buildPagination,
+  toPaginatedResult,
+} from '../common/helpers/pagination.helper.js';
 
 @Injectable()
 export class ComplaintsService {
@@ -12,8 +19,24 @@ export class ComplaintsService {
     return this.prisma.complaint.create({ data });
   }
 
-  findAll() {
-    return this.prisma.complaint.findMany();
+  async findAll(query: FindComplaintsQueryDto) {
+    const sortable = ['id', 'created_at'] as const;
+    const where: Prisma.ComplaintWhereInput = {};
+
+    if (query.eventId !== undefined) where.eventId = query.eventId;
+    if (query.userId !== undefined) where.userId = query.userId;
+    if (query.search)
+      where.reason = { contains: query.search, mode: 'insensitive' };
+
+    const { page, limit, skip, take } = buildPagination(query.page, query.limit);
+    const orderBy = buildOrderBy(query.sort, query.order, sortable, 'id');
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.complaint.findMany({ where, orderBy, skip, take }),
+      this.prisma.complaint.count({ where }),
+    ]);
+
+    return toPaginatedResult(data, total, page, limit);
   }
 
   async findOne(id: number) {
